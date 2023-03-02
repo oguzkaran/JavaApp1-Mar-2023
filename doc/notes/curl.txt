@@ -1,0 +1,49 @@
+curl -d '{"name": "Kubilay Şeker", "birthDate": "1996-09-17"}' -H "Content-Type: application/json" -X POST http:/192.168.1.167:50500/api/director/save
+
+curl -d '{"name": "Titanic", "sceneTime": "12/03/1997", "rating": 100, "cost": 345}' -H "Content-Type: application/json" -X POST http:/192.168.1.167:50500/api/movie/save
+
+curl -d '{"title": "Market", "text": "Soğan, Elma, mandalina"}' -H "Content-Type: application/json" -X POST http:/192.168.1.167:50501/api/todo/save
+ 
+
+curl -d '{"title": "Terapi Kulubu", "description": "Mobil uygulama test işlemleri"}' -H "Content-Type: application/json" -X POST http:/192.168.1.167:50501/api/todo/save
+
+curl -d '{"todoId": 1, "text": "Uzmanlar sayfası"}' -H "Content-Type: application/json" -X POST http:/192.168.1.167:50501/api/todo/item/save
+
+
+For Operating Systems except windows
+curl -d '{"diplomaNo": 3078, "citizenId": "123456789112", "firstName": "Ali", "middleName": "Vefa", "lastName": "Serçe", "birthDate":"12/03/1966", "registerDate":"17/12/2022"}' -H "Content-Type: application/json" -X POST 'http:/192.168.1.149:50500/api/vets/vet/save'
+
+curl -d '{"diplomaNo": 3079, "citizenId": "123456789132", "firstName": "Oğuz", "lastName": "Karan", "birthDate":"10/09/1976", "registerDate":"17/12/2022"}' -H "Content-Type: application/json" -X POST 'http:/161.97.141.113:50501/api/update/vets/vet/save'
+
+
+//For windows
+
+curl -d "{\"diplomaNo\": 3078, \"citizenId\": \"123456789111\", \"firstName\": \"Ali\", \"middleName\": \"Vefa\", \"lastName\": \"Serce\", \"birthDate\":\"12/03/1966\", \"registerDate\":\"17/12/2022\"}" -H "Content-Type: application/json" -X POST "http:/192.168.1.111:50500/api/vets/vet/save"
+
+curl -d "{\"diplomaNo\": 5005, \"citizenId\": \"172345678911134\", \"firstName\": \"Oguz\", \"lastName\": \"Karan\", \"birthDate\":\"10/09/1976\", \"registerDate\":\"17/12/2022\"}" -H "Content-Type: application/json" -X POST "http:/192.168.1.111:50500/api/vets/vet/save"
+
+curl -d "{\"diplomaNo\": 100, \"animalId\": 67, \"price\": 1000}" -H "Content-Type: application/json" -X POST "http:/192.168.1.113:50505/api/animalhospital/vetan/save"
+
+curl -d "{\"name\": \"Garfield\", \"type\": \"Cat\", \"birthDate\": \"01/02/2017\", \"sterile\": true, \"ownerName\": \"Nuri Can Ozturk\", \"phone\": \"54187434488\", \"address\": \"Bayrakli\"}" -H "Content-Type: application/json" -X POST "http:/192.168.1.113:50503/api/update/animals/animal/owner/save"
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+curl http://localhost:8080/devices
+
+curl -d '{"type":"Sedan", "model":"Porshe", "km":1000, "modelYear":2018, "rent":true}' -H "Content-Type: application/json" -X POST http://localhost:8080/autosrest
+
+
+
+curl -d '{"username":"javacsd", "password":"password"}' -H "Content-Type: application/json" -X POST http://localhost:8080/authenticate
+
+
+
+
+curl -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" http://localhost:8080/hello
+
+
+
+JWT Token does not begin with Bearer String

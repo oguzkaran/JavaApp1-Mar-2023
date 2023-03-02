@@ -1,0 +1,6 @@
+http POST :8080/devices name='hest' port="6767" date='2018-11-30'
+
+http localhost:8080/devices
+
+
+http POST http://localhost:8080/autosrest make='Honda' model='Civic' modelYear=2017 km=10000 rent=true

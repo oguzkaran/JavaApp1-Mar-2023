@@ -1,0 +1,11 @@
+git clone https://github.com/oguzkaran/javaapp1-jun-2022-maven-repo
+
+git config --global user.email "your email"
+
+
+mvn install:install-file -DgroupId=org.csystem -DartifactId=org-csystem-util-console -Dversion=6.0.0 -Dfile=../jars/org-csystem-util-console-6.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
+
+git add -A . && git commit -m "released version 6.0.0" --> dilerseniz bu kısımdan sonra github desktop ile daha kolay yapılabilir
+
+
+url -> 'https://raw.github.com/oguzkaran/javaapp1-jun-2022-maven-repo/main'
