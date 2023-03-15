@@ -13,8 +13,10 @@ package org.csystem.util.math;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
-
 public class Complex {
+	private final double m_real;
+	private final double m_imag;
+
 	private static Complex add(double real1, double imag1, double real2, double imag2)
 	{				
 		return new Complex(real1 + real2, imag1 + imag2);
@@ -25,9 +27,6 @@ public class Complex {
 		return add(real1, imag1, -real2, -imag2);				
 	}
 
-	private final double m_real;
-	private final double m_imag;
-	
 	public Complex()
 	{
 		this(0);
