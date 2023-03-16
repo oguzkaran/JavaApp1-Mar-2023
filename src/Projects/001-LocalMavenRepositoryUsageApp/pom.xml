@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>org.csystem</groupId>
-    <artifactId>LocalMavenRepositoryApp</artifactId>
+    <artifactId>LocalMavenRepositoryUsageApp</artifactId>
     <version>14.0.0</version>
-    <name>LocalMavenRepositoryApp</name>
+    <name>LocalMavenRepositoryUsageApp</name>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
