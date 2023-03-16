@@ -1,6 +1,4 @@
-package org.csystem.app;
-
-import com.karandev.util.console.Console;
+package org.csystem.app.libraryusage;
 
 public class App {
     public static void main(String[] args)
