@@ -2,10 +2,20 @@ git clone https://github.com/oguzkaran/javaapp1-jun-2022-maven-repo
 
 git config --global user.email "your email"
 
+mvn install:install-file -DgroupId=org.csystem -DartifactId=org-csystem-util-datetime -Dversion=6.0.0 -Dfile=../jars/org-csystem-util-datetime-6.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
+mvn install:install-file -DgroupId=com.karandev -DartifactId=com-karandev-util-data -Dversion=1.0.0 -Dfile=../jars/com-karandev-util-data-1.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
+mvn install:install-file -DgroupId=com.karandev -DartifactId=com-karandev-util-exception -Dversion=1.0.0 -Dfile=../jars/com-karandev-util-exception-1.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
+mvn install:install-file -DgroupId=com.karandev -DartifactId=com-karandev-util-datetime -Dversion=1.0.0 -Dfile=../jars/com-karandev-util-datetime-1.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
 
-mvn install:install-file -DgroupId=org.csystem -DartifactId=org-csystem-util-console -Dversion=6.0.0 -Dfile=../jars/org-csystem-util-console-6.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
 
-git add -A . && git commit -m "released version 6.0.0" --> dilerseniz bu kısımdan sonra github desktop ile daha kolay yapılabilir
+git add -A . && git commit -m "released version 1.0.0" --> dilerseniz bu kısımdan sonra github desktop ile daha kolay yapılabilir
 
+url -> 'https://raw.github.com/<github usernama>/<github repository name that is configured for maven repo>/<branch name defaul main>'
+
+url -> 'https://raw.github.com/oguzkaran/javaapp1-jun-2022-karandev-maven-repo/main'
 
 url -> 'https://raw.github.com/oguzkaran/javaapp1-jun-2022-maven-repo/main'
+
+
+
+

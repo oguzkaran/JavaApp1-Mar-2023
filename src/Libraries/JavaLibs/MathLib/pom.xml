@@ -17,12 +17,6 @@
     <name>org-csystem-math</name>
     <description>Math Library</description>
 
-    <repositories>
-        <repository>
-            <id>JavaApp1-Mar-2023</id>
-            <url>https://raw.github.com/oguzkaran/javaapp1-mar-2023-maven-repo/main</url>
-        </repository>
-    </repositories>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
