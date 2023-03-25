@@ -1,4 +1,5 @@
-git clone https://github.com/oguzkaran/javaapp1-jun-2022-maven-repo
+git clone https://github.com/oguzkaran/javaapp1-mar-2023-maven-repo
+git clone https://github.com/oguzkaran/javaapp1-mar-2023-karandev-ğmaven-repo
 
 git config --global user.email "your email"
 
@@ -12,9 +13,9 @@ git add -A . && git commit -m "released version 1.0.0" --> dilerseniz bu kısım
 
 url -> 'https://raw.github.com/<github usernama>/<github repository name that is configured for maven repo>/<branch name defaul main>'
 
-url -> 'https://raw.github.com/oguzkaran/javaapp1-jun-2022-karandev-maven-repo/main'
+url -> 'https://raw.github.com/oguzkaran/javaapp1-mar-2023-karandev-maven-repo/main'
 
-url -> 'https://raw.github.com/oguzkaran/javaapp1-jun-2022-maven-repo/main'
+url -> 'https://raw.github.com/oguzkaran/javaapp1-mar-2023-maven-repo/main'
 
 
 
