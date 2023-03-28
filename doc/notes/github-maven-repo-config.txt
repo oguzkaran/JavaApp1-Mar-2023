@@ -4,7 +4,6 @@ git clone https://github.com/oguzkaran/javaapp1-mar-2023-karandev-ğmaven-repo
 git config --global user.email "your email"
 
 mvn install:install-file -DgroupId=com.karandev -DartifactId=com-karandev-util-console -Dversion=14.0.0 -Dfile=../jars/com-karandev-util-console-14.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
-
 mvn install:install-file -DgroupId=org.csystem -DartifactId=org-csystem-util -Dversion=14.0.0 -Dfile=../jars/org-csystem-util-14.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
 mvn install:install-file -DgroupId=org.csystem -DartifactId=org-csystem-math -Dversion=14.0.0 -Dfile=../jars/org-csystem-math-14.0.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
 
