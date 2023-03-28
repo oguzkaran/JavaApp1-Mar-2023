@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 16.03.2023
+	LAST UPDATE : 28.03.2023
 
 	Utility class for numeric operations
 
@@ -24,9 +24,9 @@ public final class NumberUtil {
 	private static int [] getDigits(long val, int n)
 	{
 		val = Math.abs(val);
-		int [] result = new int[val == 0 ? 1 : (int)(Math.log10(val) / n) + 1];
+		var result = new int[val == 0 ? 1 : (int)(Math.log10(val) / n) + 1];
 
-		for (int i = result.length - 1; val != 0; result[i--] = (int)(val % (long)Math.pow(10, n)), val /= Math.pow(10, n))
+		for (var i = result.length - 1; val != 0; result[i--] = (int)(val % (long)Math.pow(10, n)), val /= Math.pow(10, n))
 			;
 
 		return result;
@@ -37,13 +37,13 @@ public final class NumberUtil {
 		if (val == 0)
 			return "sıfır";
 
-		String text = val < 0 ? "eksi" : "";
+		var text = val < 0 ? "eksi" : "";
 
 		val = Math.abs(val);
 
-		int a = val / 100;
-		int b = val % 100 / 10;
-		int c = val % 10;
+		var a = val / 100;
+		var b = val % 100 / 10;
+		var c = val % 10;
 
 		if (a != 0) {
 			if (a != 1)
@@ -66,7 +66,7 @@ public final class NumberUtil {
 
 	public static int calculateDigitalRoot(int val)
 	{
-		int root = abs(val);
+		var root = abs(val);
 		
 		while ((root = digitsSum(root)) > 9)
 			;
@@ -81,7 +81,7 @@ public final class NumberUtil {
 	
 	public static int digitsSum(long val)
 	{
-		int sum = 0;
+		var sum = 0;
 		
 		while (val != 0) {
 			sum += val % 10;
@@ -106,9 +106,9 @@ public final class NumberUtil {
 	
 	public static int factorial(int n)
 	{
-		int result = 1;
+		var result = 1;
 		
-		for (int i = 2; i <= n; ++i)
+		for (var i = 2; i <= n; ++i)
 			result *= i;
 		
 		return result;
@@ -116,9 +116,9 @@ public final class NumberUtil {
 	
 	public static int gcd(int a, int b)
 	{
-		int min = min(abs(a), abs(b));
+		var min = min(abs(a), abs(b));
 		
-		for (int i = min; i >= 2; --i)
+		for (var i = min; i >= 2; --i)
 			if (a % i == 0 && b % i == 0)
 				return i;
 		
@@ -142,8 +142,8 @@ public final class NumberUtil {
 	
 	public static int getDigitsPowSum(int val)
 	{
-		int n = countDigits(val);
-		int sum = 0;
+		var n = countDigits(val);
+		var sum = 0;
 		
 		while (val != 0) {
 			sum += pow(val % 10, n);
@@ -155,7 +155,7 @@ public final class NumberUtil {
 	
 	public static int getDigitsFactorialSum(int n)
 	{
-		int sum = 0;
+		var sum = 0;
 		
 		while (n != 0) {
 			sum += factorial(n % 10);
@@ -167,8 +167,8 @@ public final class NumberUtil {
 	
 	public static int getIndexOfPrime(int n)
 	{
-		int i = 1;
-		int val = 2;
+		var i = 1;
+		var val = 2;
 		
 		for (;;) {
 			if (val == n)
@@ -186,7 +186,9 @@ public final class NumberUtil {
 		if (val < 0)
 			return 0;
 		
-		int prev1 = 1, prev2 = 0, result;		
+		var prev1 = 1;
+		var prev2 = 0;
+		int result;
 		
 		for (;;) {
 			result = prev1 + prev2;
@@ -201,8 +203,8 @@ public final class NumberUtil {
 	
 	public static int getPrime(int n)
 	{	
-		int count = 0;
-		int val = 2;
+		var count = 0;
+		var val = 2;
 		
 		for (;;) {
 			if (isPrime(val))
@@ -232,26 +234,27 @@ public final class NumberUtil {
 		return numberToText3DigitsTR(val);
 	}
 
-	
+
+	/*
 	public static void printGoldbachPrimes(int val)
 	{
-		for (int a = 2; a < val; ++a) {
-			int b = val - a;
-			
+		for (var a = 2; a < val; ++a) {
+			var b = val - a;
+
 			if (isPrime(a) && isPrime(b) && a <= b)
-				System.out.printf("%d + %d = %d == %d%n", a, b, a + b, val);				
-		}				
+				System.out.printf("%d + %d = %d == %d%n", a, b, a + b, val);
+		}
 	}
-	
+
 	public static void printPrimeFactors(int n)
-	{		
+	{
 		if (n == 0)
-			return;		
-		
+			return;
+
 		n = abs(n);
-		
-		int i = 2;		
-		
+
+		var i = 2;
+
 		while (n != 1) {
 			if (n % i == 0) {
 				System.out.printf("%d ", i);
@@ -259,14 +262,16 @@ public final class NumberUtil {
 			}
 			else
 				++i;
-		}		
-		
-		System.out.println();	
+		}
+
+		System.out.println();
 	}
-	
+
+	 */
+
 	public static int reversed(int val)
 	{
-		int result = 0;
+		var result = 0;
 		
 		while (val != 0) {
 			result = result * 10 + val % 10;
@@ -282,10 +287,10 @@ public final class NumberUtil {
 		if (val == 1)
 			return 1;
 		
-		int result = 0;
-		int sqrtVal = (int)sqrt(val);
+		var result = 0;
+		var sqrtVal = (int)sqrt(val);
 		
-		for (int i = 2; i <= sqrtVal; ++i)
+		for (var i = 2; i <= sqrtVal; ++i)
 			if (val % i == 0)
 				result += (i == val / i) ? i : (i + val / i);
 		
@@ -317,11 +322,11 @@ public final class NumberUtil {
 		if (val <= 0)
 			return false;
 		
-		int count = 0;
+		var count = 0;
 		
 		EXIT_LOOP:
-			for (int x = 1; x * x * x < val; ++x)
-				for (int y = x + 1; x * x * x + y * y * y <= val; ++y)
+			for (var x = 1; x * x * x < val; ++x)
+				for (var y = x + 1; x * x * x + y * y * y <= val; ++y)
 					if (x * x * x + y * y * y == val) {
 						if (++count == 2)
 							break EXIT_LOOP;
@@ -352,13 +357,12 @@ public final class NumberUtil {
 		if (val % 7 == 0)
 			return val == 7;
 		
-		int sqrtVal = (int)sqrt(val);
+		var sqrtVal = (int)sqrt(val);
 		
-		for (long i = 11; i <= sqrtVal; i += 2)
+		for (var i = 11L; i <= sqrtVal; i += 2)
 			if (val % i == 0)
 				return false;
-		
-		
+
 		return true;
 	}
 	
@@ -366,7 +370,7 @@ public final class NumberUtil {
 	{
 		boolean result;
 		
-		for (long sum = val; (result = isPrime(sum)) && sum > 9; sum = digitsSum(sum))
+		for (var sum = val; (result = isPrime(sum)) && sum > 9; sum = digitsSum(sum))
 			;
 		
 		return result;
