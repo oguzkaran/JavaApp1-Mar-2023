@@ -11,7 +11,7 @@
 package org.csystem.math.geometry;
 
 public class AnalyticalCircle extends Circle {
-    private final Point m_center;
+    private final MutablePoint m_center;
 
     public AnalyticalCircle()
     {
@@ -35,43 +35,43 @@ public class AnalyticalCircle extends Circle {
 
     public AnalyticalCircle(double r, Point center)
     {
-        this(r, center.x, center.y);
+        this(r, center.getX(), center.getY());
     }
 
     public AnalyticalCircle(double r, double x, double y)
     {
         super(r);
-        m_center =  Point.createCartesian(x, y);
+        m_center =  MutablePoint.createCartesian(x, y);
     }
 
     public double getX()
     {
-        return m_center.x;
+        return m_center.getX();
     }
 
     public void setX(double x)
     {
-        m_center.x = x;
+        m_center.setX(x);
     }
 
     public double getY()
     {
-        return m_center.y;
+        return m_center.getY();
     }
 
     public void setY(double y)
     {
-        m_center.y = y;
+        m_center.setY(y);
     }
 
-    public Point getCenter()
+    public MutablePoint getCenter()
     {
-        return new Point(m_center);
+        return MutablePoint.createCartesian(m_center.getX(), m_center.getY());
     }
 
-    public void setCenter(Point center)
+    public void setCenter(MutablePoint center)
     {
-        setCenter(center.x, center.y);
+        setCenter(center.getX(), center.getY());
     }
 
     public void setCenter(double x, double y)

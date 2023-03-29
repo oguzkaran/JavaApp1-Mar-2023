@@ -1,75 +1,78 @@
-/*----------------------------------------------------------------------
-	FILE        : Point.java
-	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 16.03.2023
+/*----------------------------------------------------------------
+	FILE		: Point.java
+	AUTHOR		: JavaApp1-Mar-2023 Group
+	LAST UPDATE	: 29.03.2023
 
-	Point class that represents the 2(two) dimensional point
+	Immutable Point class that represents 2 dimensional point in
+	Cartesian plane
 
-	Copyleft (c) 1993 by C and System Programmers Association (CSD)
+	Copyleft (c) 1993 C and System Programmers Association
 	All Rights Free
------------------------------------------------------------------------*/
+----------------------------------------------------------------*/
 package org.csystem.math.geometry;
 
-import static java.lang.Math.sqrt;
-
-enum CoordinateType {CARTESIAN, POLAR}
-
 public class Point {
-	public double x;
-	public double y;
+	private final double m_x;
+	private final double m_y;
 
-	private Point(double x, double y, CoordinateType coordinateType)
+	private Point(double a, double b, boolean polar)
 	{
-		this.x = coordinateType == CoordinateType.CARTESIAN ? x : x * Math.cos(y);
-		this.y = coordinateType == CoordinateType.CARTESIAN ? y : y * Math.sin(y);
+		m_x = PointCommon.createX(a, b, polar);
+		m_y = PointCommon.createY(a, b, polar);
 	}
 
-	Point(Point p)
+	public static Point createCartesian()
 	{
-		x = p.x;
-		y = p.y;
+		return createCartesian(0);
+	}
+
+	public static Point createCartesian(double x)
+	{
+		return createCartesian(x, 0);
 	}
 
 	public static Point createCartesian(double x, double y)
 	{
-		return new Point(x, y, CoordinateType.CARTESIAN);
+		return new Point(x, y, false);
 	}
 
-	public static Point createPolar(double r, double theta)
+	public static Point createPolar(double radius)
 	{
-		return new Point(r, theta, CoordinateType.POLAR);
+		return new Point(radius, 0, true);
+	}
+
+	public static Point createPolar(double radius, double theta)
+	{
+		return new Point(radius, theta, true);
+	}
+
+	public double getX()
+	{
+		return m_x;
+	}
+
+	public double getY()
+	{
+		return m_y;
 	}
 
 	public double distance()
 	{
-		return this.distance(0, 0);
+		return distance(0, 0);			
 	}
-
+	
 	public double distance(Point other)
 	{
-		return this.distance(other.x, other.y);
+		return distance(other.m_x, other.m_y);
 	}
-
+	
 	public double distance(double x, double y)
 	{
-		return sqrt((this.x - x) * (this.x - x) + (this.y - y) * (this.y - y));
+		return PointCommon.distance(m_x, m_y, x, y);
 	}
-
-	public void offset(double dxy)
-	{
-		this.offset(dxy, dxy);
-	}
-
-	public void offset(double dx, double dy)
-	{
-		x += dx;
-		y += dy;
-	}
-
+	
 	public String toString()
 	{
-		return String.format("{x: %f, y: %f}", x, y);
+		return PointCommon.toString(m_x, m_y);
 	}
-
-	//...
 }
