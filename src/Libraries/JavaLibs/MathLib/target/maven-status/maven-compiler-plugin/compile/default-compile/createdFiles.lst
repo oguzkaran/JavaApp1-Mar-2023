@@ -1,0 +1,9 @@
+org/csystem/math/geometry/AnalyticalCircle.class
+org/csystem/math/OperationStatus.class
+org/csystem/math/Complex.class
+org/csystem/math/Fraction.class
+org/csystem/math/geometry/MutablePoint.class
+org/csystem/math/geometry/Point.class
+org/csystem/math/OperationStatusException.class
+org/csystem/math/geometry/Circle.class
+org/csystem/math/geometry/PointCommon.class
