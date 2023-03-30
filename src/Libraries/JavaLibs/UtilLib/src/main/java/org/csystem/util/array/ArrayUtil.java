@@ -331,9 +331,19 @@ public final class ArrayUtil {
 
     public static int sum(int [] a)
     {
-        int total = 0;
+        var total = 0;
 
-        for (int val : a)
+        for (var val : a)
+            total += val;
+
+        return total;
+    }
+
+    public static double sum(double [] a)
+    {
+        var total = 0.;
+
+        for (var val : a)
             total += val;
 
         return total;
