@@ -118,7 +118,13 @@ public final class NumberUtil {
 
 	public static BigInteger factorialBig(int n)
 	{
-		throw new UnsupportedOperationException("TODO");
+		var result = BigInteger.ONE;
+		var val = BigInteger.valueOf(n);
+
+		for (var i = BigInteger.TWO; i.compareTo(val) <= 0; i = i.add(BigInteger.ONE))
+			result = result.multiply(i);
+
+		return result;
 	}
 
 	public static int gcd(int a, int b)
@@ -371,6 +377,11 @@ public final class NumberUtil {
 				return false;
 
 		return true;
+	}
+
+	public static boolean isPrime(BigInteger val)
+	{
+		throw new UnsupportedOperationException("TODO");
 	}
 	
 	public static boolean isPrimeX(long val)
