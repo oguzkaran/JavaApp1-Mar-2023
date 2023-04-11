@@ -17,6 +17,10 @@ import static java.lang.Math.*;
 public final class NumberUtil {
 	private static final String [] ms_ones;
 	private static final String [] ms_tens;
+	private static final BigInteger BIG_INTEGER_THREE = BigInteger.valueOf(3);
+	private static final BigInteger BIG_INTEGER_FIVE = BigInteger.valueOf(5);
+	private static final BigInteger BIG_INTEGER_SEVEN = BigInteger.valueOf(7);
+	private static final BigInteger BIG_INTEGER_ELEVEN = BigInteger.valueOf(11);
 
 	static {
 		ms_ones = new String[]{"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
@@ -369,7 +373,7 @@ public final class NumberUtil {
 		
 		if (val % 7 == 0)
 			return val == 7;
-		
+
 		var sqrtVal = (int)sqrt(val);
 		
 		for (var i = 11L; i <= sqrtVal; i += 2)
@@ -381,7 +385,28 @@ public final class NumberUtil {
 
 	public static boolean isPrime(BigInteger val)
 	{
-		throw new UnsupportedOperationException("TODO");
+		if (val.compareTo(BigInteger.ONE) <= 0)
+			return false;
+
+		if (val.remainder(BigInteger.TWO).equals(BigInteger.ZERO))
+			return val.equals(BigInteger.TWO);
+
+		if (val.remainder(BIG_INTEGER_THREE).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_THREE);
+
+		if (val.remainder(BIG_INTEGER_FIVE).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_FIVE);
+
+		if (val.remainder(BIG_INTEGER_SEVEN).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_SEVEN);
+
+		var sqrtVal = val.sqrt();
+
+		for (var i = BIG_INTEGER_ELEVEN; i.compareTo(sqrtVal) <= 0; i = i.add(BigInteger.TWO))
+			if (val.remainder(i).equals(BigInteger.ZERO))
+				return false;
+
+		return true;
 	}
 	
 	public static boolean isPrimeX(long val)
