@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 16.03.2023
+	LAST UPDATE : 12.04.2023
 
 	Utility class for array operations
 
@@ -65,7 +65,7 @@ public final class ArrayUtil {
     {
     }
 
-    public static void addBy(int []a, int val)
+    public static void addBy(int [] a, int val)
     {
         for (int i = 0; i < a.length; ++i)
             a[i] += val;
@@ -208,44 +208,6 @@ public final class ArrayUtil {
         return a;
     }
 
-    public static int [][] getRandomMatrix(int m, int n, int min, int max) //[min, max]
-    {
-        return getRandomMatrix(new Random(), m, n, min, max);
-    }
-
-    public static int [][] getRandomMatrix(Random r, int m, int n, int min, int max) //[min, max]
-    {
-        int [][] a = new int[m][];
-
-        for (int i = 0; i < m; ++i)
-            a[i] = getRandomArray(r, n, min, max);
-
-        return a;
-    }
-
-    public static int [][] getRandomSquareMatrix(int n, int min, int max) //[min, max]
-    {
-        return getRandomSquareMatrix(new Random(), n, min, max);
-    }
-
-    public static int [][] getRandomSquareMatrix(Random r, int n, int min, int max) //[min, max]
-    {
-        return getRandomMatrix(r, n, n, min, max);
-    }
-
-    public static boolean isMatrix(int [][] a)
-    {
-        for (int i = 1; i < a.length; ++i)
-            if (a[i].length != a[0].length)
-                return false;
-
-        return true;
-    }
-
-    public static boolean isSquareMatrix(int [][] a)
-    {
-        return isMatrix(a) && a.length == a[0].length;
-    }
 
     public static int max(int [] a)
     {
