@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 28.03.2023
+	LAST UPDATE : 11.04.2023
 
 	Utility class for numeric operations
 
@@ -9,6 +9,8 @@
 	All Rights Free
 -----------------------------------------------------------------------*/
 package org.csystem.util.numeric;
+
+import java.math.BigInteger;
 
 import static java.lang.Math.*;
 
@@ -104,16 +106,21 @@ public final class NumberUtil {
 			System.out.println(n = n % 2 == 0 ? n / 2 : 3 * n + 1);
 	}
 	
-	public static int factorial(int n)
+	public static long factorial(int n)
 	{
-		var result = 1;
+		var result = 1L;
 		
-		for (var i = 2; i <= n; ++i)
+		for (var i = 2L; i <= n; ++i)
 			result *= i;
 		
 		return result;
 	}
-	
+
+	public static BigInteger factorialBig(int n)
+	{
+		throw new UnsupportedOperationException("TODO");
+	}
+
 	public static int gcd(int a, int b)
 	{
 		var min = min(abs(a), abs(b));

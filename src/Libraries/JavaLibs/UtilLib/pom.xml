@@ -13,7 +13,7 @@
 
     <groupId>org.csystem</groupId>
     <artifactId>org-csystem-util</artifactId>
-    <version>15.0.0</version>
+    <version>15.1.0</version>
 
     <name>org-csystem-util</name>
     <description>Common Utility Library</description>

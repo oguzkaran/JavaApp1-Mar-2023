@@ -46,6 +46,12 @@
             <artifactId>org-csystem-math</artifactId>
             <version>15.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.csystem</groupId>
+            <artifactId>org-csystem-util</artifactId>
+            <version>15.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
