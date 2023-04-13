@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 11.04.2023
+	LAST UPDATE : 13.04.2023
 
 	Utility class for numeric operations
 
@@ -74,7 +74,7 @@ public final class NumberUtil {
 	{
 		var root = abs(val);
 		
-		while ((root = digitsSum(root)) > 9)
+		while ((root = sumDigits(root)) > 9)
 			;
 		
 		return root;
@@ -85,7 +85,7 @@ public final class NumberUtil {
 		return val == 0 ? 1 : (int)log10(abs(val)) +  1;
 	}
 	
-	public static int digitsSum(long val)
+	public static int sumDigits(long val)
 	{
 		var sum = 0;
 		
@@ -95,19 +95,6 @@ public final class NumberUtil {
 		}
 		
 		return sum;
-	}
-	
-	public static void displayCollatz(int n)
-	{
-		if (n <= 0) {
-			System.out.println("Geçersiz Sayı");
-			return;
-		}
-		
-		System.out.println(n);
-		
-		while (n != 1)
-			System.out.println(n = n % 2 == 0 ? n / 2 : 3 * n + 1);
 	}
 	
 	public static long factorial(int n)
@@ -251,42 +238,7 @@ public final class NumberUtil {
 		return numberToText3DigitsTR(val);
 	}
 
-
-	/*
-	public static void printGoldbachPrimes(int val)
-	{
-		for (var a = 2; a < val; ++a) {
-			var b = val - a;
-
-			if (isPrime(a) && isPrime(b) && a <= b)
-				System.out.printf("%d + %d = %d == %d%n", a, b, a + b, val);
-		}
-	}
-
-	public static void printPrimeFactors(int n)
-	{
-		if (n == 0)
-			return;
-
-		n = abs(n);
-
-		var i = 2;
-
-		while (n != 1) {
-			if (n % i == 0) {
-				System.out.printf("%d ", i);
-				n /= i;
-			}
-			else
-				++i;
-		}
-
-		System.out.println();
-	}
-
-	 */
-
-	public static int reversed(int val)
+	public static int reverse(int val)
 	{
 		var result = 0;
 		
@@ -328,30 +280,7 @@ public final class NumberUtil {
 	{
 		return n >= 0 && getDigitsFactorialSum(n) == n;
 	}
-	
-	public static boolean isDecimalHarshad(int val)
-	{
-		return val > 0 && val % digitsSum(val) == 0;
-	}	
-	
-	public static boolean isHardyRamanujan(int val)
-	{
-		if (val <= 0)
-			return false;
-		
-		var count = 0;
-		
-		EXIT_LOOP:
-			for (var x = 1; x * x * x < val; ++x)
-				for (var y = x + 1; x * x * x + y * y * y <= val; ++y)
-					if (x * x * x + y * y * y == val) {
-						if (++count == 2)
-							break EXIT_LOOP;
-						++x;
-					}
-		return count == 2;
-	}
-	
+
 	public static boolean isPerfect(int val)
 	{
 		return sumFactors(val) == val;
@@ -413,7 +342,7 @@ public final class NumberUtil {
 	{
 		boolean result;
 		
-		for (var sum = val; (result = isPrime(sum)) && sum > 9; sum = digitsSum(sum))
+		for (var sum = val; (result = isPrime(sum)) && sum > 9; sum = sumDigits(sum))
 			;
 		
 		return result;

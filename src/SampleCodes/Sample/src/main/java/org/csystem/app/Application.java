@@ -1,17 +1,17 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Guava kütüphanesinin StopWatch sınıfı:
-    https://github.com/google/guava (11th Apr 2023 22:49 Europe/Istanbul)
-    Anahtar Notlar: Bu kütüphanedeki hemen hemen her sınıf Apache Lisansı'na göre kullanılabilmektedir. Bu lisansı
-    inceleyiniz:
-    https://www.apache.org/licenses/LICENSE-2.0 (11th Apr 2023 22:56 Europe/Istanbul)
+    Test İşlemleri:
+    Yazılımda test süreçleri ürün geliştirmenin önemli bir aşamasını oluşturmaktadır. Bazı yazaılımlarda, ürünün herşeyiyle
+    doğru olması kritik öneme sahip olabilmektedir. Bazı yazılımlarda hata toleransları olabilir. Gerektiğinde düzeltilebilir.
+
+
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.util.console.Console;
+import org.csystem.util.datetime.stopwatch.StopWatch;
 import org.csystem.util.numeric.NumberUtil;
 
 import java.math.BigInteger;
-import java.util.concurrent.TimeUnit;
 
 class Application {
     public static void run(String[] args)
@@ -29,21 +29,21 @@ class IsPrimeTest {
             if (val <= 1)
                 break;
 
+            var stopWatch = new StopWatch();
             Console.writeLine("isPrime(BigInteger)");
-            var start = System.nanoTime();
+
+            stopWatch.start();
             boolean result = NumberUtil.isPrime(BigInteger.valueOf(val));
-            var stop = System.nanoTime();
-            var elapsed = stop - start;
+            stopWatch.stop();
             Console.writeLine(result ? "Asal" : "Asal değil");
-            Console.writeLine("Elapsed in seconds:%.20f", TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS) / 1000.);
+            Console.writeLine("Elapsed in seconds:%.20f", stopWatch.elapsedInMillis() / 1000.);
 
             Console.writeLine("isPrime(long)");
-            start = System.nanoTime();
+            stopWatch.start();
             result = NumberUtil.isPrime(val);
-            stop = System.nanoTime();
-            elapsed = stop - start;
+            stopWatch.stop();
             Console.writeLine(result ? "Asal" : "Asal değil");
-            Console.writeLine("Elapsed in seconds:%.20f", TimeUnit.MILLISECONDS.convert(elapsed, TimeUnit.NANOSECONDS) / 1000.);
+            Console.writeLine("Elapsed in seconds:%.20f", stopWatch.elapsedInMillis() / 1000.);
         }
     }
 }

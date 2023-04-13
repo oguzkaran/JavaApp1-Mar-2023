@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 12.04.2023
+	LAST UPDATE : 13.04.2023
 
 	Utility class for array operations
 
@@ -89,23 +89,6 @@ public final class ArrayUtil {
             bubbleSortAscending(a);
     }
 
-    public static void copy(int [] src, int [] dest, int length)
-    {
-        for (int i = 0; i < length; ++i)
-            dest[i] = src[i];
-    }
-
-    public static int [] copyOf(int [] a, int newLength)
-    {
-        int [] result = new int[newLength];
-        int min = Math.min(a.length, newLength);
-
-        for (int i = 0; i < min; ++i)
-            result[i] = a[i];
-
-        return result;
-    }
-
     public static void display(int n, int [] a)
     {
         String fmt = String.format("%%0%dd ", n);
@@ -159,20 +142,6 @@ public final class ArrayUtil {
         System.out.print(end);
     }
 
-    public static void drawHistogram(int [] data, int n, char ch) //[0, data.length - 1]
-    {
-        int nMax = max(data);
-
-        for (int val : data) {
-            int count = (int)Math.floor(val * n / (double)nMax);
-
-            while (count-- > 0)
-                System.out.print(ch);
-
-            System.out.println();
-        }
-    }
-
     public static void fillRandomArray(int [] a, int min, int max)
     {
         fillRandomArray(new Random(), a, min, max);
@@ -207,7 +176,6 @@ public final class ArrayUtil {
 
         return a;
     }
-
 
     public static int max(int [] a)
     {
@@ -345,16 +313,5 @@ public final class ArrayUtil {
 
         c[i] = c[k];
         c[k] = temp;
-    }
-
-    public static int [][] transposed(int [][] a)
-    {
-        int [][] t = new int[a[0].length][a.length];
-
-        for (int i = 0; i < a.length; ++i)
-            for (int j = 0; j < a[i].length; ++j)
-                t[j][i] = a[i][j];
-
-        return t;
     }
 }
