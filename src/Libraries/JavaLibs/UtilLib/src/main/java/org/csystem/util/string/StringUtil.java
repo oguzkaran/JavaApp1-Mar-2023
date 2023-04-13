@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 16.03.2023
+	LAST UPDATE : 13.04.2023
 
 	Utility class for string operations
 
@@ -26,21 +26,6 @@ public final class StringUtil {
 
     private StringUtil()
     {
-    }
-    public static String capitalize(String s)
-    {
-        return s.isEmpty() ? "" : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
-    }
-
-    public static String capitalizeWS(String s)
-    {
-        int i;
-        int length = s.length();
-
-        for (i = 0; i < length && Character.isWhitespace(s.charAt(i)); ++i)
-            ;
-
-        return i == length ? s : s.substring(0, i) + Character.toUpperCase(s.charAt(i)) + s.substring(i + 1).toLowerCase();
     }
 
     public static String changeCase(String s)
@@ -95,28 +80,6 @@ public final class StringUtil {
                 str += c; // İleride daha etkin olacak
 
         return str;
-    }
-
-    public static String getLongestPalindrome(String text)
-    {
-        String result = "";
-
-        int end = text.length();
-
-        while (end != 0) {
-            int begin = 0;
-
-            while (begin != end) {
-                String str = text.substring(begin++, end);
-
-                if (str.length() > 1 && isPalindrome(str) && str.length() > result.length())
-                    result = str;
-            }
-
-            --end;
-        }
-
-        return result;
     }
 
     public static String getRandomText(Random r, int n, String sourceText)
@@ -321,7 +284,7 @@ public final class StringUtil {
     {
         int len = s.length();
 
-        return length <= len ? s : repeat(length - len, ch) + s;
+        return length <= len ? s : String.valueOf(ch).repeat(length - len) + s;
     }
 
     public static String padLeading(String s, int length)
@@ -333,17 +296,12 @@ public final class StringUtil {
     {
         int len = s.length();
 
-        return length <= len ? s : s + repeat(length - len, ch);
+        return length <= len ? s : s + String.valueOf(ch).repeat(length - len);
     }
 
     public static String padTrailing(String s, int length)
     {
         return padTrailing(s, length, ' ');
-    }    
-
-    public static String repeat(int count, char ch)
-    {
-    	return String.format("%0" + count + "d", 0).replace('0', ch);
     }
 
     public static String reversed(String s)
@@ -363,34 +321,13 @@ public final class StringUtil {
 		for (int i = 0; i < length; ++i) {
 			char ch = s1.charAt(i);
 			
-			if (!s2.contains(ch + ""))
+			if (!s2.contains(String.valueOf(ch)))
 				str += ch;
 		}			
 		
 		return str;
 	}
-    
-    public static String trimLeading(String s)
-    {
-        int i;
-        int length = s.length();
 
-        for (i = 0;  i < length && Character.isWhitespace(s.charAt(i)); ++i)
-            ;
-
-        return s.substring(i);
-
-    }
-
-    public static String trimTrailing(String s)
-    {
-        int i;
-
-        for (i = s.length() - 1; i >= 0 && Character.isWhitespace(s.charAt(i)); --i)
-            ;
-
-        return s.substring(0, i + 1);
-    }
     
     public static String wrapWith(String str, String leading, String trailing)
     {
@@ -399,7 +336,7 @@ public final class StringUtil {
     
     public static String wrapWith(String str, char leading, char trailing)
     {
-    	return wrapWith(str, leading + "", trailing + "");
+    	return wrapWith(str, String.valueOf(leading), String.valueOf(trailing));
     }
     
     public static String wrapWith(String str, String wrapper)
