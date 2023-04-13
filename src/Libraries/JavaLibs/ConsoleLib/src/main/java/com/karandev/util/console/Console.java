@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Console.java
 	AUTHOR      : Oğuz Karan
-	LAST UPDATE : 23.07.2021
+	LAST UPDATE : 12.04.2023
 
 	Utility class for standard input, standard output and standard error
 
@@ -729,6 +729,40 @@ public final class Console {
     public static BigInteger readBigIntegerLine(String msg, String errMsg)
     {
         return readBigInteger(msg + "\n", errMsg + "\n");
+    }
+
+    public static BigInteger readBigInteger(int radix)
+    {
+        return readBigInteger("", radix);
+    }
+
+    public static BigInteger readBigInteger(String msg, int radix)
+    {
+        return readBigInteger(msg, "", radix);
+    }
+
+    public static BigInteger readBigInteger(String msg, String errMsg, int radix)
+    {
+        for (;;) {
+            try {
+                System.out.print(msg);
+
+                return new BigInteger(ms_kb.nextLine(), radix);
+            }
+            catch (NumberFormatException ex) {
+                System.out.print(errMsg);
+            }
+        }
+    }
+
+    public static BigInteger readBigIntegerLine(String msg, int radix)
+    {
+        return readBigInteger(msg + "\n", "", radix);
+    }
+
+    public static BigInteger readBigIntegerLine(String msg, String errMsg, int radix)
+    {
+        return readBigInteger(msg + "\n", errMsg + "\n", radix);
     }
 
     //write methods
