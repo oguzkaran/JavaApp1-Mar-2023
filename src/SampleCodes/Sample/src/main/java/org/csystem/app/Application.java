@@ -25,11 +25,27 @@
     hiç test yapmaması değil, programcıdan bir test beklentisi olmaması ya da özellikle test yapmasının istenmemesi gibi
     düşünülebilir. Şüphesiz programcı geliştirme sürecinde belirli ölçüde test yapacaktır.
 
-    - Katı katıya birim testi yapmak:
+    - Katı katıya birim testi yapmak: Bu durumda neredeyse her birim test edilir. Örneğin bir metodun basit ya da karmaşık
+    olmasına bakılmaksızın birim testi yapılır. Bu durumda zaman kaybı olmaması için birim testi yapan programcıların ayrı
+    olması ideal bir durumdur. Şüphesi herhangi bir zaman kısıtı yoksa ya da zaman çok uzunsa da uygulanabilir.
 
-    - Gereken birimler için birim testi yapmak:
+    - Gereken birimler için birim testi yapmak: Aslında görünürde en ideal durum budur. Görece basit birimler test edilmez ya da
+    detaylı olarak test edilmez. Bu durumda hangi birimlerin test edileceğinin, hangi birimlerin belirli ölçüde test edileceğinin,
+    hangi birimlerin test edilmeyeceğinin belirlenmesi önemlidir. Bu da geliştiriciler ve yöneticiler açısından tecrübe
+    gerektirebilir.
+
+    Birim testleri genel olarak iki şekilde yapılır: manuel birim testleri, bazı araçlar ile otomatik araçlar yapılan birim
+    testleri.
+    Pratikte duruma göre ikisi de tercih edilebilse de otomatik araçlar ile yapılan testler belirli ölçüde testi yapan
+    programcının gereksiz kodları yazmasını engellediğinden daha çok tercih edilir. Hatta bazı firmalar kendi birim testi
+    araçlarını da yazarlar.
+
+    Java'da temel birim testi aracı "JUnit" olsa da Spring gibi popüler framework'lere ait olan ya da olmayan bir çok farklı
+    araç da söz konusudur.
 
 
+    Anahtar Notlar: Test işlemlerinde karşılaştığımız önemli iki terim vardır: Verification & Validation (V&V).
+    Verification, yazılmış olan kodun doğru çalışmasıdır. Validation kodun doğru işi yapmasıdır.
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
