@@ -113,7 +113,6 @@ public final class StringUtil {
         return getRandomTextTR(new Random(), n);
     }
 
-
     public static String [] getRandomStringArrayTR(int n, int min, int max)
     {
         return getRandomStringArrayTR(new Random(), n, min, max);
