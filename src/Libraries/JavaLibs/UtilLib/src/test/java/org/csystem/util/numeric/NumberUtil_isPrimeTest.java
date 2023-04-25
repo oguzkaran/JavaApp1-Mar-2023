@@ -8,17 +8,15 @@ public class NumberUtil_isPrimeTest {
     public void givenLongValue_whenPrime_thenReturnTrue()
     {
         var input = 710584055392819667L;
-        var expected = true;
 
-        Assert.assertEquals(String.format("%d must be prime", input), expected, NumberUtil.isPrime(input));
+        Assert.assertTrue(String.format("%d must be prime", input), NumberUtil.isPrime(input));
     }
 
     @Test
     public void givenLongValue_whenNotPrime_thenReturnFalse()
     {
-        var input = 2;
-        var expected = false;
+        var input = 22;
 
-        Assert.assertEquals(expected, NumberUtil.isPrime(input));
+        Assert.assertFalse(NumberUtil.isPrime(input));
     }
 }
