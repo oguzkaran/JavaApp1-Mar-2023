@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.4</version>
+        <version>3.0.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -18,13 +18,32 @@
     <name>org-csystem-util</name>
     <description>Common Utility Library</description>
 
+    <repositories>
+        <repository>
+            <id>javaapp1-mar-2023-maven-repo</id>
+            <url>https://raw.github.com/oguzkaran/javaapp1-mar-2023-maven-repo/main</url>
+        </repository>
+
+        <repository>
+            <id>javaapp1-mar-2023-karandev-maven-repo</id>
+            <url>https://raw.github.com/oguzkaran/javaapp1-mar-2023-karandev-maven-repo/main</url>
+        </repository>
+    </repositories>
+
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.karandev</groupId>
+            <artifactId>com-karandev-util-console</artifactId>
+            <version>14.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

@@ -29,14 +29,16 @@ public final class StringUtil {
     }
 
     public static String changeCase(String s)
-	{
-		char [] c = s.toCharArray();
-		
-		for (int i = 0; i < c.length; ++i)
-		    c[i] = Character.isUpperCase(c[i]) ? Character.toLowerCase(c[i]) : Character.toUpperCase(c[i]);
-		
-		return String.valueOf(c);
-	}
+    {
+        var sb = new StringBuilder(s);
+
+        for (var i = 0; i < sb.length(); ++i) {
+            char c = sb.charAt(i);
+            sb.setCharAt(i, Character.isUpperCase(c) ? Character.toLowerCase(c) : Character.toUpperCase(c));
+        }
+
+        return sb.toString();
+    }
     
     public static int countString(String s1, String s2)
     {
@@ -71,15 +73,17 @@ public final class StringUtil {
 
     public static String getLetters(String s)
     {
-        String str = "";
+        var sb = new StringBuilder(s.length());
+        var len = s.length();
 
-        char [] chars = s.toCharArray();
+        for (var i = 0; i < len; ++i) {
+            char c = s.charAt(i);
 
-        for (char c : chars)
             if (Character.isLetter(c))
-                str += c; // İleride daha etkin olacak
+                sb.append(c);
+        }
 
-        return str;
+        return sb.toString();
     }
 
     public static String getRandomText(Random r, int n, String sourceText)
@@ -142,23 +146,23 @@ public final class StringUtil {
     }
 
     public static boolean isJavaIdentifier(String s)
-	{
-		if (s.isBlank() || s.equals("_"))
-			return false;
-		
-		char ch = s.charAt(0);
-		
-		if (!Character.isJavaIdentifierStart(ch))
-			return false;
-		
-		int length = s.length();
-		
-		for (int i = 1; i < length; ++i) 
-			if (!Character.isJavaIdentifierPart(s.charAt(i)))
-				return false;	
-		
-		return true;			
-	}
+    {
+        if (s.isBlank() || s.equals("_"))
+            return false;
+
+        char ch = s.charAt(0);
+
+        if (!Character.isJavaIdentifierStart(ch))
+            return false;
+
+        int length = s.length();
+
+        for (int i = 1; i < length; ++i)
+            if (!Character.isJavaIdentifierPart(s.charAt(i)))
+                return false;
+
+        return true;
+    }
 
     public static boolean isPalindrome(String s)
     {
@@ -303,53 +307,49 @@ public final class StringUtil {
         return padTrailing(s, length, ' ');
     }
 
-    public static String reversed(String s)
+    public static String reverse(String s)
     {
-        char [] c = s.toCharArray();
-
-        ArrayUtil.reverse(c);
-
-        return String.valueOf(c);
+        return new StringBuilder(s).reverse().toString();
     }
 
     public static String squeeze(String s1, String s2)
-	{
-		String str = "";
-		int length = s1.length();
+    {
+        var sb = new StringBuilder();
+        int length = s1.length();
 
-		for (int i = 0; i < length; ++i) {
-			char ch = s1.charAt(i);
-			
-			if (!s2.contains(String.valueOf(ch)))
-				str += ch;
-		}			
-		
-		return str;
-	}
+        for (int i = 0; i < length; ++i) {
+            char ch = s1.charAt(i);
+
+            if (!s2.contains(String.valueOf(ch)))
+                sb.append(ch);
+        }
+
+        return sb.toString();
+    }
 
     
     public static String wrapWith(String str, String leading, String trailing)
     {
-    	return String.format("%s%s%s", leading, str.trim(), trailing);
+        return String.format("%s%s%s", leading, str.trim(), trailing);
     }
     
     public static String wrapWith(String str, char leading, char trailing)
     {
-    	return wrapWith(str, String.valueOf(leading), String.valueOf(trailing));
+        return wrapWith(str, String.valueOf(leading), String.valueOf(trailing));
     }
     
     public static String wrapWith(String str, String wrapper)
     {
-    	return wrapWith(str, wrapper, wrapper);
+        return wrapWith(str, wrapper, wrapper);
     }
     
     public static String wrapWith(String str, char wrapper)
     {
-    	return wrapWith(str, wrapper, wrapper);
+        return wrapWith(str, wrapper, wrapper);
     }
     
     public static String wrapWithBraces(String str)
     {
-    	return wrapWith(str, '(', ')');
+        return wrapWith(str, '(', ')');
     }    
 }
