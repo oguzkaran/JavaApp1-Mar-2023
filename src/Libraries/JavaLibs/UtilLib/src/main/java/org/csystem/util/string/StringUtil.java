@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 13.04.2023
+	LAST UPDATE : 04.05.2023
 
 	Utility class for string operations
 
@@ -88,13 +88,13 @@ public final class StringUtil {
 
     public static String getRandomText(Random r, int n, String sourceText)
     {
-        int length = sourceText.length();
-        char [] c = new char[n];
+        var sb = new StringBuilder(n);
+        var length = sourceText.length();
 
         for (int i = 0; i < n; ++i)
-            c[i] = sourceText.charAt(r.nextInt(length));
+            sb.append(sourceText.charAt(r.nextInt(length)));
 
-        return String.valueOf(c);
+        return sb.toString();
     }
 
     public static String getRandomTextEN(Random r, int n)
@@ -242,16 +242,16 @@ public final class StringUtil {
 
     public static String join(String [] str, String delimiter, boolean removeEmpties)
     {
-        String result = "";
+        var sb = new StringBuilder();
 
-        for (String s : str) {
+        for (var s : str) {
             if (removeEmpties && s.isEmpty())
                 continue;
 
-            result += s + delimiter;
+            sb.append(s).append(delimiter);
         }
 
-        return result.substring(0, result.length() - delimiter.length());
+        return sb.substring(0, sb.length() - delimiter.length());
     }
 
     public static String join(ArrayList<String> list, char delimiter)
@@ -271,16 +271,16 @@ public final class StringUtil {
 
     public static String join(ArrayList<String> list, String delimiter, boolean removeEmpties)
     {
-        String result = "";
+        var sb = new StringBuilder();
 
-        for (String s : list) {
+        for (var s : list) {
             if (removeEmpties && s.isEmpty())
                 continue;
 
-            result += s + delimiter;
+            sb.append(s).append(delimiter);
         }
 
-        return result.substring(0, result.length() - delimiter.length());
+        return sb.substring(0, sb.length() - delimiter.length());
     }
 
     public static String padLeading(String s, int length, char ch)
@@ -314,8 +314,8 @@ public final class StringUtil {
 
     public static String squeeze(String s1, String s2)
     {
-        var sb = new StringBuilder();
-        int length = s1.length();
+        var length = s1.length();
+        var sb = new StringBuilder(length);
 
         for (int i = 0; i < length; ++i) {
             char ch = s1.charAt(i);
@@ -327,7 +327,6 @@ public final class StringUtil {
         return sb.toString();
     }
 
-    
     public static String wrapWith(String str, String leading, String trailing)
     {
         return String.format("%s%s%s", leading, str.trim(), trailing);
