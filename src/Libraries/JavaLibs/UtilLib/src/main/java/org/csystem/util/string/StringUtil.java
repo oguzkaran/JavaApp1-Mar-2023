@@ -206,7 +206,7 @@ public final class StringUtil {
         int length = alphabet.length();
 
         for (int i = 0; i < length; ++i)
-            if (!text.contains(alphabet.charAt(i) + ""))
+            if (!text.contains(String.valueOf(alphabet.charAt(i))))
                 return false;
 
         return true;
@@ -234,12 +234,12 @@ public final class StringUtil {
 
     public static String join(String [] str, char delimiter)
     {
-        return join(str, delimiter + "", false);
+        return join(str, String.valueOf(delimiter), false);
     }
 
     public static String join(String [] str, char delimiter, boolean removeEmpties)
     {
-        return join(str, delimiter + "", removeEmpties);
+        return join(str, String.valueOf(delimiter), removeEmpties);
     }
 
     public static String join(String [] str, String delimiter)
@@ -268,7 +268,7 @@ public final class StringUtil {
 
     public static String join(ArrayList<String> list, char delimiter, boolean removeEmpties)
     {
-        return join(list, delimiter + "", removeEmpties);
+        return join(list, String.valueOf(delimiter), removeEmpties);
     }
 
     public static String join(ArrayList<String> list, String delimiter)
