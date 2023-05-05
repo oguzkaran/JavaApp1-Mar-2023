@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 13.04.2023
+	LAST UPDATE : 06.05.2023
 
 	Utility class for numeric operations
 
@@ -15,16 +15,20 @@ import java.math.BigInteger;
 import static java.lang.Math.*;
 
 public final class NumberUtil {
-	private static final String [] ms_ones;
-	private static final String [] ms_tens;
-	private static final BigInteger BIG_INTEGER_THREE = BigInteger.valueOf(3);
-	private static final BigInteger BIG_INTEGER_FIVE = BigInteger.valueOf(5);
-	private static final BigInteger BIG_INTEGER_SEVEN = BigInteger.valueOf(7);
-	private static final BigInteger BIG_INTEGER_ELEVEN = BigInteger.valueOf(11);
+	private static final String [] ONES;
+	private static final String [] TENS;
+	private static final BigInteger BIG_INTEGER_THREE;
+	private static final BigInteger BIG_INTEGER_FIVE;
+	private static final BigInteger BIG_INTEGER_SEVEN;
+	private static final BigInteger BIG_INTEGER_ELEVEN;
 
 	static {
-		ms_ones = new String[]{"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-		ms_tens = new String[]{"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+		ONES = new String[]{"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+		TENS = new String[]{"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+		BIG_INTEGER_THREE = BigInteger.valueOf(3);
+		BIG_INTEGER_FIVE = BigInteger.valueOf(5);
+		BIG_INTEGER_SEVEN = BigInteger.valueOf(7);
+		BIG_INTEGER_ELEVEN = BigInteger.valueOf(11);
 	}
 
 	private static int [] getDigits(long val, int n)
@@ -53,15 +57,15 @@ public final class NumberUtil {
 
 		if (a != 0) {
 			if (a != 1)
-				text += ms_ones[a];
+				text += ONES[a];
 			text += "yüz";
 		}
 
 		if (b != 0)
-			text += ms_tens[b];
+			text += TENS[b];
 
 		if (c != 0)
-			text += ms_ones[c];
+			text += ONES[c];
 
 		return text;
 	}

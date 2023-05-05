@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 04.05.2023
+	LAST UPDATE : 06.05.2023
 
 	Utility class for string operations
 
@@ -10,18 +10,25 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.string;
 
-import org.csystem.util.array.ArrayUtil;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 public final class StringUtil {
-    private static final String ms_alphabetTR;
-    private static final String ms_alphabetEN;
+    private static final String ALPHABET_TR;
+    private static final String ALPHABET_EN;
+    private static final String ALPHABET_CAPITALS_TR;
+    private static final String ALPHABET_CAPITALS_EN;
+
+    private static final String ALPHABET_ALL_EN;
+    private static final String ALPHABET_ALL_TR;
 
     static {
-        ms_alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
-        ms_alphabetEN = "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ";
+        ALPHABET_TR = "abcçdefgğhıijklmnoöprsştuüvyz";
+        ALPHABET_EN = "abcdefghijklmnopqrstuwxvyz";
+        ALPHABET_CAPITALS_TR = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+        ALPHABET_CAPITALS_EN = "ABCDEFGHIJKLMNOPQRSTUWXVYZ";
+        ALPHABET_ALL_TR = ALPHABET_TR + ALPHABET_CAPITALS_TR;
+        ALPHABET_ALL_EN = ALPHABET_EN + ALPHABET_CAPITALS_EN;
     }
 
     private StringUtil()
@@ -63,12 +70,12 @@ public final class StringUtil {
 
     public static void fillRandomStringArrayTR(Random r, String [] str, int min, int max)
     {
-        fillRandomStringArray(r, str, min, max, ms_alphabetTR);
+        fillRandomStringArray(r, str, min, max, ALPHABET_ALL_TR);
     }
 
     public static void fillRandomStringArrayEN(Random r, String [] str, int min, int max)
     {
-        fillRandomStringArray(r, str, min, max, ms_alphabetEN);
+        fillRandomStringArray(r, str, min, max, ALPHABET_ALL_EN);
     }
 
     public static String getLetters(String s)
@@ -99,7 +106,7 @@ public final class StringUtil {
 
     public static String getRandomTextEN(Random r, int n)
     {
-        return getRandomText(r, n, ms_alphabetTR);
+        return getRandomText(r, n, ALPHABET_ALL_TR);
     }
 
     public static String getRandomTextEN(int n)
@@ -109,7 +116,7 @@ public final class StringUtil {
 
     public static String getRandomTextTR(Random r, int n)
     {
-        return getRandomText(r, n, ms_alphabetEN);
+        return getRandomText(r, n, ALPHABET_ALL_EN);
     }
 
     public static String getRandomTextTR(int n)
