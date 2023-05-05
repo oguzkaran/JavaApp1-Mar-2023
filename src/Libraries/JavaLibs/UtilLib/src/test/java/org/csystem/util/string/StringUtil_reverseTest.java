@@ -28,7 +28,7 @@ public class StringUtil_reverseTest {
     }
 
     @Test
-    public void givenString_thenReturnStringChangedCases()
+    public void givenString_thenReturnReversed()
     {
         assertEquals(m_stringStringResultInfo.expected, StringUtil.reverse(m_stringStringResultInfo.text));
     }

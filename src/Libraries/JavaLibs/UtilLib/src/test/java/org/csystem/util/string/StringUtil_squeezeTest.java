@@ -28,7 +28,7 @@ public class StringUtil_squeezeTest {
     }
 
     @Test
-    public void givenString_thenReturnStringChangedCases()
+    public void givenTwoString_thenReturnStringSqueezed()
     {
         assertEquals(m_stringStringStringResultInfo.expected, StringUtil.squeeze(m_stringStringStringResultInfo.text1, m_stringStringStringResultInfo.text2));
     }
