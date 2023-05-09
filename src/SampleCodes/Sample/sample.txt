@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Aşağıdaki örneği inceleyiniz
+    Aşağıdaki örnekte tam uyum (best match) dolayısıyla int parametreli foo çağrılır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -8,18 +8,24 @@ import com.karandev.util.console.Console;
 class Application {
     public static void run(String [] args)
     {
-        Sample.foo(10L, 10L); //error: uygun (applicable) metot yok
+        Sample.foo(10, 10L);
     }
 }
 
 class Sample {
-    public static void foo(long a, int...b)//#1
+    public static void foo(long a, int...b)
     {
         Console.writeLine("foo, long, int...");
     }
 
-    public static void foo(int a, long...b) //#2
+    public static void foo(int a, long...b)
     {
         Console.writeLine("foo, int, long...");
     }
 }
+
+1. Sentaks hatası vardır --
+2. int a, long...b ---------
+3. long a, int...b
+4. Exception oluşur
+5. Hiç biri

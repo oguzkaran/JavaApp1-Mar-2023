@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 13.04.2023
+	LAST UPDATE : 09.05.2023
 
 	Utility class for array operations
 
@@ -89,24 +89,24 @@ public final class ArrayUtil {
             bubbleSortAscending(a);
     }
 
-    public static void display(int n, int [] a)
+    public static void display(int n, int...values)
     {
         String fmt = String.format("%%0%dd ", n);
 
-        for (int val : a)
+        for (int val : values)
             System.out.printf(fmt, val);
 
         System.out.println();
     }
 
-    public static void display(int [] a)
+    public static void display(int...values)
     {
-        display(1, a);
+        display(1, values);
     }
 
-    public static void display(double [] a)
+    public static void display(double...values)
     {
-        for (double val : a)
+        for (double val : values)
             System.out.printf("%f", val);
 
         System.out.println();
@@ -118,23 +118,23 @@ public final class ArrayUtil {
             display(n, array);
     }
 
-    public static void display(String [] str)
+    public static void display(String...str)
     {
         for (String s : str)
             System.out.println(s);
     }
 
-    public static void display(byte [] b)
+    public static void display(byte...b)
     {
         display(b.length, b);
     }
 
-    public static void display(int length, byte [] b)
+    public static void display(int length, byte...b)
     {
         display(length, ' ', '\n', b);
     }
 
-    public static void display(int length, char sep, char end, byte [] b)
+    public static void display(int length, char sep, char end, byte...b)
     {
         for (int i = 0; i < length; ++i)
             System.out.printf("%d%c", b[i], sep);
