@@ -89,17 +89,7 @@ public final class NumberUtil {
 		return val == 0 ? 1 : (int)log10(abs(val)) +  1;
 	}
 	
-	public static int sumDigits(long val)
-	{
-		var sum = 0;
-		
-		while (val != 0) {
-			sum += val % 10;
-			val /= 10;
-		}
-		
-		return sum;
-	}
+	
 	
 	public static long factorial(int n)
 	{
@@ -253,7 +243,18 @@ public final class NumberUtil {
 		
 		return result;
 	}
-		
+
+	public static int sumDigits(long val)
+	{
+		var sum = 0;
+
+		while (val != 0) {
+			sum += val % 10;
+			val /= 10;
+		}
+
+		return sum;
+	}
 	
 	public static int sumFactors(int val)
 	{

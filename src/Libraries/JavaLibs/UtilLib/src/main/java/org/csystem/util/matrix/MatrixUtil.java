@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: MatrixUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE	: 12.04.2023
+	LAST UPDATE	: 18.05.2023
 
 	Utility class for matrix operations
 
@@ -69,7 +69,14 @@ public class MatrixUtil {
     {
         int [][] result = new int[a.length][b[0].length];
 
-        //TODO:
+        int row1 = result.length;
+        int col1 = result[0].length;
+        int row2 = b.length;
+
+        for (int i = 0; i < row1; ++i)
+            for (int j = 0; j < col1; ++j)
+                for (int k = 0; k < row2; ++k)
+                    result[i][j] += a[i][k] * b[k][j];
 
         return result;
     }
