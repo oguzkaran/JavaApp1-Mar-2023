@@ -3,7 +3,20 @@ package org.csystem.util.recursion;
 import com.karandev.util.console.Console;
 
 public class RecursionUtil {
-    public static void reverseRecur(char [] chars, int left, int right)
+    private static int fibonacciNumberRecur(int n)
+    {
+        if (n <= 2)
+            return n - 1;
+
+        return fibonacciNumberRecur(n - 1) + fibonacciNumberRecur(n - 2);
+    }
+
+    private static int gcdRecur(int a, int b)
+    {
+        return b == 0 ? a : gcdRecur(b, a % b);
+    }
+
+    private static void reverseRecur(char [] chars, int left, int right)
     {
         if (left >= right)
             return;
@@ -32,6 +45,19 @@ public class RecursionUtil {
         return n * factorial(n - 1);
     }
 
+    public static int fibonacciNumber(int n)
+    {
+        if (n <= 0)
+            return -1;
+
+        return fibonacciNumberRecur(n);
+    }
+
+    public static int gcd(int a, int b)
+    {
+        return gcdRecur(Math.abs(a), Math.abs(b));
+    }
+
     public static String reverse(String s)
     {
         var chars = s.toCharArray();
@@ -41,6 +67,15 @@ public class RecursionUtil {
         return String.valueOf(chars);
     }
 
+    public static void writeCollatz(int n)
+    {
+        Console.writeLine(n);
+
+        if (n == 1)
+            return;
+
+        writeCollatz(n % 2 == 0 ? n / 2 : 3 * n + 1);
+    }
     public static void writeReverse(String s)
     {
         writeReverseRecur(s, 0);
