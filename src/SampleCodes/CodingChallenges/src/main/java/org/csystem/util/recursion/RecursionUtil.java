@@ -28,6 +28,14 @@ public class RecursionUtil {
         reverseRecur(chars, left + 1, right - 1);
     }
 
+    private static void writeNumberRecur(int val, int radix)
+    {
+        if (val / radix != 0)
+            writeNumberRecur(val / radix, radix);
+
+        System.out.write((char)((val % radix >= 10 ? 'A' - 10 : '0') + val % radix));
+    }
+
     private static void writeReverseRecur(String s, int i)
     {
         if (i == s.length())
@@ -76,6 +84,16 @@ public class RecursionUtil {
 
         writeCollatz(n % 2 == 0 ? n / 2 : 3 * n + 1);
     }
+
+    public static void writeNumber(int val, int radix)
+    {
+        if (val < 0) {
+            System.out.write('-');
+            val = -val;
+        }
+        writeNumberRecur(val, radix);
+    }
+
     public static void writeReverse(String s)
     {
         writeReverseRecur(s, 0);

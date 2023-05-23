@@ -74,6 +74,32 @@ public class Util {
         }
     }
 
+    public static void writeNumber(int val, int radix)
+    {
+        if (val == 0) {
+            System.out.write('0');
+            return;
+        }
+
+        char [] s = new char[33];
+        int i;
+        boolean isNegative = false;
+
+        if (val < 0) {
+            isNegative = true;
+            val = -val;
+        }
+
+        for (i = 0; val != 0; ++i, val /= radix)
+            s[i] = (char)((val % radix >= 10 ? 'A' - 10 : '0') + val % radix);
+
+        if (isNegative)
+            s[i++] = '-';
+
+        for (--i; i >= 0; --i)
+            System.out.write(s[i]);
+    }
+
     public static void writeReverse(String s)
     {
         for (var i = s.length() - 1; i >= 0; --i)
