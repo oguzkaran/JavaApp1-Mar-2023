@@ -7,13 +7,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.5</version>
+        <version>3.0.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>org.csystem</groupId>
     <artifactId>org-csystem-util-datetime</artifactId>
-    <version>14.0.0</version>
+    <version>14.1.0</version>
     <name>org-csystem-util-datetime</name>
     <description>DateTime utility library</description>
 
