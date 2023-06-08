@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : BitwiseUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 06.06.2023
+	LAST UPDATE : 08.06.2023
 
 	Utility class for bitwise operations
 
@@ -20,6 +20,16 @@ public final class BitwiseUtil {
         var zeroLength = bitsLength - bitStr.length();
 
         System.out.println(zeroLength != 0 ? String.format("%0" + zeroLength + "d%s", 0, bitStr) : bitStr);
+    }
+
+    public static int setBit(int val, int k) //[0, 31]
+    {
+        return val | 1 << k;
+    }
+
+    public static long setBit(long val, int k) //[0, 63]
+    {
+        return val | 1L << k;
     }
 
     public static void writeBits(int val)

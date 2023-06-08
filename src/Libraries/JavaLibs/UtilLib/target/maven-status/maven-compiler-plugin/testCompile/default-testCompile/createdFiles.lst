@@ -1,8 +1,0 @@
-org\csystem\util\string\StringUtil_squeezeTest.class
-org\csystem\util\string\StringUtil_changeCaseTest.class
-org\csystem\util\numeric\NumberUtil_isPrimeTest.class
-org\csystem\util\string\StringStringWithIndexResultInfo.class
-org\csystem\util\string\StringStringStringResultInfo.class
-org\csystem\util\string\StringStringResultInfo.class
-org\csystem\util\string\StringUtil_getLetterTest.class
-org\csystem\util\string\StringUtil_reverseTest.class

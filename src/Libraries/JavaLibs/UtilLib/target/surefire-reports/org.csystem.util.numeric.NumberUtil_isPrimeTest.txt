@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.csystem.util.numeric.NumberUtil_isPrimeTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.842 s - in org.csystem.util.numeric.NumberUtil_isPrimeTest
