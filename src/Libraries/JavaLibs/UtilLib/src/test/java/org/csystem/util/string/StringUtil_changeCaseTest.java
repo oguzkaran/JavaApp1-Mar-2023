@@ -11,25 +11,37 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class StringUtil_changeCaseTest {
-    private final StringStringResultInfo m_stringStringResultInfo;
+    private final DataInfo m_dataInfo;
 
-    @Parameterized.Parameters
-    public static Collection<StringStringResultInfo> provideData()
-    {
-        return Arrays.asList(new StringStringResultInfo("AnKaRa", "aNkArA"),
-                new StringStringResultInfo("ankara", "ANKARA"),
-                new StringStringResultInfo("1234", "1234"),
-                new StringStringResultInfo("", ""));
+    private static class DataInfo {
+        String text;
+        String expected;
+
+        DataInfo(String text, String expected)
+        {
+            this.text = text;
+            this.expected = expected;
+        }
     }
 
-    public StringUtil_changeCaseTest(StringStringResultInfo stringStringResultInfo)
+    @Parameterized.Parameters
+    public static Collection<DataInfo> provideData()
     {
-        m_stringStringResultInfo = stringStringResultInfo;
+        return Arrays.asList(new DataInfo("AnKaRa", "aNkArA"),
+                new DataInfo("ankara", "ANKARA"),
+                new DataInfo("1234", "1234"),
+                new DataInfo("", ""));
+    }
+
+
+    public StringUtil_changeCaseTest(DataInfo dataInfo)
+    {
+        m_dataInfo = dataInfo;
     }
 
     @Test
     public void givenString_thenReturnStringChangedCases()
     {
-        assertEquals(m_stringStringResultInfo.expected, StringUtil.changeCase(m_stringStringResultInfo.text));
+        assertEquals(m_dataInfo.expected, StringUtil.changeCase(m_dataInfo.text));
     }
 }

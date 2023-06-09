@@ -11,18 +11,30 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class StringUtil_squeezeTest {
-    private final StringStringStringResultInfo m_stringStringStringResultInfo;
+    private final DataInfo m_stringStringStringResultInfo;
 
+    private static class DataInfo {
+        String text1;
+        String text2;
+        String expected;
+
+        DataInfo(String text1, String text2, String expected)
+        {
+            this.text1 = text1;
+            this.text2 = text2;
+            this.expected = expected;
+        }
+    }
     @Parameterized.Parameters
-    public static Collection<StringStringStringResultInfo> provideData()
+    public static Collection<DataInfo> provideData()
     {
-        return Arrays.asList(new StringStringStringResultInfo("ankara", "adana", "kr"),
-                new StringStringStringResultInfo("adana", "ankara", "d"),
-                new StringStringStringResultInfo("xyz", "abc", "xyz"),
-                new StringStringStringResultInfo("", "", ""));
+        return Arrays.asList(new DataInfo("ankara", "adana", "kr"),
+                new DataInfo("adana", "ankara", "d"),
+                new DataInfo("xyz", "abc", "xyz"),
+                new DataInfo("", "", ""));
     }
 
-    public StringUtil_squeezeTest(StringStringStringResultInfo stringStringStringResultInfo)
+    public StringUtil_squeezeTest(DataInfo stringStringStringResultInfo)
     {
         m_stringStringStringResultInfo = stringStringStringResultInfo;
     }

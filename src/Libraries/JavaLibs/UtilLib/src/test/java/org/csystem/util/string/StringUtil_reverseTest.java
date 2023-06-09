@@ -11,25 +11,35 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class StringUtil_reverseTest {
-    private final StringStringResultInfo m_stringStringResultInfo;
+    private final DataInfo m_dataInfo;
 
+    private static class DataInfo {
+        String text;
+        String expected;
+
+        DataInfo(String text, String expected)
+        {
+            this.text = text;
+            this.expected = expected;
+        }
+    }
     @Parameterized.Parameters
-    public static Collection<StringStringResultInfo> provideData()
+    public static Collection<DataInfo> provideData()
     {
-        return Arrays.asList(new StringStringResultInfo("ankara", "arakna"),
-                new StringStringResultInfo("alipapila", "alipapila"),
-                new StringStringResultInfo("121", "121"),
-                new StringStringResultInfo("", ""));
+        return Arrays.asList(new DataInfo("ankara", "arakna"),
+                new DataInfo("alipapila", "alipapila"),
+                new DataInfo("121", "121"),
+                new DataInfo("", ""));
     }
 
-    public StringUtil_reverseTest(StringStringResultInfo stringStringResultInfo)
+    public StringUtil_reverseTest(DataInfo dataInfo)
     {
-        m_stringStringResultInfo = stringStringResultInfo;
+        m_dataInfo = dataInfo;
     }
 
     @Test
     public void givenString_thenReturnReversed()
     {
-        assertEquals(m_stringStringResultInfo.expected, StringUtil.reverse(m_stringStringResultInfo.text));
+        assertEquals(m_dataInfo.expected, StringUtil.reverse(m_dataInfo.text));
     }
 }

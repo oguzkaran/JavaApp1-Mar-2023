@@ -1,7 +1,5 @@
 package org.csystem.util.string;
 
-import static org.junit.Assert.*;
-
 import com.karandev.util.console.Console;
 import org.junit.After;
 import org.junit.Before;
@@ -12,41 +10,56 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(Parameterized.class)
 public class StringUtil_getLetterTest {
-    private final StringStringWithIndexResultInfo m_stringStringWithIndexResultInfo;
+    private final DataInfo m_dataInfo;
+
+    private static class DataInfo {
+        int testIndex;
+        String text;
+        String expected;
+
+        DataInfo(int testIndex, String text, String expected)
+        {
+            this.testIndex = testIndex;
+            this.text = text;
+            this.expected = expected;
+        }
+    }
 
     @Before
     public void setUp()
     {
         Console.writeLine("--------------------------------------------------------------------------------------------------");
-        Console.writeLine("Test will start -> Text Index:%d, Text:%s, Expected:%s", m_stringStringWithIndexResultInfo.testIndex, m_stringStringWithIndexResultInfo.text, m_stringStringWithIndexResultInfo.expected);
+        Console.writeLine("Test will start -> Text Index:%d, Text:%s, Expected:%s", m_dataInfo.testIndex, m_dataInfo.text, m_dataInfo.expected);
     }
 
     @After
     public void tearDown()
     {
-        Console.writeLine("Test ended -> Text Index:%d, Text:%s, Expected:%s", m_stringStringWithIndexResultInfo.testIndex, m_stringStringWithIndexResultInfo.text, m_stringStringWithIndexResultInfo.expected);
+        Console.writeLine("Test ended -> Text Index:%d, Text:%s, Expected:%s", m_dataInfo.testIndex, m_dataInfo.text, m_dataInfo.expected);
         Console.writeLine("--------------------------------------------------------------------------------------------------");
     }
 
     @Parameterized.Parameters
-    public static Collection<StringStringWithIndexResultInfo> provideData()
+    public static Collection<DataInfo> provideData()
     {
-        return Arrays.asList(new StringStringWithIndexResultInfo(0, "ankara1234istanbul?      .)", "ankaraistanbul"),
-                new StringStringWithIndexResultInfo(1, "ankara", "ankara"),
-                new StringStringWithIndexResultInfo(2, "12345.?)", ""));
+        return Arrays.asList(new DataInfo(0, "ankara1234istanbul?      .)", "ankaraistanbul"),
+                new DataInfo(1, "ankara", "ankara"),
+                new DataInfo(2, "12345.?)", ""));
     }
 
-    public StringUtil_getLetterTest(StringStringWithIndexResultInfo stringStringWithIndexResultInfo)
+    public StringUtil_getLetterTest(DataInfo dataInfo)
     {
-        m_stringStringWithIndexResultInfo = stringStringWithIndexResultInfo;
+        m_dataInfo = dataInfo;
     }
 
     @Test
     public void givenString_whenMixedCharacter_thenReturnStringJustLetters()
     {
-        Console.writeLine("Test started -> Text Index:%d, Text:%s, Expected:%s", m_stringStringWithIndexResultInfo.testIndex, m_stringStringWithIndexResultInfo.text, m_stringStringWithIndexResultInfo.expected);
-        assertEquals(m_stringStringWithIndexResultInfo.expected, StringUtil.getLetters(m_stringStringWithIndexResultInfo.text));
+        Console.writeLine("Test started -> Text Index:%d, Text:%s, Expected:%s", m_dataInfo.testIndex, m_dataInfo.text, m_dataInfo.expected);
+        assertEquals(m_dataInfo.expected, StringUtil.getLetters(m_dataInfo.text));
     }
 }
