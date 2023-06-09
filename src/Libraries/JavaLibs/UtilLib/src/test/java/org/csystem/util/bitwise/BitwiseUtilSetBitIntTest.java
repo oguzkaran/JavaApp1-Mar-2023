@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BitwiseUtil_setBitIntTest {
+public class BitwiseUtilSetBitIntTest {
     private final DataInfo m_dataInfo;
 
     private static class DataInfo {
@@ -34,7 +34,7 @@ public class BitwiseUtil_setBitIntTest {
                 new DataInfo(0b00101110, 7, 0b10101110));
     }
 
-    public BitwiseUtil_setBitIntTest(DataInfo dataInfo)
+    public BitwiseUtilSetBitIntTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }

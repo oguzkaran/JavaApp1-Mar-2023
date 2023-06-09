@@ -3,7 +3,7 @@ package org.csystem.util.numeric;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class NumberUtil_isPrimeTest {
+public class NumberUtilIsPrimeTest {
     @Test
     public void givenLongValue_whenPrime_thenReturnTrue()
     {

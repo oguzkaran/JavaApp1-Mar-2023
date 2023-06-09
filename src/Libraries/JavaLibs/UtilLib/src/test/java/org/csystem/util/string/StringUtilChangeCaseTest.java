@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class StringUtil_changeCaseTest {
+public class StringUtilChangeCaseTest {
     private final DataInfo m_dataInfo;
 
     private static class DataInfo {
@@ -33,8 +33,7 @@ public class StringUtil_changeCaseTest {
                 new DataInfo("", ""));
     }
 
-
-    public StringUtil_changeCaseTest(DataInfo dataInfo)
+    public StringUtilChangeCaseTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }

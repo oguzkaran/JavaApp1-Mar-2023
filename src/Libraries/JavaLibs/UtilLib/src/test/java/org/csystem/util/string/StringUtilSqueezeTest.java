@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class StringUtil_squeezeTest {
+public class StringUtilSqueezeTest {
     private final DataInfo m_stringStringStringResultInfo;
 
     private static class DataInfo {
@@ -34,7 +34,7 @@ public class StringUtil_squeezeTest {
                 new DataInfo("", "", ""));
     }
 
-    public StringUtil_squeezeTest(DataInfo stringStringStringResultInfo)
+    public StringUtilSqueezeTest(DataInfo stringStringStringResultInfo)
     {
         m_stringStringStringResultInfo = stringStringStringResultInfo;
     }

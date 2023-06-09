@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class StringUtil_reverseTest {
+public class StringUtilReverseTest {
     private final DataInfo m_dataInfo;
 
     private static class DataInfo {
@@ -32,7 +32,7 @@ public class StringUtil_reverseTest {
                 new DataInfo("", ""));
     }
 
-    public StringUtil_reverseTest(DataInfo dataInfo)
+    public StringUtilReverseTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }

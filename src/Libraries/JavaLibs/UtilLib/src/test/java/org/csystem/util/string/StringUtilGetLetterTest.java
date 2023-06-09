@@ -13,7 +13,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class StringUtil_getLetterTest {
+public class StringUtilGetLetterTest {
     private final DataInfo m_dataInfo;
 
     private static class DataInfo {
@@ -51,7 +51,7 @@ public class StringUtil_getLetterTest {
                 new DataInfo(2, "12345.?)", ""));
     }
 
-    public StringUtil_getLetterTest(DataInfo dataInfo)
+    public StringUtilGetLetterTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }
