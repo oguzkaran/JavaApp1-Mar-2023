@@ -1,7 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Soru: Bir tamsayının belirli bir bitinin 1 yapılmasına ilişkin kodu yazınız.
-    Bu işlemi yapabilmek için, sayının ilgili biti 1 olan ve diğer bitleri sofır olan bir sayı ile "OR" işlemine sokulması
-    gerekir.
+    Yukarıdaki örnek BitwiseUtil sınıfının isClear metodu ile de yapılabilir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -12,22 +10,15 @@ class Application {
     public static void run(String [] args)
     {
         while (true) {
-            var a = Console.readInt("Birinci sayıyı giriniz:");
-            var b = Console.readInt("Birinci sayıyı giriniz:");
+            var a = Console.readInt("Bir sayı giriniz:");
 
+            Console.writeLine("-------------------------------------");
             BitwiseUtil.writeBits(a);
-            BitwiseUtil.writeBits(b);
-            Console.writeLine("a = %d, b = %d", a, b);
+            Console.writeLine("a = %d", a);
+            Console.writeLine(BitwiseUtil.isClear(a, 0) ? "Çift" : "Tek");
             Console.writeLine("-------------------------------------");
 
-            a ^= b;
-            b ^= a;
-            a ^= b;
-
-            BitwiseUtil.writeBits(a);
-            BitwiseUtil.writeBits(b);
-            Console.writeLine("a = %d, b = %d", a, b);
-            if (a == 0 && b == 0)
+            if (a == 0)
                 break;
         }
     }
