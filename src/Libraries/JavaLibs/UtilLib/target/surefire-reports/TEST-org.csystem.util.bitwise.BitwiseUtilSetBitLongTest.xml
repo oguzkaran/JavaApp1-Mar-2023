@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.csystem.util.bitwise.BitwiseUtilSetBitLongTest" time="0.007" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.csystem.util.bitwise.BitwiseUtilSetBitLongTest" time="0.001" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TR"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/oguzkaran/Dropbox/CSD/Kurslar/JavaApp1-Mar-2023/src/Libraries/JavaLibs/UtilLib/target/surefire/surefirebooter16850253292490331437.jar /Users/oguzkaran/Dropbox/CSD/Kurslar/JavaApp1-Mar-2023/src/Libraries/JavaLibs/UtilLib/target/surefire 2023-06-13T21-49-09_007-jvmRun1 surefire13499895090154598159tmp surefire_04749376885361897180tmp"/>
+    <property name="sun.java.command" value="/Users/oguzkaran/Dropbox/CSD/Kurslar/JavaApp1-Mar-2023/src/Libraries/JavaLibs/UtilLib/target/surefire/surefirebooter3820807528795866638.jar /Users/oguzkaran/Dropbox/CSD/Kurslar/JavaApp1-Mar-2023/src/Libraries/JavaLibs/UtilLib/target/surefire 2023-06-15T20-18-59_190-jvmRun1 surefire3992254490668625316tmp surefire_011901211583269814231tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/oguzkaran/Dropbox/CSD/Kurslar/JavaApp1-Mar-2023/src/Libraries/JavaLibs/UtilLib/target/test-classes:/Users/oguzkaran/Dropbox/CSD/Kurslar/JavaApp1-Mar-2023/src/Libraries/JavaLibs/UtilLib/target/classes:/Users/oguzkaran/.m2/repository/com/karandev/com-karandev-util-console/14.1.0/com-karandev-util-console-14.1.0.jar:/Users/oguzkaran/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/oguzkaran/.m2/repository/org/hamcrest/hamcrest-core/2.2/hamcrest-core-2.2.jar:/Users/oguzkaran/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:"/>
@@ -28,7 +28,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/Users/oguzkaran/Dropbox/CSD/Kurslar/JavaApp1-Mar-2023/src/Libraries/JavaLibs/UtilLib/target/surefire/surefirebooter16850253292490331437.jar"/>
+    <property name="surefire.real.class.path" value="/Users/oguzkaran/Dropbox/CSD/Kurslar/JavaApp1-Mar-2023/src/Libraries/JavaLibs/UtilLib/target/surefire/surefirebooter3820807528795866638.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="17.0.1+12-LTS-39"/>
@@ -55,7 +55,7 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="givenValueAndBitIndex_whenValueIsLong_thenReturnSetBit[0]" classname="org.csystem.util.bitwise.BitwiseUtilSetBitLongTest" time="0.001"/>
-  <testcase name="givenValueAndBitIndex_whenValueIsLong_thenReturnSetBit[1]" classname="org.csystem.util.bitwise.BitwiseUtilSetBitLongTest" time="0.001"/>
+  <testcase name="givenValueAndBitIndex_whenValueIsLong_thenReturnSetBit[0]" classname="org.csystem.util.bitwise.BitwiseUtilSetBitLongTest" time="0"/>
+  <testcase name="givenValueAndBitIndex_whenValueIsLong_thenReturnSetBit[1]" classname="org.csystem.util.bitwise.BitwiseUtilSetBitLongTest" time="0"/>
   <testcase name="givenValueAndBitIndex_whenValueIsLong_thenReturnSetBit[2]" classname="org.csystem.util.bitwise.BitwiseUtilSetBitLongTest" time="0"/>
 </testsuite>
