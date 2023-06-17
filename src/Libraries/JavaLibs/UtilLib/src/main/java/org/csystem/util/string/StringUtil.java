@@ -18,7 +18,6 @@ public final class StringUtil {
     private static final String ALPHABET_EN;
     private static final String ALPHABET_CAPITALS_TR;
     private static final String ALPHABET_CAPITALS_EN;
-
     private static final String ALPHABET_ALL_EN;
     private static final String ALPHABET_ALL_TR;
 
