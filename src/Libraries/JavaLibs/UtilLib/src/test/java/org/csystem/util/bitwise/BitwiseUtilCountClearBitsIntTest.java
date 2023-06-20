@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BitwiseUtilCountSetBitsIntTest {
+public class BitwiseUtilCountClearBitsIntTest {
     private final DataInfo m_dataInfo;
 
     private static class DataInfo {
@@ -27,23 +27,23 @@ public class BitwiseUtilCountSetBitsIntTest {
     @Parameterized.Parameters
     public static Collection<DataInfo> provideData()
     {
-        return Arrays.asList(new DataInfo(10, 2),
-                new DataInfo(11, 3),
-                new DataInfo(Integer.MAX_VALUE, 31),
-                new DataInfo(Integer.MIN_VALUE, 1),
-                new DataInfo(0, 0),
-                new DataInfo(1, 1),
-                new DataInfo(-1, 32));
+        return Arrays.asList(new DataInfo(10, 30),
+                new DataInfo(11, 29),
+                new DataInfo(Integer.MAX_VALUE, 1),
+                new DataInfo(Integer.MIN_VALUE, 31),
+                new DataInfo(0, 32),
+                new DataInfo(1, 31),
+                new DataInfo(-1, 0));
     }
 
-    public BitwiseUtilCountSetBitsIntTest(DataInfo dataInfo)
+    public BitwiseUtilCountClearBitsIntTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }
 
     @Test
-    public void givenValue_whenValueIsInt_thenReturnNumberOfSetBits()
+    public void givenValueAndBitIndex_whenValueIsInt_thenReturnNumberOfClearBits()
     {
-        assertEquals(m_dataInfo.expected, BitwiseUtil.countSetBits(m_dataInfo.value));
+        assertEquals(m_dataInfo.expected, BitwiseUtil.countClearBits(m_dataInfo.value));
     }
 }

@@ -41,7 +41,7 @@ public class BitwiseUtilToBitsStrShortTest {
     }
 
     @Test
-    public void givenValueAndBitIndex_whenValueIsShort_thenReturnBitString()
+    public void givenValue_whenValueIsShort_thenReturnBitString()
     {
         assertEquals(m_dataInfo.expected, BitwiseUtil.toBitsStr(m_dataInfo.value));
     }

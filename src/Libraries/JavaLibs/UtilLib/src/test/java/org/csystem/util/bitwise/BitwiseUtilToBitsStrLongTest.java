@@ -43,7 +43,7 @@ public class BitwiseUtilToBitsStrLongTest {
     }
 
     @Test
-    public void givenValueAndBitIndex_whenValueIsLong_thenReturnBitString()
+    public void givenValue_whenValueIsLong_thenReturnBitString()
     {
         assertEquals(m_dataInfo.expected, BitwiseUtil.toBitsStr(m_dataInfo.value));
     }

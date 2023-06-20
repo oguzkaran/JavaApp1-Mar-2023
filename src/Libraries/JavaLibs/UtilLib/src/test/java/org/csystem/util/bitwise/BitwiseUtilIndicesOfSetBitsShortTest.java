@@ -38,15 +38,13 @@ public class BitwiseUtilIndicesOfSetBitsShortTest {
 
     }
 
-
-
     public BitwiseUtilIndicesOfSetBitsShortTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }
 
     @Test
-    public void givenValueAndBitIndex_whenValueIsShort_thenReturnNumberOfSetBits()
+    public void givenValue_whenValueIsShort_thenReturnNumberOfSetBits()
     {
         assertArrayEquals(m_dataInfo.expected, BitwiseUtil.indicesOfSetBits(m_dataInfo.value));
     }

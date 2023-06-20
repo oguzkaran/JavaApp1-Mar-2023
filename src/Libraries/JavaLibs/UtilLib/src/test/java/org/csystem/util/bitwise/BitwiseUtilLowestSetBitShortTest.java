@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BitwiseUtilCountSetBitsShortTest {
+public class BitwiseUtilLowestSetBitShortTest {
     private final DataInfo m_dataInfo;
 
     private static class DataInfo {
@@ -27,23 +27,23 @@ public class BitwiseUtilCountSetBitsShortTest {
     @Parameterized.Parameters
     public static Collection<DataInfo> provideData()
     {
-        return Arrays.asList(new DataInfo((short)10, 2),
-                new DataInfo((short)11, 3),
-                new DataInfo(Short.MAX_VALUE, 15),
-                new DataInfo(Short.MIN_VALUE, 1),
-                new DataInfo((short)0, 0),
-                new DataInfo((short)1, 1),
-                new DataInfo((short)-1, 16));
+        return Arrays.asList(new DataInfo((short)10, 1),
+                new DataInfo((short)11, 0),
+                new DataInfo(Short.MAX_VALUE, 0),
+                new DataInfo(Short.MIN_VALUE, 15),
+                new DataInfo((short)0, -1),
+                new DataInfo((short)1, 0),
+                new DataInfo((short)-1, 0));
     }
 
-    public BitwiseUtilCountSetBitsShortTest(DataInfo dataInfo)
+    public BitwiseUtilLowestSetBitShortTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }
 
     @Test
-    public void givenValue_whenValueIsByte_thenReturnNumberOfSetBits()
+    public void givenValue_whenValueIsShort_thenReturnLowestSetBit()
     {
-        assertEquals(m_dataInfo.expected, BitwiseUtil.countSetBits(m_dataInfo.value));
+        assertEquals(m_dataInfo.expected, BitwiseUtil.lowestSetBitIndex(m_dataInfo.value));
     }
 }

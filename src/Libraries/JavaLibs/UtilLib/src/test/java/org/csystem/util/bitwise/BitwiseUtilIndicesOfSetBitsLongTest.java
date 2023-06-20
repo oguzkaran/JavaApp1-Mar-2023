@@ -48,7 +48,7 @@ public class BitwiseUtilIndicesOfSetBitsLongTest {
     }
 
     @Test
-    public void givenValueAndBitIndex_whenValueIsLong_thenReturnNumberOfSetBits()
+    public void givenValue_whenValueIsLong_thenReturnNumberOfSetBits()
     {
         assertArrayEquals(m_dataInfo.expected, BitwiseUtil.indicesOfSetBits(m_dataInfo.value));
     }

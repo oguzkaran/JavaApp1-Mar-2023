@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.csystem.util.bitwise.BitwiseUtilCountSetBitsShortTest
--------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.csystem.util.bitwise.BitwiseUtilCountSetBitsShortTest

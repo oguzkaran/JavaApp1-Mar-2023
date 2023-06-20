@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BitwiseUtilCountSetBitsLongTest {
+public class BitwiseUtilCountClearBitsLongTest {
     private final DataInfo m_dataInfo;
 
     private static class DataInfo {
@@ -27,23 +27,23 @@ public class BitwiseUtilCountSetBitsLongTest {
     @Parameterized.Parameters
     public static Collection<DataInfo> provideData()
     {
-        return Arrays.asList(new DataInfo(10L, 2),
-                new DataInfo(11L, 3),
-                new DataInfo(Long.MAX_VALUE, 63),
-                new DataInfo(Long.MIN_VALUE, 1),
-                new DataInfo(0L, 0),
-                new DataInfo(1L, 1),
-                new DataInfo(-1L, 64));
+        return Arrays.asList(new DataInfo(10L, 62),
+                new DataInfo(11L, 61),
+                new DataInfo(Long.MAX_VALUE, 1),
+                new DataInfo(Long.MIN_VALUE, 63),
+                new DataInfo(0L, 64),
+                new DataInfo(1L, 63),
+                new DataInfo(-1L, 0));
     }
 
-    public BitwiseUtilCountSetBitsLongTest(DataInfo dataInfo)
+    public BitwiseUtilCountClearBitsLongTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }
 
     @Test
-    public void givenValue_whenValueIsLong_thenReturnNumberOfSetBits()
+    public void givenValueAndBitIndex_whenValueIsLong_thenReturnNumberOfClearBits()
     {
-        assertEquals(m_dataInfo.expected, BitwiseUtil.countSetBits(m_dataInfo.value));
+        assertEquals(m_dataInfo.expected, BitwiseUtil.countClearBits(m_dataInfo.value));
     }
 }

@@ -10,14 +10,14 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BitwiseUtilCountSetBitsLongTest {
+public class BitwiseUtilHighestClearBitLongTest {
     private final DataInfo m_dataInfo;
 
     private static class DataInfo {
         long value;
-        int expected;
+        long expected;
 
-        public DataInfo(long value, int expected)
+        public DataInfo(long value, long expected)
         {
             this.value = value;
             this.expected = expected;
@@ -27,23 +27,23 @@ public class BitwiseUtilCountSetBitsLongTest {
     @Parameterized.Parameters
     public static Collection<DataInfo> provideData()
     {
-        return Arrays.asList(new DataInfo(10L, 2),
-                new DataInfo(11L, 3),
+        return Arrays.asList(new DataInfo(10, 63),
+                new DataInfo(11, 63),
                 new DataInfo(Long.MAX_VALUE, 63),
-                new DataInfo(Long.MIN_VALUE, 1),
-                new DataInfo(0L, 0),
-                new DataInfo(1L, 1),
-                new DataInfo(-1L, 64));
+                new DataInfo(Long.MIN_VALUE, 62),
+                new DataInfo(0, 63),
+                new DataInfo(1, 63),
+                new DataInfo(-1, -1));
     }
 
-    public BitwiseUtilCountSetBitsLongTest(DataInfo dataInfo)
+    public BitwiseUtilHighestClearBitLongTest(DataInfo dataInfo)
     {
         m_dataInfo = dataInfo;
     }
 
     @Test
-    public void givenValue_whenValueIsLong_thenReturnNumberOfSetBits()
+    public void givenValue_whenValueIsLong_thenReturnHighestClearBit()
     {
-        assertEquals(m_dataInfo.expected, BitwiseUtil.countSetBits(m_dataInfo.value));
+        assertEquals(m_dataInfo.expected, BitwiseUtil.highestClearBitIndex(m_dataInfo.value));
     }
 }

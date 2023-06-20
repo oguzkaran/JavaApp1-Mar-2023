@@ -42,7 +42,7 @@ public class BitwiseUtilIndicesOfSetBitsByteTest {
     }
 
     @Test
-    public void givenValueAndBitIndex_whenValueIsByte_thenReturnNumberOfSetBits()
+    public void givenValue_whenValueIsByte_thenReturnNumberOfSetBits()
     {
         assertArrayEquals(m_dataInfo.expected, BitwiseUtil.indicesOfSetBits(m_dataInfo.value));
     }

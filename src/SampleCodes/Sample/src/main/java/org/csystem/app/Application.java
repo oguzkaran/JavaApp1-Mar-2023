@@ -1,33 +1,42 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    static bir sınıf ismine import static bildirimleri ile de doğrudan erişilebilir
+    Aşağıdaki örnekte "memory leak" oluşur
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.util.console.Console;
 
-import static org.csystem.app.A.B;
-
 class Application {
     public static void run(String [] args)
     {
-        var b = new B();
+        var a = new A();
+        var n = Console.readInt("Bir sayı giriniz:");
 
-        b.foo(10);
+        for (int i = 0; i < n; ++i)
+            a.doWork();
+
+        a = new A();
+
+        while (true) //Burası akışın sürekli devam ettiğini yani programın hiç sonlanmadığını göstermektedir
+            ;
     }
 }
 
 class A {
-    private int m_value;
-    //...
-    public static class B {
-        public void foo(int value)
+    private B m_b;
+
+    private class B {
+        void doSomething()
         {
-            var x = new A();
-
-            x.m_value = value;
-
-            Console.writeLine("m_value = %d", x.m_value);
+            //...
         }
+    }
+
+    public void doWork()
+    {
+        //...
+        m_b = new B();
+
+        m_b.doSomething();
     }
 }
 

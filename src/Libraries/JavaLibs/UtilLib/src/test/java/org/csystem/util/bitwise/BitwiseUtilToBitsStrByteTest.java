@@ -41,7 +41,7 @@ public class BitwiseUtilToBitsStrByteTest {
     }
 
     @Test
-    public void givenValueAndBitIndex_whenValueIsByte_thenReturnBitString()
+    public void givenValue_whenValueIsByte_thenReturnBitString()
     {
         assertEquals(m_dataInfo.expected, BitwiseUtil.toBitsStr(m_dataInfo.value));
     }
