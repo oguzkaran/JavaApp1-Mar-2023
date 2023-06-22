@@ -1,5 +1,18 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Aşağıdaki örnekte "memory leak" oluşur
+    Anonim Sınıflar: Bildirim sırasında programcının isim vermediği sınıflardır. Anonim sınıf bildiriminin genel biçimi
+    şu şekildedir:
+        new <tür>([Argümanlar]) {
+            <bildirimler>
+        }
+    Bu sentaksta tür sınıf, arayüz vb. user defined type'lardan olabilir. Eğer bu tür bir sınıf ise o sınıftan türetilmiş
+    bir sınıf bildirimi ile beraber, türemiş sınıf türünden nesne yaratılmış olur. Eğer tür bir arayüz ise o arayüzü
+    destekleyen (implementation) bir sınıf bildirimi ve o sınıf türünden bir nesne yatılmış olur. Şüphesiz anonim sınıflara
+    byte code üretilirken isim verilir. Bu ismin genel convention'ı şudur:
+        <anonim sınıf bildiriminin yapıldığı sınıf ismi>$<o sınıf içerisinde yukarıdan aşağıya kaçıncı anonim sınıf olduğu sayısı>
+    Birebir aynı olsa bile her bildirim ayrı bir sınıf demektir.
+    Bu sentaksta kullanılan sınıfın türetmeye kapalı olmaması yani final olarak bildirilmemiş olması gerekir. Sınıfn
+    sentaksta geçilen argümanlar için "the most applicable" ctor'unun var olması gerekir. Yani hangi ctor'un çağrılacağı
+    method overload resolution kurallarına göre belirlenir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -8,35 +21,40 @@ import com.karandev.util.console.Console;
 class Application {
     public static void run(String [] args)
     {
-        var a = new A();
-        var n = Console.readInt("Bir sayı giriniz:");
+        Sample s1 = new Sample() {
 
-        for (int i = 0; i < n; ++i)
-            a.doWork();
+            public void foo()
+            {
+                //...
+            }
+            //...
+        };
 
-        a = new A();
+        Sample s2 = new Sample(10) {
+            //...
+        };
 
-        while (true) //Burası akışın sürekli devam ettiğini yani programın hiç sonlanmadığını göstermektedir
-            ;
+        Console.writeLine(s1.getClass().getName());
+        Console.writeLine(s2.getClass().getName());
     }
 }
 
-class A {
-    private B m_b;
 
-    private class B {
-        void doSomething()
-        {
-            //...
-        }
+class Sample {
+    private int m_x;
+
+    public Sample()
+    {
     }
 
-    public void doWork()
+    public Sample(int x)
     {
-        //...
-        m_b = new B();
+        m_x = x;
+    }
 
-        m_b.doSomething();
+    public void printValue()
+    {
+        Console.writeLine("value: %d", m_x);
     }
 }
 

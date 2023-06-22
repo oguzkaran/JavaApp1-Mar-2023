@@ -35,6 +35,11 @@ public class Util {
         return result;
     }
 
+    public static StandardDeviationInfo findStandardDeviationInfo(int [] a)
+    {
+        throw new UnsupportedOperationException("TODO:");
+    }
+
     public static int gcd(int a, int b)
     {
         int min = Math.min(Math.abs(a), Math.abs(b));
@@ -61,6 +66,8 @@ public class Util {
 
         return String.valueOf(chars);
     }
+
+
 
     public static void writeCollatz(int n)
     {
