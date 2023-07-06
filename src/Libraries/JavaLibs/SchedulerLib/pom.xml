@@ -12,47 +12,34 @@
     </parent>
 
     <groupId>org.csystem</groupId>
-    <artifactId>PeriodicTextGeneratorApp</artifactId>
-    <version>1.0.0</version>
-    <name>PeriodicTextGeneratorApp</name>
+    <artifactId>org-csystem-util-scheduler</artifactId>
+    <version>14.0.0</version>
+    <name>org-csystem-util-scheduler</name>
+    <description>Generic Library Provider</description>
 
     <repositories>
         <repository>
-            <id>javaapp1-mar-2023-maven-repo</id>
+            <id>JavaApp1-Mar-2023</id>
             <url>https://raw.github.com/oguzkaran/javaapp1-mar-2023-maven-repo/main</url>
-        </repository>
-
-        <repository>
-            <id>javaapp1-mar-2023-karandev-maven-repo</id>
-            <url>https://raw.github.com/oguzkaran/javaapp1-mar-2023-karandev-maven-repo/main</url>
         </repository>
     </repositories>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.karandev</groupId>
-            <artifactId>com-karandev-util-console</artifactId>
-            <version>14.2.0</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.csystem</groupId>
-            <artifactId>org-csystem-util</artifactId>
-            <version>16.1.1</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
             </plugin>
         </plugins>
     </build>
