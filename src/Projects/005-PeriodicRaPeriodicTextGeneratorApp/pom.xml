@@ -12,10 +12,9 @@
     </parent>
 
     <groupId>org.csystem</groupId>
-    <artifactId>GenericApp</artifactId>
-    <version>14.0.0</version>
-    <name>GenericApp</name>
-    <description>Generic Application Provider</description>
+    <artifactId>PeriodicTextGeneratorApp</artifactId>
+    <version>1.0.0</version>
+    <name>PeriodicTextGeneratorApp</name>
 
     <repositories>
         <repository>
@@ -39,7 +38,13 @@
         <dependency>
             <groupId>com.karandev</groupId>
             <artifactId>com-karandev-util-console</artifactId>
-            <version>14.0.0</version>
+            <version>14.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.csystem</groupId>
+            <artifactId>org-csystem-util</artifactId>
+            <version>16.1.0</version>
         </dependency>
     </dependencies>
 
