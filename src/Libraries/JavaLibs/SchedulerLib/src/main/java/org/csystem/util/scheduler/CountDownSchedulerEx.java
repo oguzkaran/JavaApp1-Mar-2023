@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CountDownSchedulerEx.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 06.07.2023
+	LAST UPDATE : 13.07.2023
 
 	CountDownScheduler class
 
@@ -23,5 +23,4 @@ public abstract class CountDownSchedulerEx extends CountDownScheduler {
     {
         throw new UnsupportedOperationException("TODO");
     }
-
 }

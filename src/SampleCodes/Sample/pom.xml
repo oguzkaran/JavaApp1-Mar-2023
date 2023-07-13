@@ -60,6 +60,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.csystem</groupId>
+            <artifactId>org-csystem-util-scheduler</artifactId>
+            <version>14.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>31.1-jre</version>
