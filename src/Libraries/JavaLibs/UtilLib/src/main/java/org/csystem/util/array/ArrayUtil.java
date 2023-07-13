@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 09.05.2023
+	LAST UPDATE : 13.07.2023
 
 	Utility class for array operations
 
@@ -10,7 +10,7 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.array;
 
-import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public final class ArrayUtil {
     private static void bubbleSortAscending(int [] a)
@@ -142,15 +142,11 @@ public final class ArrayUtil {
         System.out.print(end);
     }
 
-    public static void fillRandomArray(int [] a, int min, int max)
-    {
-        fillRandomArray(new Random(), a, min, max);
-    }
 
-    public static void fillRandomArray(Random r, int [] a, int min, int max)
+    public static void fillRandomArray(RandomGenerator randomGenerator, int [] a, int min, int max)
     {
         for (int i = 0; i < a.length; ++i)
-            a[i] = r.nextInt(max - min + 1) + min;
+            a[i] = randomGenerator.nextInt(max - min + 1) + min;
     }
 
     public static int [] getHistogramData(int [] a, int n) //[0, n]
@@ -163,16 +159,11 @@ public final class ArrayUtil {
         return counts;
     }
 
-    public static int [] getRandomArray(int n, int min, int max) //[min, max]
-    {
-        return getRandomArray(new Random(), n, min, max);
-    }
-
-    public static int [] getRandomArray(Random r, int n, int min, int max) //[min, max]
+    public static int [] getRandomArray(RandomGenerator randomGenerator, int n, int min, int max) //[min, max]
     {
         int [] a = new int[n];
 
-        fillRandomArray(r, a, min, max);
+        fillRandomArray(randomGenerator, a, min, max);
 
         return a;
     }
@@ -253,10 +244,10 @@ public final class ArrayUtil {
             selectionSortAscending(a);
     }
 
-    public static void shuffle(Random r, int [] a, int count)
+    public static void shuffle(RandomGenerator randomGenerator, int [] a, int count)
     {
         while (count-- > 0)
-            swap(a, r.nextInt(a.length), r.nextInt(a.length));
+            swap(a, randomGenerator.nextInt(a.length), randomGenerator.nextInt(a.length));
     }
 
     public static int sum(int [] a)

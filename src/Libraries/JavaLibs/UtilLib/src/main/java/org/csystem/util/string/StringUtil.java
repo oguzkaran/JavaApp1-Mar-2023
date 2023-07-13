@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 06.07.2023
+	LAST UPDATE : 13.07.2023
 
 	Utility class for string operations
 
@@ -11,7 +11,7 @@
 package org.csystem.util.string;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public final class StringUtil {
     private static final String ALPHABET_TR;
@@ -61,20 +61,20 @@ public final class StringUtil {
         return countString(s1.toLowerCase(), s2.toLowerCase());
     }
 
-    public static void fillRandomStringArray(Random r, String [] str, int min, int max, String sourceText)
+    public static void fillRandomStringArray(RandomGenerator randomGenerator, String [] str, int min, int max, String sourceText)
     {
         for (int i = 0; i < str.length; ++i)
-            str[i] = getRandomText(r, r.nextInt(max - min + 1) + min, sourceText);
+            str[i] = getRandomText(randomGenerator, randomGenerator.nextInt(max - min + 1) + min, sourceText);
     }
 
-    public static void fillRandomStringArrayTR(Random r, String [] str, int min, int max)
+    public static void fillRandomStringArrayTR(RandomGenerator randomGenerator, String [] str, int min, int max)
     {
-        fillRandomStringArray(r, str, min, max, ALPHABET_ALL_TR);
+        fillRandomStringArray(randomGenerator, str, min, max, ALPHABET_ALL_TR);
     }
 
-    public static void fillRandomStringArrayEN(Random r, String [] str, int min, int max)
+    public static void fillRandomStringArrayEN(RandomGenerator randomGenerator, String [] str, int min, int max)
     {
-        fillRandomStringArray(r, str, min, max, ALPHABET_ALL_EN);
+        fillRandomStringArray(randomGenerator, str, min, max, ALPHABET_ALL_EN);
     }
 
     public static String getLetters(String s)
@@ -92,61 +92,45 @@ public final class StringUtil {
         return sb.toString();
     }
 
-    public static String getRandomText(Random r, int n, String sourceText)
+    public static String getRandomText(RandomGenerator randomGenerator, int n, String sourceText)
     {
         var sb = new StringBuilder(n);
         var length = sourceText.length();
 
         for (int i = 0; i < n; ++i)
-            sb.append(sourceText.charAt(r.nextInt(length)));
+            sb.append(sourceText.charAt(randomGenerator.nextInt(length)));
 
         return sb.toString();
     }
 
-    public static String getRandomTextEN(Random r, int n)
+    public static String getRandomTextEN(RandomGenerator randomGenerator, int n)
     {
-        return getRandomText(r, n, ALPHABET_ALL_EN);
+        return getRandomText(randomGenerator, n, ALPHABET_ALL_EN);
     }
 
-    public static String getRandomTextEN(int n)
+
+
+    public static String getRandomTextTR(RandomGenerator randomGenerator, int n)
     {
-        return getRandomTextEN(new Random(), n);
+        return getRandomText(randomGenerator, n, ALPHABET_ALL_TR);
     }
 
-    public static String getRandomTextTR(Random r, int n)
-    {
-        return getRandomText(r, n, ALPHABET_ALL_TR);
-    }
 
-    public static String getRandomTextTR(int n)
-    {
-        return getRandomTextTR(new Random(), n);
-    }
 
-    public static String [] getRandomStringArrayTR(int n, int min, int max)
-    {
-        return getRandomStringArrayTR(new Random(), n, min, max);
-    }
-
-    public static String [] getRandomStringArrayTR(Random r, int n, int min, int max)
+    public static String [] getRandomStringArrayTR(RandomGenerator randomGenerator, int n, int min, int max)
     {
         String [] result = new String[n];
 
-        fillRandomStringArrayTR(r, result, min, max);
+        fillRandomStringArrayTR(randomGenerator, result, min, max);
 
         return result;
     }
 
-    public static String [] getRandomStringArrayEN(int n, int min, int max)
-    {
-        return getRandomStringArrayEN(new Random(), n, min, max);
-    }
-
-    public static String [] getRandomStringArrayEN(Random r, int n, int min, int max)
+    public static String [] getRandomStringArrayEN(RandomGenerator randomGenerator, int n, int min, int max)
     {
         String [] result = new String[n];
 
-        fillRandomStringArrayEN(r, result, min, max);
+        fillRandomStringArrayEN(randomGenerator, result, min, max);
 
         return result;
     }

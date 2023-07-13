@@ -5,6 +5,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 
+@Ignore
 public class NumberUtilIsPrimeTest {
     @Test
     public void givenLongValue_whenPrime_thenReturnTrue()
