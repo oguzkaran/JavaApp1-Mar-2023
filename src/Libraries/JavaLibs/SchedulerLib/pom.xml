@@ -13,7 +13,7 @@
 
     <groupId>org.csystem</groupId>
     <artifactId>org-csystem-util-scheduler</artifactId>
-    <version>14.0.0</version>
+    <version>14.1.0</version>
     <name>org-csystem-util-scheduler</name>
 
     <repositories>
