@@ -1,6 +1,5 @@
-package org.csystem.app.generator.text;
+package org.csystem.generator.random;
 
-import org.csystem.app.functional.IStringConsumer;
 import org.csystem.util.scheduler.Scheduler;
 import org.csystem.util.string.StringUtil;
 
@@ -13,9 +12,10 @@ public class RandomTextGenerator {
     private final int m_count;
     private int m_n;
 
-    private void generateSchedulerCallback(IStringConsumer consumer)
+    private void generateSchedulerCallback(IConsumer<String> consumer) throws Exception
     {
         var str = StringUtil.getRandomTextEN(m_randomGenerator, m_randomGenerator.nextInt(m_min, m_bound));
+
         consumer.accept(str);
         if (--m_n == 0)
             m_scheduler.cancel();
@@ -30,7 +30,7 @@ public class RandomTextGenerator {
         m_count = count;
     }
 
-    public void generate(IStringConsumer consumer)
+    public void generate(IConsumer<String> consumer)
     {
         m_n = m_count;
         m_scheduler.schedule(() -> generateSchedulerCallback(consumer));

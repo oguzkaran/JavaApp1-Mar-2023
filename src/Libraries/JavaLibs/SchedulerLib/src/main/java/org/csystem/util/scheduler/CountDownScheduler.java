@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CountDownScheduler.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 13.07.2023
+	LAST UPDATE : 25.07.2023
 
 	CountDownScheduler class
 
@@ -13,7 +13,8 @@ package org.csystem.util.scheduler;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
-import static java.util.concurrent.TimeUnit.*;
+
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public abstract class CountDownScheduler {
     private final Timer m_timer;
@@ -27,14 +28,19 @@ public abstract class CountDownScheduler {
 
             public void run()
             {
-                onTick(m_millisInFuture - value);
-                value += m_interval;
+                try {
+                    onTick(m_millisInFuture - value);
+                    value += m_interval;
 
-                if (value < m_millisInFuture)
-                    return;
+                    if (value < m_millisInFuture)
+                        return;
 
-                onFinish();
-                m_timer.cancel();
+                    onFinish();
+                    m_timer.cancel();
+                }
+                catch (Exception ignore) {
+
+                }
             }
         };
     }
@@ -51,8 +57,8 @@ public abstract class CountDownScheduler {
         m_timer = new Timer();
     }
 
-    protected abstract void onTick(long millisUntilFinished);
-    protected abstract void onFinish();
+    protected abstract void onTick(long millisUntilFinished) throws Exception;
+    protected abstract void onFinish() throws Exception;
 
     public final CountDownScheduler start()
     {

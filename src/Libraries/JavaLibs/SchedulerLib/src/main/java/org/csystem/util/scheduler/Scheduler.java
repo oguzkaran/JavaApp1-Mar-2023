@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Scheduler.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 20.07.2023
+	LAST UPDATE : 25.07.2023
 
 	Scheduler class
 
@@ -22,13 +22,18 @@ public class Scheduler {
     private final Timer m_timer;
     private Runnable m_cancelTask;
 
-    private TimerTask createTimerTask(Runnable task)
+    private TimerTask createTimerTask(IRunnable task)
     {
         return new TimerTask() {
             @Override
             public void run()
             {
-                task.run();
+                try {
+                    task.run();
+                }
+                catch (Exception ignore) {
+
+                }
             }
         };
     }
@@ -55,12 +60,12 @@ public class Scheduler {
         m_timer = new Timer();
     }
 
-    public Scheduler schedule(Runnable task)
+    public Scheduler schedule(IRunnable task)
     {
         return schedule(task, null);
     }
 
-    public Scheduler schedule(Runnable task, Runnable cancelTask)
+    public Scheduler schedule(IRunnable task, Runnable cancelTask)
     {
         m_cancelTask = cancelTask;
         m_timer.scheduleAtFixedRate(createTimerTask(task), m_delay, m_period);
