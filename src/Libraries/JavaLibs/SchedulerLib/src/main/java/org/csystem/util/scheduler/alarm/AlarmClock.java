@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : AlarmClock.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 20.07.2023
+	LAST UPDATE : 25.07.2023
 
 	AlarmClock class
 
@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.util.concurrent.TimeUnit;
 
 import static org.csystem.util.scheduler.alarm.AlarmClockStatus.ONCE;
+
 public class AlarmClock {
     private final Scheduler m_scheduler;
     private final LocalTime m_time;
@@ -69,7 +70,7 @@ public class AlarmClock {
 
     public AlarmClock start(Runnable alarmTask, AlarmClockStatus alarmClockStatus)
     {
-        return start(alarmTask, null, ONCE);
+        return start(alarmTask, null, alarmClockStatus);
     }
 
     public AlarmClock start(Runnable alarmTask, Runnable periodTask, AlarmClockStatus alarmClockStatus)
