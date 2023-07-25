@@ -20,6 +20,6 @@ public class AlarmClockDailyTest {
 
         AlarmClock.of(time).start(() -> System.out.println("Alarm"), () -> System.out.print("."), AlarmClockStatus.DAILY);
 
-        ThreadUtil.sleep(25, TimeUnit.SECONDS);
+        ThreadUtil.sleep(30, TimeUnit.SECONDS);
     }
 }

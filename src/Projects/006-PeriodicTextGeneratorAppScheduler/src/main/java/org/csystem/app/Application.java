@@ -1,6 +1,8 @@
 package org.csystem.app;
 
 import com.karandev.util.console.Console;
+import org.csystem.app.generator.text.RandomTextGenerator;
+import org.csystem.util.scheduler.Scheduler;
 import org.csystem.util.string.StringUtil;
 
 import java.util.Random;
@@ -10,22 +12,6 @@ import java.util.TimerTask;
 import static com.karandev.util.console.commandline.CommandLineUtil.checkLengthEquals;
 
 class Application {
-    private static TimerTask createTimerTask(Timer timer, int count, int min, int bound)
-    {
-        var random = new Random();
-
-        return new TimerTask() {
-            int n;
-            public void run()
-            {
-                if (n++ != count)
-                    Console.writeLine(StringUtil.getRandomTextEN(random, random.nextInt(min, bound)));
-                else
-                    timer.cancel();
-            }
-        };
-    }
-
     public static void run(String[] args)
     {
         try {
@@ -35,12 +21,12 @@ class Application {
             var bound = Integer.parseInt(args[2]);
             var delay = Long.parseLong(args[3]);
             var period = Long.parseLong(args[4]);
-            var timer = new Timer();
+            var randomTextGenerator = new RandomTextGenerator(new Random(), min, bound, count, delay, period);
 
-            timer.scheduleAtFixedRate(createTimerTask(timer, count, min, bound), delay, period);
+            randomTextGenerator.generate(str -> Console.writeLine("Text:%s", str));
         }
         catch (NumberFormatException ignore) {
-            Console.Error.writeLine("Invalid argüments!...");
+            Console.Error.writeLine("Invalid arguments!...");
         }
     }
 }

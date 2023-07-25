@@ -15,6 +15,7 @@ import org.csystem.util.scheduler.Scheduler;
 import java.time.LocalTime;
 import java.util.concurrent.TimeUnit;
 
+import static org.csystem.util.scheduler.alarm.AlarmClockStatus.DAILY;
 import static org.csystem.util.scheduler.alarm.AlarmClockStatus.ONCE;
 
 public class AlarmClock {
