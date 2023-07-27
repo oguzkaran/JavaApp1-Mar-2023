@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.6</version>
+		<version>3.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -15,21 +15,13 @@
 	<description>Legacy DateTime Library</description>
 
 	<properties>
-		<java.version>7</java.version>
+		<maven.compiler.source>7</maven.compiler.source>
+		<maven.compiler.target>7</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -37,12 +29,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.2.0</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-
+				<version>3.3.0</version>
 			</plugin>
 		</plugins>
 	</build>
