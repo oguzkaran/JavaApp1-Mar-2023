@@ -11,9 +11,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>org.csystem</groupId>
-    <artifactId>org-csystem-generic</artifactId>
-    <version>14.0.0</version>
+    <groupId>com.karandev</groupId>
+    <artifactId>com-karandev-library</artifactId>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -36,10 +36,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.karandev</groupId>
-            <artifactId>com-karandev-util-console</artifactId>
-            <version>14.2.0</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -5,18 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>org.csystem</groupId>
+        <artifactId>org-csystem-library</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.csystem</groupId>
     <artifactId>org-csystem-math</artifactId>
     <version>16.0.0</version>
     <name>org-csystem-math</name>
     <description>Math Library</description>
-
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -27,15 +25,4 @@
     <dependencies>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

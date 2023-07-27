@@ -5,6 +5,13 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/CollectionLib/pom.xml" />
+        <option value="$PROJECT_DIR$/DateTimeLib/pom.xml" />
+        <option value="$PROJECT_DIR$/DateTimeLibLegacyLib/pom.xml" />
+        <option value="$PROJECT_DIR$/MathLib/pom.xml" />
+        <option value="$PROJECT_DIR$/RandomGeneratorLib/pom.xml" />
+        <option value="$PROJECT_DIR$/SchedulerLib/pom.xml" />
+        <option value="$PROJECT_DIR$/UtilLib/pom.xml" />
       </list>
     </option>
   </component>

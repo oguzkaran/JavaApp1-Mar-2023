@@ -5,29 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>org.csystem</groupId>
+        <artifactId>org-csystem-library</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.csystem</groupId>
     <artifactId>org-csystem-generator-random</artifactId>
     <version>14.0.0</version>
     <name>org-csystem-generator-random</name>
-
-    <repositories>
-        <repository>
-            <id>JavaApp1-Mar-2023</id>
-            <url>https://raw.github.com/oguzkaran/javaapp1-mar-2023-maven-repo/main</url>
-        </repository>
-    </repositories>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -41,23 +27,5 @@
             <artifactId>org-csystem-util-scheduler</artifactId>
             <version>14.2.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
