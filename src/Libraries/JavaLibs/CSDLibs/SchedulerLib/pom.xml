@@ -15,7 +15,6 @@
     <version>14.2.0</version>
     <name>org-csystem-util-scheduler</name>
 
-
     <dependencies>
         <dependency>
             <groupId>org.csystem</groupId>
