@@ -20,8 +20,7 @@ public class SchedulerTest {
     @Test
     public void test()
     {
-        var scheduler = new Scheduler(1, TimeUnit.SECONDS)
-                .schedule(() -> schedulerCallback(), () -> System.out.println("\nCancelled"));
+        var scheduler = new Scheduler(1, TimeUnit.SECONDS) .schedule(this::schedulerCallback, () -> System.out.println("\nCancelled"));
 
         ThreadUtil.sleep(10, TimeUnit.SECONDS);
         scheduler.cancel();

@@ -1,111 +1,38 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Method Reference Çeşitleri:
-    1. static metot referansı (static method reference)
-    2. Bir nesneye ilişkin non-static metot referansı (reference to an instance method of particular object)
-    3. Bir türe ilişkin non-static metot referansı (reference to an instance method of any object of a particular type)
-    4. ctor referansı (reference to constructor)
+    Java 8 ile birlikte java.util.function paketine bir grup fonksiyonel arayüz eklenmiştir. Bu arayüzler özellikle
+    yine Java 8 ile eklenen "Stream API" tarafından kullanılmaktadır. Stream API Java'da programlama modelini geliştirmiştir
+    ve kullanılabildiği yerde Java programcısının Stream API kullanması kesinlikle gerekir. Stream API ileride ele
+    alınacaktır. Şüphesiz bu arayüzler yalnızca Stream API'de kullanılmaz. Gerektiğinde başka sınıflarda da kullanılır,
+    programcı da kendisi tasarladığı "high order function"'lar için de gereken arayüzleri kullanabilir.
+    java.util.function paketi içerisindeki fonksiyonel arayüzler şu şekilde gruplanabilir:
+    1. Function arayüzleri: Bu arayüzler bir ya da iki tane giriş (input) alan ve bir sonuç elde edilmesi gereken işlemlerde
+    kullanılır. Bunların en genelleri Function<T, R> ve BiFunction<T, U, R> arayüzleridir. Bu arayüzlerin abstract metotları
+    applyXXX biçiminde isimlendirilmiştir
 
-    Aşağıdaki örneklerde atama işlemi metot parametreleri için yani callback/callable olarak da düşünülmelidir. Örnekler tamamen
-    metot referansını göstermek için doğrudan atama olarak yapılmıştır. Bu sebeple örneklerde metot referans kullanımına
-    odaklanınız
+    2. Predicate arayüzleri: Bu arayüzler bir veya iki giriş alan ve sonucunda boolean türden bir değer elde edilmesi
+    gereken durumlarda kullanılır. Bu arayüzlerin abstract metotları test biçiminde isimlendirilmiştir
+
+    3. Consumer arayüzleri: Bu arayüzler bir ya da iki girişe göre sadece işlem yapan, bir sonuç vermeyen durumlarda
+    kullanılır. Bu arayüzlerin metotları accept olarak isimlendirilmiştir
+
+    4. Operator arayüzleri: Bu arayüzler bir ya da iki girişe göre bir işlem yapılması ve bir sonuç elde edilmesi
+    durumunda kullanılır. Bu gruptaki arayüzlerin çoğu Function ve BiFunction arayüzlerinden türetilmiştir. Bu arayüzler
+    genel olarak BinaryOperator ve UnaryOperator olarak iki gruba ayrılır. Bu arayüzlerin metotları applyXXX biçiminde
+    isimlendirilmiştir
+
+    5. Supplier arayüzleri:  Bu arayüzler bir girş almadan bir değer elde edilmesi durumunda kullanılır. Bu arayüzlerin
+    metotları getXXX biçiminde isimlendirilmiştir. getXXX metotların geri dönüş değerleri ilgili türdendir
+
+    Anahtar Notlar: Bu arayüzlerin temel tür karşılıkları her tür ve her işlem için bulunmaz. Bu arayüzlerin tenmel tür
+    karşılıkları çok kullanılan ve diğerlerinin bu türlere doğrudan (implicit) dönüşümlerinin geçerli olduğu durumlar
+    için vardır.
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
-
-import com.karandev.util.console.Console;
-import org.csystem.util.numeric.NumberUtil;
-
-import java.util.Random;
 
 class Application {
     public static void run(String [] args)
     {
-        var random = new Random();
 
-        IIntBinaryOperator ibo = IntOperation::add; //1 -> (a, b) -> IntOperation.add(a, b);
-        Console.writeLine(ibo.applyAsInt(10, 20));
-        Console.writeLine("---------------------------------------------------------------------------");
-        IIntPredicate intPredicate = NumberUtil::isPrime; //1 -> a -> NumberUtil.isPrime(a);
-
-        Console.writeLine(intPredicate.test(1_000_003) ? "Prime" : "Not a prime");
-        Console.writeLine("---------------------------------------------------------------------------");
-
-        IIntSupplier intSupplier = random::nextInt; //2 -> () -> random.nextInt();
-
-        Console.writeLine(intSupplier.get());
-        Console.writeLine("---------------------------------------------------------------------------");
-
-        IIntRandomSupplier supplier = Random::nextInt; //3 -> (r, b) -> r.nextInt(b);
-
-        Console.writeLine(supplier.get(random, 100));
-        Console.writeLine("---------------------------------------------------------------------------");
-
-        IStringToIntConverter converter = String::length; //3 -> s -> s.length()
-
-        Console.writeLine(converter.convert("CSD"));
-        Console.writeLine("---------------------------------------------------------------------------");
-
-        IFactory<Integer, IntValue> factory = IntValue::new; //val -> new IntValue(val);
-
-        Console.writeLine("Value:%d", factory.create(10).getVal());
-
-        Console.writeLine("---------------------------------------------------------------------------");
     }
 }
 
-class IntOperation {
-    public static int add(int a, int b)
-    {
-        return a + b;
-    }
-}
-
-class IntValue {
-    private int m_val;
-
-    public IntValue()
-    {
-    }
-
-    public IntValue(int val)
-    {
-        m_val = val;
-    }
-
-    public int getVal()
-    {
-        return m_val;
-    }
-
-    public void setVal(int val)
-    {
-        m_val = val;
-    }
-}
-
-interface IIntBinaryOperator {
-    int applyAsInt(int a, int b);
-}
-
-interface IIntPredicate {
-    boolean test(int a);
-}
-
-interface IIntSupplier {
-    int get();
-}
-
-interface IFactory<T, R> {
-    R create(T t);
-}
-
-interface IDefaultFactory<T> {
-    T create();
-}
-
-interface IIntRandomSupplier {
-    int get(Random random, int bound);
-}
-
-interface IStringToIntConverter {
-    int convert(String str);
-}

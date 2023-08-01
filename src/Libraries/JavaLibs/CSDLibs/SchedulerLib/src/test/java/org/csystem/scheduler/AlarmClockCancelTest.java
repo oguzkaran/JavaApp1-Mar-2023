@@ -11,16 +11,26 @@ import java.util.concurrent.TimeUnit;
 
 @Ignore
 public class AlarmClockCancelTest {
+    private static void alarmTaskCallback()
+    {
+        System.out.println("Alarm");
+    }
+
+    private static void periodTaskCallback()
+    {
+        System.out.print(".");
+    }
+
     @Test
     public void test()
     {
-        var time = LocalTime.now().plusSeconds(20);
+        var time = LocalTime.now().plusSeconds(10);
 
         System.out.println(time);
 
-        var alarm = AlarmClock.of(time).start(() -> System.out.println("Alarm"), () -> System.out.print("."));
+        var alarm = AlarmClock.of(time).start(AlarmClockCancelTest::alarmTaskCallback, AlarmClockCancelTest::periodTaskCallback);
 
-        ThreadUtil.sleep(10, TimeUnit.SECONDS);
+        ThreadUtil.sleep(5, TimeUnit.SECONDS);
 
         alarm.cancel();
     }
