@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 06.05.2023
+	LAST UPDATE : 03.08.2023
 
 	Utility class for numeric operations
 
@@ -11,6 +11,9 @@
 package org.csystem.util.numeric;
 
 import java.math.BigInteger;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import static java.lang.Math.*;
 
@@ -72,6 +75,93 @@ public final class NumberUtil {
 
 	private NumberUtil()
 	{
+	}
+
+	public static boolean areFriends(int a, int b)
+	{
+		return sumFactors(a) == b && sumFactors(b) == a;
+	}
+
+	public static boolean isArmstrong(int val)
+	{
+		return val >= 0 && getDigitsPowSum(val) == val;
+	}
+
+	public static boolean isFactorian(int n)
+	{
+		return n >= 0 && getDigitsFactorialSum(n) == n;
+	}
+
+	public static boolean isPerfect(int val)
+	{
+		return sumFactors(val) == val;
+	}
+
+	public static boolean isPrime(long val)
+	{
+		if (val <= 1)
+			return false;
+
+		if (val % 2 == 0)
+			return val == 2;
+
+		if (val % 3 == 0)
+			return val == 3;
+
+		if (val % 5 == 0)
+			return val == 5;
+
+		if (val % 7 == 0)
+			return val == 7;
+
+		var sqrtVal = (int)sqrt(val);
+
+		for (var i = 11L; i <= sqrtVal; i += 2)
+			if (val % i == 0)
+				return false;
+
+		return true;
+	}
+
+	public static boolean isPrime(BigInteger val)
+	{
+		if (val.compareTo(BigInteger.ONE) <= 0)
+			return false;
+
+		if (val.remainder(BigInteger.TWO).equals(BigInteger.ZERO))
+			return val.equals(BigInteger.TWO);
+
+		if (val.remainder(BIG_INTEGER_THREE).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_THREE);
+
+		if (val.remainder(BIG_INTEGER_FIVE).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_FIVE);
+
+		if (val.remainder(BIG_INTEGER_SEVEN).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_SEVEN);
+
+		var sqrtVal = val.sqrt();
+
+		for (var i = BIG_INTEGER_ELEVEN; i.compareTo(sqrtVal) <= 0; i = i.add(BigInteger.TWO))
+			if (val.remainder(i).equals(BigInteger.ZERO))
+				return false;
+
+		return true;
+	}
+
+	public static boolean isPrimeX(long val)
+	{
+		boolean result;
+
+		for (var sum = val; (result = isPrime(sum)) && sum > 9; sum = sumDigits(sum))
+			;
+
+		return result;
+	}
+
+	public static boolean isSuperPrime(int n)
+	{
+		return isPrime(n) && isPrime(getIndexOfPrime(n));
 	}
 
 	public static int calculateDigitalRoot(int val)
@@ -270,91 +360,88 @@ public final class NumberUtil {
 		
 		return result + 1;
 	}
-	
-	public static boolean areFriends(int a, int b)
+
+	public static OptionalInt toInt(String str)
 	{
-		return sumFactors(a) == b && sumFactors(b) == a;
-	}
-	
-	public static boolean isArmstrong(int val)
-	{
-		return val >= 0 && getDigitsPowSum(val) == val;		
-	}
-	
-	public static boolean isFactorian(int n)
-	{
-		return n >= 0 && getDigitsFactorialSum(n) == n;
-	}
+		OptionalInt result;
 
-	public static boolean isPerfect(int val)
-	{
-		return sumFactors(val) == val;
-	}
-	
-	public static boolean isPrime(long val)
-	{
-		if (val <= 1)
-			return false;
-		
-		if (val % 2 == 0)
-			return val == 2;
-		
-		if (val % 3 == 0)
-			return val == 3;
-		
-		if (val % 5 == 0)
-			return val == 5;
-		
-		if (val % 7 == 0)
-			return val == 7;
+		try {
+			result = OptionalInt.of(Integer.parseInt(str));
+		}
+		catch (NumberFormatException ignore) {
+			result = OptionalInt.empty();
+		}
 
-		var sqrtVal = (int)sqrt(val);
-		
-		for (var i = 11L; i <= sqrtVal; i += 2)
-			if (val % i == 0)
-				return false;
-
-		return true;
-	}
-
-	public static boolean isPrime(BigInteger val)
-	{
-		if (val.compareTo(BigInteger.ONE) <= 0)
-			return false;
-
-		if (val.remainder(BigInteger.TWO).equals(BigInteger.ZERO))
-			return val.equals(BigInteger.TWO);
-
-		if (val.remainder(BIG_INTEGER_THREE).equals(BigInteger.ZERO))
-			return val.equals(BIG_INTEGER_THREE);
-
-		if (val.remainder(BIG_INTEGER_FIVE).equals(BigInteger.ZERO))
-			return val.equals(BIG_INTEGER_FIVE);
-
-		if (val.remainder(BIG_INTEGER_SEVEN).equals(BigInteger.ZERO))
-			return val.equals(BIG_INTEGER_SEVEN);
-
-		var sqrtVal = val.sqrt();
-
-		for (var i = BIG_INTEGER_ELEVEN; i.compareTo(sqrtVal) <= 0; i = i.add(BigInteger.TWO))
-			if (val.remainder(i).equals(BigInteger.ZERO))
-				return false;
-
-		return true;
-	}
-	
-	public static boolean isPrimeX(long val)
-	{
-		boolean result;
-		
-		for (var sum = val; (result = isPrime(sum)) && sum > 9; sum = sumDigits(sum))
-			;
-		
 		return result;
 	}
-	
-	public static boolean isSuperPrime(int n)
+
+	public static OptionalDouble toDouble(String str)
 	{
-		return isPrime(n) && isPrime(getIndexOfPrime(n));
+		OptionalDouble result;
+
+		try {
+			result = OptionalDouble.of(Double.parseDouble(str));
+		}
+		catch (NumberFormatException ignore) {
+			result = OptionalDouble.empty();
+		}
+
+		return result;
+	}
+
+	public static OptionalLong toLong(String str)
+	{
+		OptionalLong result;
+
+		try {
+			result = OptionalLong.of(Long.parseLong(str));
+		}
+		catch (NumberFormatException ignore) {
+			result = OptionalLong.empty();
+		}
+
+		return result;
+	}
+
+	public static int toInt(String str, int defaultValue)
+	{
+		int result = defaultValue;
+
+		try {
+			result = Integer.parseInt(str);
+		}
+		catch (NumberFormatException ignore) {
+
+		}
+
+		return result;
+	}
+
+	public static double toDouble(String str, double defaultValue)
+	{
+		double result = defaultValue;
+
+		try {
+			result = Double.parseDouble(str);
+		}
+		catch (NumberFormatException ignore) {
+
+		}
+
+		return result;
+	}
+
+	public static long toLong(String str, long defaultValue)
+	{
+		long result = defaultValue;
+
+		try {
+			result = Long.parseLong(str);
+		}
+		catch (NumberFormatException ignore) {
+
+		}
+
+		return result;
 	}
 }

@@ -27,5 +27,12 @@
             <artifactId>org-csystem-util-scheduler</artifactId>
             <version>14.2.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.karandev</groupId>
+            <artifactId>com-karandev-util-console</artifactId>
+            <version>14.2.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

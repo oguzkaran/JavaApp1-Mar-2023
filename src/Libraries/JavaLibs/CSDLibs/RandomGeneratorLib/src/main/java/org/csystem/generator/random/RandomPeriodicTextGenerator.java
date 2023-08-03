@@ -1,11 +1,22 @@
+/*----------------------------------------------------------------------
+	FILE        : RandomPeriodicTextGenerator.java
+	AUTHOR      : JavaApp1-Mar-2023 Group
+	LAST UPDATE : 03.08.2023
+
+	RandomPeriodicTextGenerator class
+
+	Copyleft (c) 1993 by C and System Programmers Association (CSD)
+	All Rights Free
+-----------------------------------------------------------------------*/
 package org.csystem.generator.random;
 
+import org.csystem.generator.random.function.IConsumer;
 import org.csystem.util.scheduler.Scheduler;
 import org.csystem.util.string.StringUtil;
 
 import java.util.random.RandomGenerator;
 
-public class RandomTextGenerator {
+public class RandomPeriodicTextGenerator {
     private final RandomGenerator m_randomGenerator;
     private final Scheduler m_scheduler;
     private final int m_min, m_bound;
@@ -20,8 +31,12 @@ public class RandomTextGenerator {
         if (--m_n == 0)
             m_scheduler.cancel();
     }
+    public RandomPeriodicTextGenerator(RandomGenerator randomGenerator, int min, int bound, int count, long period)
+    {
+        this(randomGenerator, min, bound, count, 0, period);
+    }
 
-    public RandomTextGenerator(RandomGenerator randomGenerator, int min, int bound, int count, long delay, long period)
+    public RandomPeriodicTextGenerator(RandomGenerator randomGenerator, int min, int bound, int count, long delay, long period)
     {
         m_randomGenerator = randomGenerator;
         m_scheduler = new Scheduler(delay, period);

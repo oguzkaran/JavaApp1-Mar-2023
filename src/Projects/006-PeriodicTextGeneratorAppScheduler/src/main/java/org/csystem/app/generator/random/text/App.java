@@ -1,4 +1,4 @@
-package org.csystem.app;
+package org.csystem.app.generator.random.text;
 
 class App {
     public static void main(String[] args)

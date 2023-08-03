@@ -1,13 +1,9 @@
-package org.csystem.app;
+package org.csystem.app.generator.random.text;
 
 import com.karandev.util.console.Console;
-import org.csystem.app.generator.text.RandomTextGenerator;
-import org.csystem.util.scheduler.Scheduler;
-import org.csystem.util.string.StringUtil;
+import org.csystem.generator.random.RandomPeriodicTextGenerator;
 
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import static com.karandev.util.console.commandline.CommandLineUtil.checkLengthEquals;
 
@@ -21,7 +17,7 @@ class Application {
             var bound = Integer.parseInt(args[2]);
             var delay = Long.parseLong(args[3]);
             var period = Long.parseLong(args[4]);
-            var randomTextGenerator = new RandomTextGenerator(new Random(), min, bound, count, delay, period);
+            var randomTextGenerator = new RandomPeriodicTextGenerator(new Random(), min, bound, count, delay, period);
 
             randomTextGenerator.generate(str -> Console.writeLine("Text:%s", str));
         }
