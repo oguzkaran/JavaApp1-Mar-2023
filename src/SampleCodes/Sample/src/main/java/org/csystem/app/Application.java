@@ -25,7 +25,6 @@ class Application {
                 var resultOpt = Util.toInt(str);
                 resultOpt.ifPresentOrElse(val -> Console.writeLine("%d * %d = %d", val, val, val * val), () -> throw new IllegalArgumentException("Invalid value!..."));
 
-                Console.writeLine("%d * %d = %d", val, val, val * val);
                 Console.writeLine("---------------------------------");
                 ThreadUtil.sleep(1000);
             }
