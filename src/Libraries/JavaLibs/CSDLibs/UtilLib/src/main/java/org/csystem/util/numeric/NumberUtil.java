@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 03.08.2023
+	LAST UPDATE : 08.08.2023
 
 	Utility class for numeric operations
 
@@ -398,48 +398,6 @@ public final class NumberUtil {
 		}
 		catch (NumberFormatException ignore) {
 			result = OptionalLong.empty();
-		}
-
-		return result;
-	}
-
-	public static int toInt(String str, int defaultValue)
-	{
-		int result = defaultValue;
-
-		try {
-			result = Integer.parseInt(str);
-		}
-		catch (NumberFormatException ignore) {
-
-		}
-
-		return result;
-	}
-
-	public static double toDouble(String str, double defaultValue)
-	{
-		double result = defaultValue;
-
-		try {
-			result = Double.parseDouble(str);
-		}
-		catch (NumberFormatException ignore) {
-
-		}
-
-		return result;
-	}
-
-	public static long toLong(String str, long defaultValue)
-	{
-		long result = defaultValue;
-
-		try {
-			result = Long.parseLong(str);
-		}
-		catch (NumberFormatException ignore) {
-
 		}
 
 		return result;
