@@ -82,6 +82,7 @@ public class AlarmClock {
     public AlarmClock start(IRunnable alarmTask, IRunnable periodTask, AlarmClockStatus alarmClockStatus)
     {
         m_scheduler.schedule(() -> schedulerTaskCallback(alarmTask, periodTask, alarmClockStatus));
+
         return this;
     }
 

@@ -1,125 +1,37 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Annotation:
+    Java'da annotation'lar kategori olarak 3 gruba ayrılır: RUNTIME, CLASS, SOURCE
+    RUNTIME: Çalışma zamanında kullanılmak üzere tasarlanmış bir annotation olduğunu belirler. Bu ketegorideki
+    annotation'ların çalışma zamanında nasıl ele alınacağı "reflection" konusunda detaylandırılacaktır.
+
+    CLASS: Derleyici tarafından arakoda yazılsa da çalışma zamanında kullanılamayan annotation olduğunu belirler.
+
+    SOURCE: Derleyicini arakoda eklemediği bir annotation olacağını belirler
+
+    Anahtar Notlar: CLASS ve SOURCE annotation'ların yazımı ve genel olarak derleme zamanında kullanımı bu kursta ele
+    alınmayacaktır. "Java ile Uygulama Geliştirme 2" kursunda ele alınacaktır
+
+    Burada anlatılan kategorilere "retention policy" denir. Bir annotation'ın "retention policy"si Retention annotation'ı
+    iler belirlenir. Bu annotation'ın value elemanı RetentionPolicy enum sınıfı türündendir. Yukarıdaki kategoriler bu
+    enum sınıfının sabitleridir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import com.karandev.util.console.Console;
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Optional;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 class Application {
     public static void run(String [] args)
     {
-        var employee1 = new Employee("Ümit", "Yasin", "Çoban", LocalDate.of(1997, Month.OCTOBER, 15));
-        var employee2 = new Employee("Baturhan", "Şahin", LocalDate.of(1994, Month.OCTOBER, 13));
 
-        Console.writeLine(employee1);
-        Console.writeLine(employee2);
-
-        employee1.setMiddleNameEmpty();
-        employee2.setMiddleName("Baturhan");
-
-        Console.writeLine(employee1);
-        Console.writeLine(employee2);
     }
 }
 
-class Employee {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private String m_firstName;
-    private Optional<String>  m_middleNameOpt;
-    private String m_lastName;
-
-    private LocalDate m_birthDate;
+@Retention(RetentionPolicy.RUNTIME)
+@interface MyAnnotation {
     //...
-
-
-    public String getFirstName()
-    {
-        return m_firstName;
-    }
-
-    public void setFirstName(String firstName)
-    {
-        m_firstName = firstName;
-    }
-
-    public Optional<String> getMiddleNameOpt()
-    {
-        return m_middleNameOpt;
-    }
-
-    public void setMiddleName(String middleName)
-    {
-        m_middleNameOpt = Optional.of(middleName);
-    }
-
-    public void setMiddleNameEmpty()
-    {
-        m_middleNameOpt = Optional.empty();
-    }
-
-    public String getLastName()
-    {
-        return m_lastName;
-    }
-
-    public void setLastName(String lastName)
-    {
-        m_lastName = lastName;
-    }
-
-    public LocalDate getBirthDate()
-    {
-        return m_birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate)
-    {
-        m_birthDate = birthDate;
-    }
-
-    public Employee(String firstName, String lastName, LocalDate birthDate)
-    {
-        this(firstName, null, lastName, birthDate);
-    }
-
-    public Employee(String firstName, String middleName, String lastName, LocalDate birthDate)
-    {
-        m_firstName = firstName;
-        m_middleNameOpt = Optional.ofNullable(middleName);
-        m_lastName = lastName;
-        m_birthDate = birthDate;
-    }
-
-    //...
-
-    public double getAge()
-    {
-        return ChronoUnit.DAYS.between(m_birthDate, LocalDate.now()) / 365.;
-    }
-    public String getFullName()
-    {
-        return String.format("%s%s %s", m_firstName, m_middleNameOpt.map(mn -> " " + mn).orElse(""), m_lastName);
-    }
-
-    @Override
-    public String toString()
-    {
-        return String.format("Full Name:%s, BirthDate:%s, Age:%.2f", getFullName(), FORMATTER.format(m_birthDate), getAge());
-    }
 }
 
-@FunctionalInterface
-interface IX {
-    void foo();
-
-   default void bar()
-   {
-
-   }
+@Retention(RetentionPolicy.CLASS)
+@interface YourAnnotation {
+    //...
 }
