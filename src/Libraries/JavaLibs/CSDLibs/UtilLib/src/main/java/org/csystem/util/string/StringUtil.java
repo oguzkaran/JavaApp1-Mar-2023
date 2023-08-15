@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 13.07.2023
+	LAST UPDATE : 15.08.2023
 
 	Utility class for string operations
 
@@ -108,8 +108,6 @@ public final class StringUtil {
         return getRandomText(randomGenerator, n, ALPHABET_ALL_EN);
     }
 
-
-
     public static String getRandomTextTR(RandomGenerator randomGenerator, int n)
     {
         return getRandomText(randomGenerator, n, ALPHABET_ALL_TR);
@@ -133,6 +131,12 @@ public final class StringUtil {
         fillRandomStringArrayEN(randomGenerator, result, min, max);
 
         return result;
+    }
+
+
+    public static String viewFirst(String text, char ch)
+    {
+        return String.format("%c%s", text.charAt(0), String.valueOf(ch).repeat(text.length() - 1));
     }
 
     public static boolean isJavaIdentifier(String s)
