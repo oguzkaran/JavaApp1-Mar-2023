@@ -10,12 +10,12 @@
 	</parent>
 
 	<artifactId>org-csystem-util-datetime-legacy</artifactId>
-	<version>14.0.0</version>
+	<version>14.2.0</version>
 	<description>Legacy DateTime Library</description>
 
 	<properties>
-		<maven.compiler.source>7</maven.compiler.source>
-		<maven.compiler.target>7</maven.compiler.target>
+		<maven.compiler.source>9</maven.compiler.source>
+		<maven.compiler.target>9</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 

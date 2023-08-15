@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Complex.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 16.03.2023
+	LAST UPDATE : 15.08.2023
 
 	Immutable Complex class that can be used for Complex numbers
 
@@ -117,6 +117,7 @@ public class Complex {
 		return this.inc();
 	}
 
+	@Override
 	public String toString()
 	{				
 		return String.format("|%.1f%si| = %f", m_real, (m_imag < 0 ? " - " : " + ") +  abs(m_imag), this.getNorm());

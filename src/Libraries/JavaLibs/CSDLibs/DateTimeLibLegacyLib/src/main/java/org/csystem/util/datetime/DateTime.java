@@ -1,12 +1,15 @@
 package org.csystem.util.datetime;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import static java.util.Calendar.*;
 
+@Deprecated(since = "Java 9: Use Java 8 DateTime API classes", forRemoval = true)
 public final class DateTime implements Serializable, Comparable<DateTime> {
+    @Serial
     private static final long serialVersionUID = 1L;
     private static final int [] DAYS_OF_MONTHS = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private final Calendar m_calendar;

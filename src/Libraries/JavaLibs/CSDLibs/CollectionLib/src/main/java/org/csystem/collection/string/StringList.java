@@ -50,5 +50,11 @@ public class StringList {
         return sb.substring(0, sb.length() - separator.length());
     }
 
+    @Override
+    public String toString()
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
     //...
 }

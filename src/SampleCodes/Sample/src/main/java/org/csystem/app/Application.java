@@ -1,30 +1,25 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Override "retention policy"'si SOURCE olan ve yalnızca metot bildirimlerinde kullanılabilen bir annotation'dır. Bu
-    annotation'ın elemanı yoktur. Bu annotation, metodun override edilip edilemeyeceğinin derleme zamanında kontrolü
-    için kullanılır. Eğer metot override edilemiyor ise error oluşur. Override SOURCE bir annotation olduğu için byte code'a
-    yazılmaz. Bu anlamda byte code'un içerisinde yer kaplamaz. Bu annotation'ın kullanım zorunluluğu yoktur. Ancak her
-    override işleminde her zaman kullanılmalıdır. Bu annotation'ın okunabilirliği artırır. 
+    Deprecated annotation'ı bir bildirimin deprecated olarak işaretlenmesi için kullanılır. Deprecated, bir RUNTIME
+    annotation olmasına karşın Java derleyicisi ve bir çok static kod analizi aracı tarafından dikkate alınır. Java
+    derleyicileri ve static kod analizi araçları deprecated olan bir bildirimin kullanılması durumunda uyarı mesajı
+    verirler. Java 9 ile birlikte Deprecated annotation'ına boolean türden forRemoval ve String türden since elemanları
+    eklenmiştir. forRemoval default olarak false değerindedir. Bu eleman deprecated olan bildirimin ileride silinip
+    silinmeyeceği konusunda bilgi vermek amaçlı kullanılır. since elemanının default değeri boş string'dir. Genel olarak
+    deprecated olan versiyonu belirtmek için kullanılır. Derleyicilerin ve static kod analizi araçlarının hemen hepsi
+    bu iki eleman için de uygun uyarıyı verirler.
+    org-csystem-util-datetime-legacy kütüphanesindeki sınıfları inceleyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.util.console.Console;
-import org.csystem.app.company.Employee;
-
-import java.time.LocalDate;
-import java.time.Month;
+import org.csystem.util.datetime.DateTime;
 
 class Application {
     public static void run(String [] args)
     {
-        var employee1 = new Employee("Ümit", "Yasin", "Çoban", LocalDate.of(1997, Month.OCTOBER, 15));
-        var employee2 = new Employee("Baturhan", "Şahin", LocalDate.of(1994, Month.OCTOBER, 13));
+        var a = new Integer(10);
 
-        Console.writeLine(employee1);
-        Console.writeLine(employee2);
-
-        Console.writeLine(employee1.getSecretFullName('X'));
-        Console.writeLine(employee2.getSecretFullName('X'));
+        Console.writeLine(a);
     }
 }
-
 

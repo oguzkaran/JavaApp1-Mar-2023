@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CSDArrayList.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 25.04.2023
+	LAST UPDATE : 15.08.2023
 
 	CSDArrayList class that represents dynamic array
 
@@ -144,6 +144,7 @@ public class CSDArrayList<E> {
             changeCapacity(m_index);
     }
 
+    @Override
     public String toString()
     {
         String str = "[";
