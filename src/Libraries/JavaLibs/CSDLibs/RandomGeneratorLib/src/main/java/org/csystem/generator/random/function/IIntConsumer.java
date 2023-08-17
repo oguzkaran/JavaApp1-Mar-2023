@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : IIntConsumer.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 03.08.2023
+	LAST UPDATE : 17.08.2023
 
 	IIntConsumer functional interface
 
@@ -10,6 +10,7 @@
 -----------------------------------------------------------------------*/
 package org.csystem.generator.random.function;
 
+@FunctionalInterface
 public interface IIntConsumer {
     void accept(int val) throws Exception;
 }

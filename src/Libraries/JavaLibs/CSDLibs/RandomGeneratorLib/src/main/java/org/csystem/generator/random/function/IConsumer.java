@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : IConsumer.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 03.08.2023
+	LAST UPDATE : 17.08.2023
 
 	IConsumer functional interface
 
@@ -10,6 +10,7 @@
 -----------------------------------------------------------------------*/
 package org.csystem.generator.random.function;
 
+@FunctionalInterface
 public interface IConsumer<T> {
     void accept(T t) throws Exception;
 }

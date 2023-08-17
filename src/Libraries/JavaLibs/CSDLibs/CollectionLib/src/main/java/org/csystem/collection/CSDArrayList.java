@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CSDArrayList.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 15.08.2023
+	LAST UPDATE : 17.08.2023
 
 	CSDArrayList class that represents dynamic array
 
@@ -12,18 +12,19 @@
 -----------------------------------------------------------------------*/
 package org.csystem.collection;
 
+import java.util.Arrays;
+
 public class CSDArrayList<E> {
-    private static final boolean DEBUG = true;
     private static final int DEFAULT_CAPACITY = 10;
-    private E [] m_elems;
+    private E[] m_elements;
     private int m_index;
 
-    private static void doWorkForIllegalArgumentException(String message)
+    private static void throwForIllegalArgument(String message)
     {
         throw new IllegalArgumentException(message);
     }
 
-    private static void doWorkForIndexOutOfBoundsException(String message)
+    private static void throwForIndexOutOfBounds(String message)
     {
         throw new IndexOutOfBoundsException(message);
     }
@@ -31,106 +32,102 @@ public class CSDArrayList<E> {
     private static void checkCapacity(int capacity)
     {
         if (capacity < 0)
-            doWorkForIllegalArgumentException("Capacity value can not be negative:" + capacity);
+            throwForIllegalArgument(String.format("Capacity can not be negative:%d", capacity));
     }
 
     private void checkIndex(int index)
     {
         if (index < 0 || index >= m_index)
-            doWorkForIndexOutOfBoundsException("Index out of range:" + index);
+            throwForIndexOutOfBounds(String.format("Index out of bounds:%d", index));
     }
 
     private void changeCapacity(int capacity)
     {
-        if (DEBUG) {
-            assert capacity > m_elems.length : String.format("new capacity must be greater than current capacity -> new Capacity:%d, current capacity:%d", capacity, m_elems.length);
-        }
-
-        E [] temp = (E[])new Object[capacity];
-
-        System.arraycopy(m_elems, 0, temp, 0, m_index);
-        m_elems = temp;
+        m_elements = Arrays.copyOf(m_elements, capacity);
     }
 
+    private void enlargeCapacityIfNecessary()
+    {
+        if (m_index == m_elements.length)
+            changeCapacity(m_elements.length == 0 ? 1 : m_elements.length * 2);
+    }
+
+    @SuppressWarnings("unchecked")
     public CSDArrayList()
     {
-        m_elems = (E[])new Object[DEFAULT_CAPACITY];
+        m_elements = (E[])new Object[DEFAULT_CAPACITY];
     }
 
+    @SuppressWarnings("unchecked")
     public CSDArrayList(int initialCapacity)
     {
         checkCapacity(initialCapacity);
-        m_elems = (E[])new Object[initialCapacity];
+        m_elements = (E[])new Object[initialCapacity];
     }
 
-    public boolean add(E elem)
+    public boolean add(E e)
     {
-        if (m_elems.length == m_index)
-            changeCapacity(m_elems.length == 0 ? 1 : m_elems.length * 2);
-
-        m_elems[m_index++] = elem;
+        enlargeCapacityIfNecessary();
+        m_elements[m_index++] = e;
 
         return true;
     }
 
-    public void add(int index, E elem)
+    public void add(int index, E e)
     {
-        if (m_elems.length == m_index)
-            changeCapacity(m_elems.length == 0 ? 1 : m_elems.length * 2);
-
-        //TODO:
+        enlargeCapacityIfNecessary();
+        for (int i = m_index++; i > index; --i)
+            m_elements[i] = m_elements[i - 1];
+        m_elements[index] = e;
     }
 
     public int capacity()
     {
-        return m_elems.length;
+        return m_elements.length;
     }
 
     public void clear()
     {
         for (int i = 0; i < m_index; ++i)
-            m_elems[i] = null;
+            m_elements[i] = null;
 
         m_index = 0;
     }
 
     public void ensureCapacity(int minCapacity)
     {
-        if (minCapacity > m_elems.length)
-            changeCapacity(Math.max(m_elems.length * 2, minCapacity));
+        if (minCapacity > m_elements.length)
+            changeCapacity(Math.max(m_elements.length * 2, minCapacity));
     }
 
     public E get(int index)
     {
         checkIndex(index);
 
-        return m_elems[index];
-    }
-
-    public boolean isEmpty()
-    {
-        return m_index == 0;
+        return m_elements[m_index];
     }
 
     public E remove(int index)
     {
-        //...
-        E oldVal = m_elems[index];
+        checkIndex(index);
+        E old = m_elements[index];
 
-        //TODO:
+        for (int i = index; i < m_index - 1; ++i)
+            m_elements[i] = m_elements[i + 1];
 
-        return oldVal;
+        m_elements[--m_index] = null;
+
+        return old;
     }
 
-    public E set(int index, E elem)
+    public E set(int index, E e)
     {
         checkIndex(index);
+        E old = m_elements[index];
 
-        E oldElem = m_elems[index];
+        m_elements[index] = e;
 
-        m_elems[index] = elem;
-
-        return oldElem;
+        return old;
     }
 
     public int size()
@@ -140,23 +137,17 @@ public class CSDArrayList<E> {
 
     public void trimToSize()
     {
-        if (m_index != m_elems.length)
+        if (m_elements.length != m_index)
             changeCapacity(m_index);
     }
 
-    @Override
     public String toString()
     {
-        String str = "[";
+        StringBuilder sb = new StringBuilder("[");
 
-        for (int i = 0; i < m_index; ++i) {
-            if (str.length() != 1)
-                str += ", ";
+        for (int i = 0; i < m_index; ++i)
+            sb.append(m_elements[i]).append(", ");
 
-            str += m_elems[i];
-        }
-
-        return str + "]";
+        return (m_index != 0 ? sb.substring(0, sb.length() - 2) : sb.toString()) + "]";
     }
-
 }

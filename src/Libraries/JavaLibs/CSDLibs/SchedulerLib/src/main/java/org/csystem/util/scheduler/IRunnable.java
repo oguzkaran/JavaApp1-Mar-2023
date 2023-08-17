@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : IRunnable.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 25.07.2023
+	LAST UPDATE : 17.08.2023
 
 	IRunnable class
 
@@ -11,6 +11,7 @@
 
 package org.csystem.util.scheduler;
 
+@FunctionalInterface
 public interface IRunnable {
     void run() throws Exception;
 }

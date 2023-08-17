@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ILongConsumer.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 03.08.2023
+	LAST UPDATE : 17.08.2023
 
 	ILongConsumer functional interface
 
