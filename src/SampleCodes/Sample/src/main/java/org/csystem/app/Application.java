@@ -1,17 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Bir türe ilişkin Class nesnesinin referansı 3 şekilde elde edilebilir:
-    1. Tür ismi ve nokta operatörü ile birlikte class anahtar sözcüğü kullanılarak (class expression)
-    2. Class sınıfının statis forName isimli metodu kullanılarak
-    3. Object sınıfının getClass metodu kullanılarak
-
-    Bu yöntemler çoğu zaman birbirlerine alternatif değildir
+    Aşağıdaki örnekte generic bir UDT'nin her açılımının çalışma zamanında farklı türler OLMADIĞı gösterilmektedir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import com.karandev.util.console.Console;
+import org.csystem.math.geometry.Point;
+
+import java.util.ArrayList;
 
 class Application {
     public static void run(String [] args)
     {
+        var texts = new ArrayList<String>();
+        var points = new ArrayList<Point>();
 
+        Console.writeLine(texts.getClass() == points.getClass() ? "Aynı nesne" : "Farklı nesneler");
     }
 }
 
