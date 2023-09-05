@@ -1,3 +1,13 @@
+/*----------------------------------------------------------------------
+	FILE        : Commands.java
+	AUTHOR      : Oğuz Karan
+	LAST UPDATE : 05.09.2023
+
+	Commands annotation of REPL framework
+
+	Copyleft (c) 1993 by C and System Programmers Association (CSD)
+	All Rights Free
+-----------------------------------------------------------------------*/
 package com.karandev.util.console.commandprompt.annotation;
 
 import java.lang.annotation.Retention;
