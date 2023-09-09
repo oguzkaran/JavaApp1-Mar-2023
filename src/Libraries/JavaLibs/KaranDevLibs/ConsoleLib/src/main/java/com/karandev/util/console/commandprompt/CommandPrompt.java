@@ -146,20 +146,15 @@ public class CommandPrompt {
 
         if (!flag) {
             if (m_errorCommandMethod != null) {
-                Console.writeLine("not null");
                 m_errorCommandMethod.setAccessible(true);
                 m_errorCommandMethod.invoke(m_regObject);
                 m_errorCommandMethod.setAccessible(false);
             }
-            else {
+            else
                 System.err.println(m_invalidCommandMessage);
-                Console.writeLine("null");
-            }
         }
         else if (!argsFlag)
             System.err.println(m_wrongNumberOfArgumentsMessage);
-
-        Console.writeLine("Any");
     }
 
     private void registerObject(Object regObject)
@@ -172,7 +167,7 @@ public class CommandPrompt {
             var commands = method.getDeclaredAnnotationsByType(Command.class);
 
             if (commands.length == 0) {
-                if (m_errorCommandMethod == null && method.getDeclaredAnnotationsByType(ErrorCommand.class) != null
+                if (m_errorCommandMethod == null && method.getDeclaredAnnotation(ErrorCommand.class) != null
                         && method.getParameters().length == 0)
                     m_errorCommandMethod = method;
                 continue;

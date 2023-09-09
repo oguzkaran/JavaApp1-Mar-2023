@@ -88,7 +88,7 @@ public class CommandPromptApp {
         System.exit(0);
     }
 
-    //@ErrorCommand
+    @ErrorCommand
     private void error()
     {
         System.out.println("Error");
