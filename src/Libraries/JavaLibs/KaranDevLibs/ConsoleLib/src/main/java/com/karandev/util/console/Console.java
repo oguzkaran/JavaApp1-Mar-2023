@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Console.java
 	AUTHOR      : Oğuz Karan
-	LAST UPDATE : 12.04.2023
+	LAST UPDATE : 09.09.2023
 
 	Utility class for standard input, standard output and standard error
 
@@ -627,8 +627,12 @@ public final class Console {
             write(msg);
             var str = ms_kb.nextLine();
 
+            if (str.isEmpty())
+                return '\n';
+
             if (str.length() == 1)
                 return str.charAt(0);
+
             write(errMsg);
         }
     }
