@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------------
-	FILE        : RandomIntGenerator.java
+	FILE        : RandomDoubleGenerator.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
 	LAST UPDATE : 12.09.2023
 
-	Iterable RandomIntGenerator class
+	Iterable RandomDoubleGenerator class
 
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
@@ -14,13 +14,13 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.random.RandomGenerator;
 
-public class RandomIntGenerator implements Iterable<Integer> {
+public class RandomDoubleGenerator implements Iterable<Double> {
     private final RandomGenerator m_randomGenerator;
     private final int m_count;
-    private final int m_min;
-    private final int m_bound;
+    private final double m_min;
+    private final double m_bound;
 
-    private RandomIntGenerator(RandomGenerator randomGenerator, int count, int min, int bound)
+    private RandomDoubleGenerator(RandomGenerator randomGenerator, int count, double min, double bound)
     {
         m_randomGenerator = randomGenerator;
         m_count = count;
@@ -28,13 +28,13 @@ public class RandomIntGenerator implements Iterable<Integer> {
         m_bound = bound;
     }
 
-    public static RandomIntGenerator of(RandomGenerator randomGenerator, int count, int min, int bound)
+    public static RandomDoubleGenerator of(RandomGenerator randomGenerator, int count, double min, double bound)
     {
-        return new RandomIntGenerator(randomGenerator, count, min, bound);
+        return new RandomDoubleGenerator(randomGenerator, count, min, bound);
     }
 
     @Override
-    public Iterator<Integer> iterator()
+    public Iterator<Double> iterator()
     {
         return new Iterator<>() {
             int count;
@@ -46,14 +46,14 @@ public class RandomIntGenerator implements Iterable<Integer> {
             }
 
             @Override
-            public Integer next()
+            public Double next()
             {
                 if (!hasNext())
                     throw new NoSuchElementException("Can not generate a value!...");
 
                 ++count;
 
-                return m_randomGenerator.nextInt(m_min, m_bound);
+                return m_randomGenerator.nextDouble(m_min, m_bound);
             }
         };
     }
