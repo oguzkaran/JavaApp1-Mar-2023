@@ -7,10 +7,12 @@ import org.junit.Test;
 
 import java.util.Random;
 
+import static org.csystem.util.string.StringUtil.getRandomTextEN;
+
 @Ignore
 public class GeneratorTest {
     @Test
-    public void test()
+    public void intValuesTest()
     {
         var min = 0;
         var bound = 100;
@@ -20,5 +22,16 @@ public class GeneratorTest {
             Console.write("%d ", val);
 
         Console.writeLine();
+    }
+
+    @Test
+    public void stringValuesTest()
+    {
+        var min = 5;
+        var bound = 11;
+        var random = new Random();
+
+        for (var str : Generator.of(() -> getRandomTextEN(random, random.nextInt(min, bound)), 5))
+            Console.writeLine(str);
     }
 }

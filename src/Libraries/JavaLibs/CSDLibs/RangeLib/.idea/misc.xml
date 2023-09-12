@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/CollectionLib/pom.xml" />
-        <option value="$PROJECT_DIR$/DateTimeLib/pom.xml" />
-        <option value="$PROJECT_DIR$/DateTimeLibLegacyLib/pom.xml" />
-        <option value="$PROJECT_DIR$/MathLib/pom.xml" />
-        <option value="$PROJECT_DIR$/RandomGeneratorLib/pom.xml" />
-        <option value="$PROJECT_DIR$/SchedulerLib/pom.xml" />
-        <option value="$PROJECT_DIR$/UtilLib/pom.xml" />
-        <option value="$PROJECT_DIR$/GeneratorLib/pom.xml" />
-        <option value="$PROJECT_DIR$/RangeLib/pom.xml" />
       </list>
     </option>
   </component>

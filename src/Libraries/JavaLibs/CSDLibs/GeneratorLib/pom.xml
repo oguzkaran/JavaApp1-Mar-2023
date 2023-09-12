@@ -13,7 +13,7 @@
 
     <artifactId>org-csystem-generator</artifactId>
     <version>14.0.0</version>
-    <name>org-csystem-generator-random</name>
+    <name>org-csystem-generator</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
