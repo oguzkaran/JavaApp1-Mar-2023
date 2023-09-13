@@ -5,8 +5,6 @@
 
 	CSDArrayList class that represents dynamic array
 
-	Note: String concatenation cost ignored for future implementations
-
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
 -----------------------------------------------------------------------*/
