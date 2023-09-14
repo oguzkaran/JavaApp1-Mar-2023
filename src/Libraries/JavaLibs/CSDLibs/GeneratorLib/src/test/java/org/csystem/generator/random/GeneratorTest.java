@@ -18,9 +18,7 @@ public class GeneratorTest {
         var bound = 100;
         var random = new Random();
 
-        for (var val : Generator.of(() -> random.nextInt(min, bound), 5))
-            Console.write("%d ", val);
-
+        Generator.of(() -> random.nextInt(min, bound), 5).forEach(val -> Console.write("%d ", val));
         Console.writeLine();
     }
 
@@ -31,7 +29,6 @@ public class GeneratorTest {
         var bound = 11;
         var random = new Random();
 
-        for (var str : Generator.of(() -> getRandomTextEN(random, random.nextInt(min, bound)), 5))
-            Console.writeLine(str);
+        Generator.of(() -> getRandomTextEN(random, random.nextInt(min, bound)), 5).forEach(Console::writeLine);
     }
 }

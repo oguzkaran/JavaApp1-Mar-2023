@@ -73,8 +73,14 @@
 
         <dependency>
             <groupId>org.csystem</groupId>
-            <artifactId>org-csystem-generator-random</artifactId>
-            <version>14.1.0</version>
+            <artifactId>org-csystem-generator</artifactId>
+            <version>14.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.csystem</groupId>
+            <artifactId>org-csystem-range</artifactId>
+            <version>14.0.0</version>
         </dependency>
 
         <dependency>

@@ -11,7 +11,6 @@ public class RandomLongGeneratorTest {
     @Test
     public void test()
     {
-        for (var val : RandomLongGenerator.of(new Random(), 10, Long.MIN_VALUE, Long.MAX_VALUE))
-            Console.write("%d%n", val);
+        RandomLongGenerator.of(new Random(), 10, Long.MIN_VALUE, Long.MAX_VALUE).forEach(Console::writeLine);
     }
 }

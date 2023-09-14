@@ -11,11 +11,7 @@ public class RandomIntGeneratorTest {
     @Test
     public void test()
     {
-        var gen = RandomIntGenerator.of(new Random(), 10, 0, 100);
-
-        for (var val : gen)
-            Console.write("%d ", val);
-
+        RandomIntGenerator.of(new Random(), 10, 0, 100).forEach(val -> Console.write("%d ", val));
         Console.writeLine();
     }
 }

@@ -11,7 +11,6 @@ public class RandomDoubleGeneratorTest {
     @Test
     public void test()
     {
-        for (var val : RandomDoubleGenerator.of(new Random(), 10, 0, 100))
-            Console.write("%f%n", val);
+        RandomDoubleGenerator.of(new Random(), 10, 0, 100).forEach(Console::writeLine);
     }
 }
