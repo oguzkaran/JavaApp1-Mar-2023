@@ -1,21 +1,25 @@
 /*----------------------------------------------------------------------
 	FILE        : DirectoryList.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 14.09.2023
+	LAST UPDATE : 19.09.2023
 
 	Iterable DirectoryList class
 
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
 -----------------------------------------------------------------------*/
-package org.csystem.io.file;
+package org.csystem.io.file.directory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class DirectoryList implements Iterable<File> {
+    private final File [] m_files;
 
     public DirectoryList(String path) throws IOException
     {
@@ -24,23 +28,34 @@ public class DirectoryList implements Iterable<File> {
 
     public DirectoryList(Path path) throws IOException
     {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (Files.exists(path) && !Files.isDirectory(path))
+            throw new NotDirectoryException(String.format("'%s' is not a directory!...", path));
+
+        m_files = new File(path.toString()).listFiles();
+
+        if (m_files == null)
+            throw new IOException("IO problem occurs!...");
     }
 
     @Override
     public Iterator<File> iterator()
     {
         return new Iterator<>() {
+            int index;
+
             @Override
             public boolean hasNext()
             {
-                throw new UnsupportedOperationException("Not implemented yet");
+                return index + 1 < m_files.length;
             }
 
             @Override
             public File next()
             {
-                throw new UnsupportedOperationException("Not implemented yet");
+                if (!hasNext())
+                    throw new NoSuchElementException("");
+
+                return m_files[index++];
             }
         };
     }
