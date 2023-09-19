@@ -5,18 +5,22 @@ import com.karandev.util.console.commandprompt.CommandPrompt;
 import com.karandev.util.console.commandprompt.annotation.Command;
 import com.karandev.util.console.commandprompt.annotation.Commands;
 import com.karandev.util.console.commandprompt.annotation.ErrorCommand;
+import org.csystem.io.file.directory.DirectoryList;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
 import java.util.random.RandomGenerator;
 
 public class CommandPromptApp {
+    private static final String [] COMMANDS =
+            {"ls, list, dir", "cp, copy", "append_rand_bytes, arb", "quit, exit", "help, ?", "read_bytes, rb"};
     private final CommandPrompt m_commandPrompt;
     private final RandomGenerator m_randomGenerator;
-    //...
+
+    private void doListForEachCallback(File file)
+    {
+        Console.writeLine("%s %s", file.getName(), file.isDirectory() ? "<DIR>" : String.valueOf(file.length()));
+    }
 
     @Command("ls")
     @Command("dir")
@@ -25,29 +29,37 @@ public class CommandPromptApp {
     {
         list(".");
     }
-
-    private void doList(File dir)
+    
+    private void doList(Path path)
     {
-        var files = dir.listFiles();
-
-        if (files != null)
-            for (var file : files)
-                Console.writeLine("%s %s", file.getName(), file.isDirectory() ? "<DIR>" : String.valueOf(file.length()));
-        else
-            Console.Error.writeLine("'%s' is not a directory", dir.getName());
+        try {
+            new DirectoryList(path).forEach(this::doListForEachCallback);
+        }
+        catch (NotDirectoryException ignore) {
+            Console.Error.writeLine("'%s' is not a directory", path);
+        }
+        catch (IOException ex) {
+            Console.Error.writeLine(ex.getMessage());
+        }
     }
 
     @Command("ls")
     @Command("dir")
     @Command
-    private void list(String path)
+    private void list(String pathStr)
     {
-        var dir = new File(path);
+        try {
+            var path = Path.of(pathStr);
 
-        if (dir.exists())
-            doList(dir);
-        else
-            Console.Error.writeLine("'%s' not exists", dir.getName());
+            if (Files.exists(path))
+                doList(path);
+            else
+                Console.Error.writeLine("'%s' not exists", path);
+        }
+        catch (InvalidPathException ex) {
+            Console.Error.writeLine(ex.getMessage());
+        }
+
     }
 
     private boolean checkFileIfExists(Path source)
@@ -123,6 +135,14 @@ public class CommandPromptApp {
         catch (Throwable ex) {
             Console.Error.writeLine("General Problem occurs:%s", ex.getMessage());
         }
+    }
+
+    @Command("?")
+    @Command
+    private void help()
+    {
+        for (var str : COMMANDS)
+            Console.writeLine("%s -> ", str);
     }
 
     @Command("quit")

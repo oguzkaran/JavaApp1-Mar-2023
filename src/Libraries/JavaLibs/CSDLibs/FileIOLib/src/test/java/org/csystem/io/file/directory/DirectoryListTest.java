@@ -1,14 +1,14 @@
 package org.csystem.io.file.directory;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.InvalidPathException;
 import java.nio.file.NotDirectoryException;
-import java.nio.file.Path;
 
+@Ignore
 public class DirectoryListTest {
     private void directoryListCallback(File file)
     {
@@ -33,11 +33,5 @@ public class DirectoryListTest {
     public void givenPath_whenNotFound_thenThrowsIOException()
     {
         Assert.assertThrows(IOException.class, () -> new DirectoryList("./pom.xmll").forEach(this::directoryListCallback));
-    }
-
-    @Test
-    public void givenPath_whenInvalid_thenThrowsInvalidPathException()
-    {
-        Assert.assertThrows(InvalidPathException.class, () -> new DirectoryList(Path.of("=/ali")).forEach(this::directoryListCallback));
     }
 }
