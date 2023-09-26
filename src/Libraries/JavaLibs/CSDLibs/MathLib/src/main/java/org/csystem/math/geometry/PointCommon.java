@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: PointCommon.java
 	AUTHOR		: JavaApp1-Mar-2023 Group
-	LAST UPDATE	: 29.03.2023
+	LAST UPDATE	: 26.09.2023
 
 	Friendly Utility class for common point operations
 
@@ -11,7 +11,7 @@
 package org.csystem.math.geometry;
 
 class PointCommon {
-
+    static final double DELTA = 0.00001;
     static double distance(double x1, double y1, double x2, double y2)
     {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));

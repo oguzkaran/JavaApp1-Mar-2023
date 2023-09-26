@@ -91,7 +91,14 @@ public class MutablePoint {
 		m_x += dx;
 		m_y += dy;
 	}
-	
+
+	@Override
+	public boolean equals(Object other)
+	{
+		return other instanceof MutablePoint p && Math.abs(m_x - p.m_x) < PointCommon.DELTA && Math.abs(m_y - p.m_y) < PointCommon.DELTA;
+	}
+
+	@Override
 	public String toString()
 	{
 		return PointCommon.toString(m_x, m_y);

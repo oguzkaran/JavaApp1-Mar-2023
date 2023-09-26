@@ -124,9 +124,6 @@ public class Complex {
 	{
 		return other instanceof Complex z && Math.abs(m_real - z.m_real) < DELTA && Math.abs(m_imag - z.m_imag) < DELTA;
 	}
-
-
-
 	@Override
 	public String toString()
 	{				

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CSDArrayList.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 17.08.2023
+	LAST UPDATE : 26.09.2023
 
 	CSDArrayList class that represents dynamic array
 
@@ -11,8 +11,9 @@
 package org.csystem.collection;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class CSDArrayList<E> {
+public class CSDArrayList<E> implements Iterable<E> {
     private static final int DEFAULT_CAPACITY = 10;
     private E[] m_elements;
     private int m_index;
@@ -105,6 +106,22 @@ public class CSDArrayList<E> {
         return m_elements[m_index];
     }
 
+    public int indexOf(Object o)
+    {
+        if (o == null) {
+            for (var i = 0; i < m_index; ++i)
+                if (m_elements[i] == null)
+                    return i;
+        }
+        else {
+            for (var i = 0; i < m_index; ++i)
+                if (o.equals(m_elements[i]))
+                    return i;
+        }
+
+        return -1;
+    }
+
     public E remove(int index)
     {
         checkIndex(index);
@@ -139,6 +156,26 @@ public class CSDArrayList<E> {
             changeCapacity(m_index);
     }
 
+
+    @Override
+    public Iterator<E> iterator()
+    {
+        return new Iterator<>() {
+            @Override
+            public boolean hasNext()
+            {
+                throw new UnsupportedOperationException("Not implemented yet!..");
+            }
+
+            @Override
+            public E next()
+            {
+                throw new UnsupportedOperationException("Not implemented yet!..");
+            }
+        };
+    }
+
+    @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder("[");

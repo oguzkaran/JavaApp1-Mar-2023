@@ -1,20 +1,20 @@
-package org.csystem.math;
+package org.csystem.collection;
 
-import org.csystem.math.factory.RandomComplexFactory;
+import org.csystem.collection.factory.RandomComplexFactory;
+import org.csystem.math.Complex;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 @Ignore
-public class ComplexEqualsTest {
+public class CSDArrayListIndexOfTest {
 
     @Test
     public void fillValuesLastZero_thenFindZero()
     {
-        var numbers = new ArrayList<Complex>();
+        var numbers = new CSDArrayList<Complex>();
         var factory = new RandomComplexFactory(new Random());
 
         while (true) {
