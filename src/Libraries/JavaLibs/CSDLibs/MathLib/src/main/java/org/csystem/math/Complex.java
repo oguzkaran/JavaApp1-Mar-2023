@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Complex.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 15.08.2023
+	LAST UPDATE : 26.09.2023
 
 	Immutable Complex class that can be used for Complex numbers
 
@@ -14,6 +14,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 public class Complex {
+	private static final double DELTA = 0.0001;
 	private final double m_real;
 	private final double m_imag;
 
@@ -116,6 +117,15 @@ public class Complex {
 	{
 		return this.inc();
 	}
+
+
+	@Override
+	public boolean equals(Object other)
+	{
+		return other instanceof Complex z && Math.abs(m_real - z.m_real) < DELTA && Math.abs(m_imag - z.m_imag) < DELTA;
+	}
+
+
 
 	@Override
 	public String toString()
