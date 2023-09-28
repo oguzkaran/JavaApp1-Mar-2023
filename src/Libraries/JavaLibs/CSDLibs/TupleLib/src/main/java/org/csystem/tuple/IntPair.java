@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------------
-	FILE        : Pair.java
+	FILE        : IntPair.java
 	AUTHOR      : JavaApp1-Mar-2023-Group
 	LAST UPDATE : 28.09.2023
 
-	Immutable Pair class that represents Tuple<F, S>
+	Immutable Pair class that represents Int tuple
 
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
@@ -12,32 +12,32 @@ package org.csystem.tuple;
 
 import java.util.Objects;
 
-public final class Pair<T1, T2> {
-    private final T1 m_first;
-    private final T2 m_second;
+public final class IntPair {
+    private final int m_first;
+    private final int m_second;
 
-    public static <T1, T2> Pair<T1, T2> of(T1 first, T2 second)
+    public static IntPair of(int first, int second)
     {
-        return new Pair<>(first, second);
+        return new IntPair(first, second);
     }
 
-    public Pair()
+    public IntPair()
     {
-        this(null, null);
+        this(0, 0);
     }
 
-    public Pair(T1 first, T2 second)
+    public IntPair(int first, int second)
     {
         m_first = first;
         m_second = second;
     }
 
-    public T1 getFirst()
+    public int getFirst()
     {
         return m_first;
     }
 
-    public T2 getSecond()
+    public int getSecond()
     {
         return m_second;
     }
@@ -45,12 +45,12 @@ public final class Pair<T1, T2> {
     @Override
     public String toString()
     {
-        return String.format("(%s, %s)", m_first, m_second);
+        return String.format("(%d, %d)", m_first, m_second);
     }
 
     @Override
     public boolean equals(Object other)
     {
-        return other instanceof Pair<?, ?> p && Objects.equals(p.m_first, m_first) && Objects.equals(p.m_second, m_second);
+        return other instanceof IntPair p && Objects.equals(p.m_first, m_first) && Objects.equals(p.m_second, m_second);
     }
 }

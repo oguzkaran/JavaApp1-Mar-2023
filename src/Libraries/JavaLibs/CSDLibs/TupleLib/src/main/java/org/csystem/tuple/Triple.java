@@ -12,41 +12,39 @@ package org.csystem.tuple;
 
 import java.util.Objects;
 
-public final class Triple<F, S, T> {
-    private final F m_first;
-    private final S m_second;
-    private final T m_third;
+public final class Triple<T1, T2, T3> {
+    private final T1 m_first;
+    private final T2 m_second;
+    private final T3 m_third;
 
-    public static <F, S, T> Triple<F, S, T> of(F first, S second, T third)
+    public static <T1, T2, T3> Triple<T1, T2, T3> of(T1 first, T2 second, T3 third)
     {
         return new Triple<>(first, second, third);
     }
 
     public Triple()
     {
-        m_first = null;
-        m_second = null;
-        m_third = null;
+        this(null, null, null);
     }
 
-    public Triple(F first, S second, T third)
+    public Triple(T1 first, T2 second, T3 third)
     {
         m_first = first;
         m_second = second;
         m_third = third;
     }
 
-    public F getFirst()
+    public T1 getFirst()
     {
         return m_first;
     }
 
-    public S getSecond()
+    public T2 getSecond()
     {
         return m_second;
     }
 
-    public T getThird()
+    public T3 getThird()
     {
         return m_third;
     }
@@ -60,7 +58,7 @@ public final class Triple<F, S, T> {
     @Override
     public boolean equals(Object other)
     {
-        return other instanceof Triple<?, ?, ?> p && Objects.equals(p.m_first, m_first) &&
-                Objects.equals(p.m_second, m_second) && Objects.equals(p.m_third, m_third);
+        return other instanceof Triple<?, ?, ?> t && Objects.equals(t.m_first, m_first)
+                && Objects.equals(t.m_second, m_second) && Objects.equals(t.m_third, m_third);
     }
 }

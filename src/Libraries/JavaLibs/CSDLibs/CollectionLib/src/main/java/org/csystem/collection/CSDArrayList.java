@@ -10,10 +10,7 @@
 -----------------------------------------------------------------------*/
 package org.csystem.collection;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 public class CSDArrayList<E> implements Iterable<E> {
     private static final int DEFAULT_CAPACITY = 10;
