@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CSDArrayList.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 26.09.2023
+	LAST UPDATE : 28.09.2023
 
 	CSDArrayList class that represents dynamic array
 
@@ -12,6 +12,8 @@ package org.csystem.collection;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class CSDArrayList<E> implements Iterable<E> {
     private static final int DEFAULT_CAPACITY = 10;
@@ -108,16 +110,9 @@ public class CSDArrayList<E> implements Iterable<E> {
 
     public int indexOf(Object o)
     {
-        if (o == null) {
-            for (var i = 0; i < m_index; ++i)
-                if (m_elements[i] == null)
-                    return i;
-        }
-        else {
-            for (var i = 0; i < m_index; ++i)
-                if (o.equals(m_elements[i]))
-                    return i;
-        }
+        for (var i = 0; i < m_index; ++i)
+            if (Objects.equals(o, m_elements[i]))
+                return i;
 
         return -1;
     }
@@ -161,16 +156,21 @@ public class CSDArrayList<E> implements Iterable<E> {
     public Iterator<E> iterator()
     {
         return new Iterator<>() {
+            int index;
+
             @Override
             public boolean hasNext()
             {
-                throw new UnsupportedOperationException("Not implemented yet!..");
+                return index < m_index;
             }
 
             @Override
             public E next()
             {
-                throw new UnsupportedOperationException("Not implemented yet!..");
+                if (!hasNext())
+                    throw new NoSuchElementException("No such element!...");
+
+                return m_elements[index++];
             }
         };
     }
