@@ -1,5 +1,12 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Collection<T> arayüzü
+    Liste tarzı collection sınıflar, elemanları arasında öncelik-sonralık ilişkisi olan collection sınıflardır. Bu sınıflar
+    Java'da bir convention (contract) olarak List<E> arayüzünü destekler. List<E> arayüzü Collection<E> arayüzünden türetilmiştir.
+    List<E> arayüzünün Collection<E> arayüzünden gelen metotları dışında kalan (yani List<E>'ye eklenen metotlar) önemli
+    iki metot indexOf ve get metotlarıdır. indexOf metodu arama işleminde equals metoduna bakarak eşitlik karşılaştırması
+    yapacak şekilde override edilir. Bu metot daha önce anlatıldığı gibi Objects sınıfının equals metodu ile override
+    edilir. Bu durum List<T> arayüzünün indexOf metodunda da dokümante edilmiştir. get metodu da verilen bir indeksteki
+    elemanına ilişkin referansa döner. Yine bu metot da List<T> arayüzünde uygun şekilde dokümante edilmiştir. List<T>
+    arayüzüne özgü başka metotlar da bulunmaktadır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 

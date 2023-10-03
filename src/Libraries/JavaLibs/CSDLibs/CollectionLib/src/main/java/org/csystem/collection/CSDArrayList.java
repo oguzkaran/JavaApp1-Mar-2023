@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CSDArrayList.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 28.09.2023
+	LAST UPDATE : 03.10.2023
 
 	CSDArrayList class that represents dynamic array
 
@@ -12,7 +12,7 @@ package org.csystem.collection;
 
 import java.util.*;
 
-public class CSDArrayList<E> implements Iterable<E> {
+public class CSDArrayList<E> implements List<E> {
     private static final int DEFAULT_CAPACITY = 10;
     private E[] m_elements;
     private int m_index;
@@ -63,6 +63,7 @@ public class CSDArrayList<E> implements Iterable<E> {
         m_elements = (E[])new Object[initialCapacity];
     }
 
+    @Override
     public boolean add(E e)
     {
         enlargeCapacityIfNecessary();
@@ -71,6 +72,43 @@ public class CSDArrayList<E> implements Iterable<E> {
         return true;
     }
 
+    @Override
+    public boolean remove(Object o)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends E> c)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
     public void add(int index, E e)
     {
         enlargeCapacityIfNecessary();
@@ -84,6 +122,7 @@ public class CSDArrayList<E> implements Iterable<E> {
         return m_elements.length;
     }
 
+    @Override
     public void clear()
     {
         for (int i = 0; i < m_index; ++i)
@@ -98,6 +137,7 @@ public class CSDArrayList<E> implements Iterable<E> {
             changeCapacity(Math.max(m_elements.length * 2, minCapacity));
     }
 
+    @Override
     public E get(int index)
     {
         checkIndex(index);
@@ -105,6 +145,7 @@ public class CSDArrayList<E> implements Iterable<E> {
         return m_elements[m_index];
     }
 
+    @Override
     public int indexOf(Object o)
     {
         for (var i = 0; i < m_index; ++i)
@@ -114,6 +155,31 @@ public class CSDArrayList<E> implements Iterable<E> {
         return -1;
     }
 
+    @Override
+    public int lastIndexOf(Object o)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public ListIterator<E> listIterator()
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public ListIterator<E> listIterator(int index)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public List<E> subList(int fromIndex, int toIndex)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
     public E remove(int index)
     {
         checkIndex(index);
@@ -127,6 +193,7 @@ public class CSDArrayList<E> implements Iterable<E> {
         return old;
     }
 
+    @Override
     public E set(int index, E e)
     {
         checkIndex(index);
@@ -137,9 +204,22 @@ public class CSDArrayList<E> implements Iterable<E> {
         return old;
     }
 
+    @Override
     public int size()
     {
         return m_index;
+    }
+
+    @Override
+    public boolean isEmpty()
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public boolean contains(Object o)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
     }
 
     public void trimToSize()
@@ -171,6 +251,19 @@ public class CSDArrayList<E> implements Iterable<E> {
             }
         };
     }
+
+    @Override
+    public Object[] toArray()
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
+    }
+
 
     @Override
     public String toString()
