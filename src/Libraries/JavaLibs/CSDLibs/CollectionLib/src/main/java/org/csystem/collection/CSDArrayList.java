@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CSDArrayList.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 03.10.2023
+	LAST UPDATE : 05.10.2023
 
 	CSDArrayList class that represents dynamic array
 
@@ -61,6 +61,12 @@ public class CSDArrayList<E> implements List<E> {
     {
         checkCapacity(initialCapacity);
         m_elements = (E[])new Object[initialCapacity];
+    }
+
+    @SuppressWarnings("unchecked")
+    public CSDArrayList(Collection<? extends E> collection)
+    {
+        throw new UnsupportedOperationException("Not implemented yet!...");
     }
 
     @Override
@@ -213,7 +219,7 @@ public class CSDArrayList<E> implements List<E> {
     @Override
     public boolean isEmpty()
     {
-        throw new UnsupportedOperationException("Not implemented yet!...");
+        return m_index == 0;
     }
 
     @Override
