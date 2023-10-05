@@ -1,7 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Sınıf çalışması: Capacity artımını bir çarpan olarak alan CSDVectorCapacityFactor isimli collection sınıfı
-    org-csystem-collection kütüphanesi içerisine yazınız. Bu collection sınıfı Vector sınıfından türetiniz. Bu anlamda
-    sadece capacity değerini artıran metotları yazmanız yeterlidir. (add, addAll)
+    JavaSE'de başka bir collection sınıfından türetilmiş collection sınıflar da vardır. Bu tarz sınıflara adaptör
+    sınıflar da denir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
