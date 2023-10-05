@@ -30,6 +30,12 @@
         </dependency>
         <dependency>
             <groupId>org.csystem</groupId>
+            <artifactId>org-csystem-range</artifactId>
+            <version>14.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.csystem</groupId>
             <artifactId>org-csystem-math</artifactId>
             <version>16.0.0</version>
             <scope>test</scope>
