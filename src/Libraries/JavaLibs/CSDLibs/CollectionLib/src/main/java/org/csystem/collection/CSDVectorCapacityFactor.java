@@ -3,7 +3,7 @@
 	AUTHOR      : JavaApp1-Mar-2023 Group
 	LAST UPDATE : 05.10.2023
 
-	CSDVectorCapacityFactor class that represents a dynamic array
+	CSDVectorCapacityFactor adapter class that represents a dynamic array
 	takes the capacityIncrement as factor
 
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
