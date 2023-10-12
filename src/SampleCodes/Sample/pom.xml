@@ -44,7 +44,7 @@
         <dependency>
             <groupId>org.csystem</groupId>
             <artifactId>org-csystem-math</artifactId>
-            <version>16.0.0</version>
+            <version>17.0.0</version>
         </dependency>
 
         <dependency>
@@ -82,13 +82,6 @@
             <artifactId>org-csystem-range</artifactId>
             <version>14.0.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.csystem</groupId>
-            <artifactId>org-csystem-collection</artifactId>
-            <version>14.0.0</version>
-        </dependency>
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

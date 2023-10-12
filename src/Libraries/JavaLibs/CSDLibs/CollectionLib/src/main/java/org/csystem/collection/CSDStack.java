@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : CSDStack.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 10.10.2023
+	LAST UPDATE : 12.10.2023
 
 	CSDStack class
 
@@ -10,29 +10,44 @@
 -----------------------------------------------------------------------*/
 package org.csystem.collection;
 
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+
 public class CSDStack<E>  {
+    public final ArrayList<E> m_list = new ArrayList<>();
+
     public boolean empty()
     {
-        throw new UnsupportedOperationException("Not yet implemented!...");
+        return m_list.isEmpty();
     }
 
     public E peek()
     {
-        throw new UnsupportedOperationException("Not yet implemented!...");
+        if (empty())
+            throw new EmptyStackException();
+
+        return m_list.get(m_list.size() - 1);
     }
 
     public E pop()
     {
-        throw new UnsupportedOperationException("Not yet implemented!...");
+        if (empty())
+            throw new EmptyStackException();
+
+        return m_list.remove(m_list.size() - 1);
     }
 
     public E push(E item)
     {
-        throw new UnsupportedOperationException("Not yet implemented!...");
+        m_list.add(item);
+
+        return item;
     }
 
     public int search(Object obj)
     {
-        throw new UnsupportedOperationException("Not yet implemented!...");
+        var index = m_list.lastIndexOf(obj);
+
+        return index == -1 ? index : m_list.size() - index;
     }
 }

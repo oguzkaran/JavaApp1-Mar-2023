@@ -1,17 +1,19 @@
 package org.csystem.collection;
 
-import static org.junit.Assert.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.EmptyStackException;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+
 @Ignore
-public class CSDArrayListStackTest {
+public class CSDStackTest {
     @Test
     public void givenStack_whenEmpty_popThrowsEmptyStackException()
     {
-        var stack = new CSDArrayListStack<Integer>();
+        var stack = new CSDStack<Integer>();
 
         assertThrows(EmptyStackException.class, stack::pop);
     }
@@ -19,7 +21,7 @@ public class CSDArrayListStackTest {
     @Test
     public void givenStack_whenEmpty_peekThrowsEmptyStackException()
     {
-        var stack = new CSDArrayListStack<Integer>();
+        var stack = new CSDStack<Integer>();
 
         assertThrows(EmptyStackException.class, stack::peek);
     }
@@ -27,7 +29,7 @@ public class CSDArrayListStackTest {
     @Test
     public void givenStack_whenPush()
     {
-        var stack = new CSDArrayListStack<Integer>();
+        var stack = new CSDStack<Integer>();
 
         stack.push(20);
 
@@ -37,7 +39,7 @@ public class CSDArrayListStackTest {
     @Test
     public void givenStack_whenSearchFound()
     {
-        var stack = new CSDArrayListStack<Integer>();
+        var stack = new CSDStack<Integer>();
 
         stack.push(10);
         stack.push(20);
@@ -50,7 +52,7 @@ public class CSDArrayListStackTest {
     @Test
     public void givenStack_whenSearchNotFound()
     {
-        var stack = new CSDArrayListStack<Integer>();
+        var stack = new CSDStack<Integer>();
 
         stack.push(10);
         stack.push(20);

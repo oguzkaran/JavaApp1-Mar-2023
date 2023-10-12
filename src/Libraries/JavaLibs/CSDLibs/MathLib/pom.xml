@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>org-csystem-math</artifactId>
-    <version>16.0.0</version>
+    <version>17.0.0</version>
     <name>org-csystem-math</name>
     <description>Math Library</description>
 

@@ -10,7 +10,7 @@
 -----------------------------------------------------------------------*/
 package org.csystem.math;
 
-public class Fraction {
+public class Fraction implements Comparable<Fraction> {
     private int m_a;
     private int m_b;
 
@@ -211,6 +211,12 @@ public class Fraction {
     public void dec()
     {
         dec(1);
+    }
+
+    @Override
+    public int compareTo(Fraction other)
+    {
+        return m_a * other.m_b - other.m_a * m_b;
     }
 
     @Override
