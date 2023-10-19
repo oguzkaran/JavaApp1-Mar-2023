@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 13.07.2023
+	LAST UPDATE : 19.10.2023
 
 	Utility class for array operations
 
@@ -10,6 +10,7 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.array;
 
+import java.util.Comparator;
 import java.util.random.RandomGenerator;
 
 public final class ArrayUtil {
@@ -27,6 +28,65 @@ public final class ArrayUtil {
             for (int k = 0; k < a.length - 1 - i; ++k)
                 if (a[k] < a[k + 1])
                     swap(a, k, k + 1);
+    }
+
+    private static void bubbleSortAscending(double [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k)
+                if (a[k] > a[k + 1])
+                    swap(a, k, k + 1);
+    }
+
+    private static void bubbleSortDescending(double [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k)
+                if (a[k] < a[k + 1])
+                    swap(a, k, k + 1);
+    }
+
+    private static void bubbleSortAscending(long [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k)
+                if (a[k] > a[k + 1])
+                    swap(a, k, k + 1);
+    }
+
+    private static void bubbleSortDescending(long [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k)
+                if (a[k] < a[k + 1])
+                    swap(a, k, k + 1);
+    }
+
+    private static <T> void bubbleSortAscending(T [] a, Comparator<? super T> comparator)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k)
+                if (comparator.compare(a[k + 1], a[k]) > 0)
+                    swap(a, k, k + 1);
+    }
+
+    private static <T> void bubbleSortDescending(T [] a, Comparator<? super T> comparator)
+    {
+        bubbleSortAscending(a, comparator.reversed());
+    }
+
+    private static void bubbleSortAscending(Object [] a)
+    {
+        /*
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k) {
+                var c1 = ((Comparable<?>)a[k + 1]);
+                var c2 = ((Comparable<?>)a[k]);
+
+                if (c1.compareTo(c2) > 0)
+                    swap(a, k, k + 1);
+            }
+         */
     }
 
     private static void selectionSortAscending(int [] a)
@@ -89,6 +149,19 @@ public final class ArrayUtil {
             bubbleSortAscending(a);
     }
 
+    public static <T> void bubbleSort(T [] a, Comparator<? super T> comparator)
+    {
+        bubbleSortAscending(a, comparator);
+    }
+
+    public static <T> void bubbleSort(T [] a, Comparator<? super T> comparator, boolean desc)
+    {
+        if (desc)
+            bubbleSortDescending(a, comparator);
+        else
+            bubbleSortAscending(a, comparator);
+    }
+
     public static void display(int n, int...values)
     {
         String fmt = String.format("%%0%dd ", n);
@@ -141,7 +214,6 @@ public final class ArrayUtil {
 
         System.out.print(end);
     }
-
 
     public static void fillRandomArray(RandomGenerator randomGenerator, int [] a, int min, int max)
     {
@@ -292,7 +364,31 @@ public final class ArrayUtil {
 
     public static void swap(int [] a, int i, int k)
     {
-        int temp = a[i];
+        var temp = a[i];
+
+        a[i] = a[k];
+        a[k] = temp;
+    }
+
+    public static void swap(double [] a, int i, int k)
+    {
+        var temp = a[i];
+
+        a[i] = a[k];
+        a[k] = temp;
+    }
+
+    public static void swap(long [] a, int i, int k)
+    {
+        var temp = a[i];
+
+        a[i] = a[k];
+        a[k] = temp;
+    }
+
+    public static <T> void swap(T [] a, int i, int k)
+    {
+        var temp = a[i];
 
         a[i] = a[k];
         a[k] = temp;
@@ -300,7 +396,7 @@ public final class ArrayUtil {
 
     public static void swap(char [] c, int i, int k)
     {
-        char temp = c[i];
+        var temp = c[i];
 
         c[i] = c[k];
         c[k] = temp;

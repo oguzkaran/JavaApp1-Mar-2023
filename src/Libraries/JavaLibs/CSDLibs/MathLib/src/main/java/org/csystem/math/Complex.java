@@ -118,7 +118,6 @@ public class Complex {
 		return this.inc();
 	}
 
-
 	@Override
 	public boolean equals(Object other)
 	{

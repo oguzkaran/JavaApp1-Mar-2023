@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Fraction.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 26.09.2023
+	LAST UPDATE : 19.10.2023
 
 	Fraction class that represents a fraction
 
@@ -211,6 +211,12 @@ public class Fraction implements Comparable<Fraction> {
     public void dec()
     {
         dec(1);
+    }
+
+    //abs
+    public Fraction abs()
+    {
+        return new Fraction(Math.abs(m_a), m_b);
     }
 
     @Override
