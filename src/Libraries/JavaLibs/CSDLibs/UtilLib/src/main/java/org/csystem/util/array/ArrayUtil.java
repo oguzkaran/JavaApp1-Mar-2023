@@ -77,16 +77,7 @@ public final class ArrayUtil {
 
     private static void bubbleSortAscending(Object [] a)
     {
-        /*
-        for (int i = 0; i < a.length - 1; ++i)
-            for (int k = 0; k < a.length - 1 - i; ++k) {
-                var c1 = ((Comparable<?>)a[k + 1]);
-                var c2 = ((Comparable<?>)a[k]);
-
-                if (c1.compareTo(c2) > 0)
-                    swap(a, k, k + 1);
-            }
-         */
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     private static void selectionSortAscending(int [] a)
