@@ -23,5 +23,12 @@
             <version>14.2.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.csystem</groupId>
+            <artifactId>org-csystem-tuple</artifactId>
+            <version>14.0.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

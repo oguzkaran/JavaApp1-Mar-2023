@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 19.10.2023
+	LAST UPDATE : 24.10.2023
 
 	Utility class for array operations
 
@@ -66,7 +66,7 @@ public final class ArrayUtil {
     {
         for (int i = 0; i < a.length - 1; ++i)
             for (int k = 0; k < a.length - 1 - i; ++k)
-                if (comparator.compare(a[k + 1], a[k]) > 0)
+                if (comparator.compare(a[k + 1], a[k]) < 0)
                     swap(a, k, k + 1);
     }
 
@@ -77,7 +77,32 @@ public final class ArrayUtil {
 
     private static void bubbleSortAscending(Object [] a)
     {
-        throw new UnsupportedOperationException("Not implemented yet");
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k) {
+                @SuppressWarnings("unchecked")
+                var comp1 = (Comparable<Object>)a[k + 1];
+
+                @SuppressWarnings("unchecked")
+                var comp2 = (Comparable<Object>)a[k];
+
+                if (comp1.compareTo(comp2) < 0)
+                    swap(a, k, k + 1);
+            }
+    }
+
+    private static void bubbleSortDescending(Object [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k) {
+                @SuppressWarnings("unchecked")
+                var comp1 = (Comparable<Object>)a[k + 1];
+
+                @SuppressWarnings("unchecked")
+                var comp2 = (Comparable<Object>)a[k];
+
+                if (comp1.compareTo(comp2) > 0)
+                    swap(a, k, k + 1);
+            }
     }
 
     private static void selectionSortAscending(int [] a)
@@ -151,6 +176,19 @@ public final class ArrayUtil {
             bubbleSortDescending(a, comparator);
         else
             bubbleSortAscending(a, comparator);
+    }
+
+    public static void bubbleSort(Object [] a)
+    {
+        bubbleSortAscending(a);
+    }
+
+    public static void bubbleSort(Object [] a, boolean desc)
+    {
+        if (desc)
+            bubbleSortDescending(a);
+        else
+            bubbleSortAscending(a);
     }
 
     public static void display(int n, int...values)
