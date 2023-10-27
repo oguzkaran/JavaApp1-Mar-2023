@@ -8,9 +8,9 @@
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
 -----------------------------------------------------------------------*/
-package com.karandev.util.console.commandline;
+package com.karandev.io.util.console.commandline;
 
-import com.karandev.util.console.Console;
+import com.karandev.io.util.console.Console;
 
 public final class CommandLineUtil {
     private CommandLineUtil()

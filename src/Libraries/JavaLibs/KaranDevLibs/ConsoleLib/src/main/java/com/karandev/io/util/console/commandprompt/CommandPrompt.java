@@ -8,11 +8,11 @@
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
 -----------------------------------------------------------------------*/
-package com.karandev.util.console.commandprompt;
+package com.karandev.io.util.console.commandprompt;
 
-import com.karandev.util.console.Console;
-import com.karandev.util.console.commandprompt.annotation.Command;
-import com.karandev.util.console.commandprompt.annotation.ErrorCommand;
+import com.karandev.io.util.console.Console;
+import com.karandev.io.util.console.commandprompt.annotation.Command;
+import com.karandev.io.util.console.commandprompt.annotation.ErrorCommand;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -8,7 +8,7 @@
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
 -----------------------------------------------------------------------*/
-package com.karandev.util.console;
+package com.karandev.io.util.console;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
