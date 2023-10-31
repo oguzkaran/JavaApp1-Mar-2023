@@ -1,36 +1,33 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Sınıf Çalışması: FIFO kuyruğu temsil CSDQueue<E> sınıfını org-csystem-collection kütüphanesinde sınıfın public
-    bölümünü değiştirmeden yazınız ve test ediniz
+    Aşağıdaki örneği inceleyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.util.console.Console;
-import org.csystem.util.numeric.NumberUtil;
+import org.csystem.math.Complex;
 
-import java.util.LinkedList;
+import java.util.Comparator;
 import java.util.Random;
+import java.util.TreeSet;
 
 class Application {
     public static void run(String[] args)
     {
         var random = new Random();
-        var deq = new LinkedList<Integer>();
-        int val;
+        var treeSet = new TreeSet<>(Comparator.comparingDouble(Complex::getNorm).reversed());
 
-        while ((val = random.nextInt(-99, 100)) != 0) {
-            Console.write("%d ", val);
+        var zero = new Complex();
 
-            if (NumberUtil.isPrime(val))
-                deq.offerFirst(val);
-            else
-                deq.offerLast(val);
+        while (true) {
+            var z = new Complex(random.nextInt(-10, 11), random.nextInt(-10, 11));
+
+            if (z.equals(zero))
+                break;
+
+            Console.writeLine("%s -> %s", z, treeSet.add(z) ? "Added" : "Duplicate");
         }
 
-        Console.writeLine();
-
-        deq.forEach(a -> Console.write("%d ", a));
-
+        treeSet.forEach(Console::writeLine);
         Console.writeLine();
     }
 }
-
