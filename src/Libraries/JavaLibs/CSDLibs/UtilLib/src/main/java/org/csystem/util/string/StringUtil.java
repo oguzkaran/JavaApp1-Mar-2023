@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 15.08.2023
+	LAST UPDATE : 02.11.2023
 
 	Utility class for string operations
 

@@ -47,7 +47,7 @@ public class DirectoryList implements Iterable<File> {
             @Override
             public boolean hasNext()
             {
-                return index + 1 < m_files.length;
+                return index + 1 <= m_files.length;
             }
 
             @Override

@@ -28,7 +28,7 @@ public class NumericLottery {
 
         int [] a = new int[6];
 
-        IntRange.of(0, 6).forEach(i -> a[i] = treeSet.pollFirst());
+        IntRange.of(0, a.length).forEach(i -> a[i] = treeSet.pollFirst());
 
         return a;
     }
