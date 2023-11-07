@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Quadruple.java
 	AUTHOR      : JavaApp1-Mar-2023-Group
-	LAST UPDATE : 28.09.2023
+	LAST UPDATE : 07.11.2023
 
 	Immutable Value class that represents Tuple<T1, T2, T3, T3>
 
@@ -54,16 +54,22 @@ public final class Quadruple<T1, T2, T3, T4> {
     }
 
     @Override
-    public String toString()
-    {
-        return String.format("(%s, %s, %s, %s)", m_first, m_second, m_third, m_fourth);
-    }
-
-    @Override
     public boolean equals(Object other)
     {
         return other instanceof Quadruple<?, ?, ?, ?> q && Objects.equals(q.m_first, m_first)
                 && Objects.equals(q.m_second, m_second) && Objects.equals(q.m_third, m_third)
                 && Objects.equals(q.m_fourth, m_fourth);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(m_first, m_second, m_third, m_fourth);
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("(%s, %s, %s, %s)", m_first, m_second, m_third, m_fourth);
     }
 }

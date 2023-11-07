@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : IntPair.java
 	AUTHOR      : JavaApp1-Mar-2023-Group
-	LAST UPDATE : 28.09.2023
+	LAST UPDATE : 07.11.2023
 
 	Immutable Pair class that represents Int tuple
 
@@ -43,14 +43,20 @@ public final class IntPair {
     }
 
     @Override
-    public String toString()
-    {
-        return String.format("(%d, %d)", m_first, m_second);
-    }
-
-    @Override
     public boolean equals(Object other)
     {
         return other instanceof IntPair p && Objects.equals(p.m_first, m_first) && Objects.equals(p.m_second, m_second);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(m_first, m_second);
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("(%d, %d)", m_first, m_second);
     }
 }

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Value.java
 	AUTHOR      : JavaApp1-Mar-2023-Group
-	LAST UPDATE : 28.09.2023
+	LAST UPDATE : 07.11.2023
 
 	Immutable Value class that represents Tuple<T>
 
@@ -36,15 +36,20 @@ public final class Value<T> {
     }
 
     @Override
-    public String toString()
-    {
-        return m_value + "";
-    }
-
-
-    @Override
     public boolean equals(Object other)
     {
         return other instanceof Value<?> p && Objects.equals(p.m_value, m_value);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hashCode(m_value);
+    }
+
+    @Override
+    public String toString()
+    {
+        return m_value + "";
     }
 }

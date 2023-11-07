@@ -1,52 +1,34 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Aşağıdaki örneği ve ilgili metotları inceleyiniz
+    Aşağıdaki örnekte HashSet içerisinde tutulan elemanların ekleme sırasıyla olacağının bir garantisi yoktur. Aslında
+    HashSet<E> sınıfının elemanları her zaman aynı sırada tutacağının da bir garantisi yoktur. Programcı da bunu bildiği
+    için bu veri yapısını ona göre kullanır. Aşağıdaki örneği çalıştırıp sonuçları gözlemleyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.util.console.Console;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Random;
 
 class Application {
     public static void run(String[] args)
     {
-        ArrayList<LinkedList<String>> stringHash = new ArrayList<>();
+        var random = new Random();
+        var hashSet = new HashSet<Integer>();
+        int val;
 
-        while (true) {
-            var str = Console.read("Bir yazı giriniz:");
-            var index = HashUtil.hash(str);
+        while ((val = random.nextInt(-99, 100)) != 0)
+            Console.writeLine("%d -> %s", val, hashSet.add(val) ? "Added" : "Duplicate");
 
-            Console.writeLine("Hash Kodu:%d", index);
-            if (index < stringHash.size())
-                stringHash.get(index).add(str);
-            else {
-                var list = new LinkedList<String>();
+        hashSet.forEach(v -> Console.write("%d ", v));
 
-                list.add(str);
+        Console.writeLine();
 
-                stringHash.add(list);
-            }
+        for (int v = 60; v < 71; ++v)
+            Console.writeLine(hashSet.remove(v) ? "Removed" : "Not in set");
 
+        hashSet.forEach(v -> Console.write("%d ", v));
 
-            if ("elma".equals(str))
-                break;
-        }
-
-        stringHash.forEach(list -> {list.forEach(str -> Console.write("%s ", str)); Console.writeLine();});
+        Console.writeLine();
     }
 }
-
-class HashUtil {
-    public static int hash(String str)
-    {
-        int result = 8128;
-        int len = str.length();
-
-        for (int i = 0; i < len; ++i)
-            result = ((result << 5) + result) + str.charAt(i);
-
-        return Math.abs(result % len);
-    }
-}
-

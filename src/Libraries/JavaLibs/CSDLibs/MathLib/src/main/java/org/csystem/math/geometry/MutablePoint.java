@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: MutablePoint.java
 	AUTHOR		: JavaApp1-Mar-2023 Group
-	LAST UPDATE	: 29.03.2023
+	LAST UPDATE	: 07.11.2023
 
 	MutablePoint class that represents 2 dimensional point in
 	Cartesian plane
@@ -96,6 +96,12 @@ public class MutablePoint {
 	public boolean equals(Object other)
 	{
 		return other instanceof MutablePoint p && Math.abs(m_x - p.m_x) < PointCommon.DELTA && Math.abs(m_y - p.m_y) < PointCommon.DELTA;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return PointCommon.hashCode(m_x, m_y);
 	}
 
 	@Override

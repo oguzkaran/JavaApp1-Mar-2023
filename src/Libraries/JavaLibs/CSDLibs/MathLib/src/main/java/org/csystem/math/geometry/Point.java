@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Point.java
 	AUTHOR		: JavaApp1-Mar-2023 Group
-	LAST UPDATE	: 26.09.2023
+	LAST UPDATE	: 07.11.2023
 
 	Immutable Point class that represents 2 dimensional point in
 	Cartesian plane
@@ -75,6 +75,12 @@ public class Point {
 	public boolean equals(Object other)
 	{
 		return other instanceof Point p && Math.abs(m_x - p.m_x) < PointCommon.DELTA && Math.abs(m_y - p.m_y) < PointCommon.DELTA;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return PointCommon.hashCode(m_x, m_y);
 	}
 
 	@Override

@@ -396,7 +396,6 @@ public final class DateTime implements Serializable, Comparable<DateTime> {
         return m_calendar.hashCode();
     }
 
-
     @Override
     public String toString()
     {

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : AnalyticalCircle.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 26.09.2023
+	LAST UPDATE	: 07.11.2023
 
 	AnalyticalCircle class that represents the analytical circle in geometry
 
@@ -9,6 +9,8 @@
 	All Rights Free
 -----------------------------------------------------------------------*/
 package org.csystem.math.geometry;
+
+import java.util.Objects;
 
 public class AnalyticalCircle extends Circle {
     private final MutablePoint m_center;
@@ -99,6 +101,12 @@ public class AnalyticalCircle extends Circle {
     public boolean equals(Object other)
     {
         return other instanceof AnalyticalCircle ac && super.equals(other) && m_center.equals(ac.m_center);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(super.hashCode(), m_center);
     }
 
     @Override

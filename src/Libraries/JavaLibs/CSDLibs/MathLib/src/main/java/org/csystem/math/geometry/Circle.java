@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Circle.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 26.09.2023
+	LAST UPDATE : 07.11.2023
 
 	Circle class that represents the circle in geometry
 
@@ -9,6 +9,8 @@
 	All Rights Free
 -----------------------------------------------------------------------*/
 package org.csystem.math.geometry;
+
+import java.util.Objects;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.abs;
@@ -50,6 +52,12 @@ public class Circle {
     public boolean equals(Object other)
     {
         return other instanceof Circle c && Math.abs(m_r - c.m_r) < DELTA;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hashCode(m_r);
     }
 
     @Override

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: PointCommon.java
 	AUTHOR		: JavaApp1-Mar-2023 Group
-	LAST UPDATE	: 26.09.2023
+	LAST UPDATE	: 07.11.2023
 
 	Friendly Utility class for common point operations
 
@@ -9,6 +9,8 @@
 	All Rights Free
 ----------------------------------------------------------------*/
 package org.csystem.math.geometry;
+
+import java.util.Objects;
 
 class PointCommon {
     static final double DELTA = 0.00001;
@@ -30,5 +32,10 @@ class PointCommon {
     static String toString(double x, double y)
     {
         return String.format("(%f, %f)", x, y);
+    }
+
+    static int hashCode(double x, double y)
+    {
+        return Objects.hash(x, y);
     }
 }
