@@ -1,34 +1,60 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Aşağıdaki örnekte HashSet içerisinde tutulan elemanların ekleme sırasıyla olacağının bir garantisi yoktur. Aslında
-    HashSet<E> sınıfının elemanları her zaman aynı sırada tutacağının da bir garantisi yoktur. Programcı da bunu bildiği
-    için bu veri yapısını ona göre kullanır. Aşağıdaki örneği çalıştırıp sonuçları gözlemleyiniz
+    Aşağıdaki demo örneği inceleyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.util.console.Console;
 
-import java.util.HashSet;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.TreeMap;
 
 class Application {
-    public static void run(String[] args)
+    private static void fillCounties(ArrayList<String> counties)
     {
-        var random = new Random();
-        var hashSet = new HashSet<Integer>();
-        int val;
+        while (true) {
+            var county = Console.read("İlçeyi giriniz:");
 
-        while ((val = random.nextInt(-99, 100)) != 0)
-            Console.writeLine("%d -> %s", val, hashSet.add(val) ? "Added" : "Duplicate");
+            if (county.equals("0"))
+                break;
 
-        hashSet.forEach(v -> Console.write("%d ", v));
+            counties.add(county);
+        }
 
-        Console.writeLine();
+        Collections.sort(counties);
+    }
 
-        for (int v = 60; v < 71; ++v)
-            Console.writeLine(hashSet.remove(v) ? "Removed" : "Not in set");
+    private static void fillCities(TreeMap<Integer, ArrayList<String>> cityMap)
+    {
+        while (true) {
+            var code = Console.readInt("Telefon kodunu giriniz:");
 
-        hashSet.forEach(v -> Console.write("%d ", v));
+            if (code <= 0)
+                break;
 
+            if (!cityMap.containsKey(code))
+                cityMap.put(code, new ArrayList<>());
+
+            fillCounties(cityMap.get(code));
+        }
+    }
+
+    private static void codeCallback(TreeMap<Integer, ArrayList<String>> cityMap, Integer code)
+    {
+        Console.write("%d: ", code);
+        cityMap.get(code).forEach(c -> Console.write("%s ", c));
         Console.writeLine();
     }
+
+    public static void run(String[] args)
+    {
+        var cityMap = new TreeMap<Integer, ArrayList<String>>(Comparator.reverseOrder());
+
+        fillCities(cityMap);
+
+        cityMap.keySet().forEach(p -> codeCallback(cityMap, p));
+    }
 }
+
+
