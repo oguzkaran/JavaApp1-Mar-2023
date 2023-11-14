@@ -1,0 +1,7 @@
+Yapılacaklar:
+    - CarCameraInformation.searchFromFile ve CarCameraInformation.forEachFromFile metotları işlemleri doğrudan dosyadan
+    okuyacak şekilde yapacaklardır
+
+    - Program 3. komut satırı argümanı olarak eşik değeri olarak byte uzunluğu alacaktır. Eğer dosyanın uzunluğu bu
+    eşik değerinde büyük veya eşitse şu an yapılan işlemler (hepsini stdout'a gönderme ve arama) dosyadan yapılacaktır,
+    aksi durumda load edilip memory'den yapılacaktır

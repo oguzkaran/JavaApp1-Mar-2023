@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 09.11.2023
+	LAST UPDATE : 14.11.2023
 
 	Utility class for string operations
 
@@ -11,6 +11,7 @@
 package org.csystem.util.string;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.random.RandomGenerator;
 
@@ -31,6 +32,45 @@ public final class StringUtil {
         ALPHABET_ALL_EN = ALPHABET_EN + ALPHABET_CAPITALS_EN;
     }
 
+    private static void incrementHashMapForAnagram(HashMap<Character, Integer> hashMap, String s)
+    {
+        for (var i = 0; i < s.length(); ++i) {
+            char ch = s.charAt(i);
+            int value = 1;
+
+            if (hashMap.containsKey(ch))
+                value = hashMap.get(ch) + 1;
+
+            hashMap.put(ch, value);
+        }
+    }
+
+    private static boolean decrementHashMapForAnagram(HashMap<Character, Integer> hashMap, String s)
+    {
+        for (var i = 0; i < s.length(); ++i) {
+            char ch = s.charAt(i);
+
+            if (!hashMap.containsKey(ch))
+                return false;
+
+            hashMap.put(ch, hashMap.get(ch) - 1);
+        }
+
+        return true;
+    }
+
+    private static boolean areAnagram(HashMap<Character, Integer> hashMap, String s)
+    {
+        if (!decrementHashMapForAnagram(hashMap, s))
+            return false;
+
+        for (var ch : hashMap.keySet())
+            if (hashMap.get(ch) != 0)
+                return false;
+
+        return true;
+    }
+
     private StringUtil()
     {
     }
@@ -49,6 +89,15 @@ public final class StringUtil {
                 return false;
 
         return true;
+    }
+
+    public static boolean areAnagram(String s1, String s2)
+    {
+        var hashMap = new HashMap<Character, Integer>();
+
+        incrementHashMapForAnagram(hashMap, s1);
+
+        return areAnagram(hashMap, s2);
     }
 
     public static String changeCase(String s)
