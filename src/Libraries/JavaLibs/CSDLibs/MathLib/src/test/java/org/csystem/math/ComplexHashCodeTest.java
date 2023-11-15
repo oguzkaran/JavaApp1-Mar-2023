@@ -1,42 +1,51 @@
 package org.csystem.math;
 
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
-@Ignore
+import static org.junit.Assert.assertEquals;
+
+@RunWith(Parameterized.class)
 public class ComplexHashCodeTest {
-    private final HashSet<Complex> m_complexes = new HashSet<>();
-    private final Complex m_zero1 = new Complex(0, 0);
-    private final Complex m_zero2 = new Complex(0, 0);
-    private final Complex m_unit1 = new Complex(1, 1);
-    private final Complex m_unit2 = new Complex(1, 1);
-    private final Complex m_c1 = new Complex(-2.1, -3.5);
-    private final Complex m_c2 = new Complex(-2.1, -3.5);
+    private final DataInfo m_dataInfo;
+    private static final HashSet<Complex> m_hs = new HashSet<>(Arrays.asList(new Complex(0, 0),
+                                                                                    new Complex(1, 1),
+                                                                                    new Complex(-2.1, -3.5)));
 
+    private static class DataInfo {
+        Complex actual;
+        Boolean expected;
 
-    @Test
-    public void addValues_thenLookIfContains()
+        DataInfo(Complex actual, Boolean expected)
+        {
+            this.actual = actual;
+            this.expected = expected;
+        }
+    }
+
+    @Parameterized.Parameters
+    public static Collection<DataInfo> provideData()
     {
-        m_complexes.add(m_zero1);
-        Assert.assertTrue(m_complexes.contains(m_zero2));
+        return List.of(new DataInfo(new Complex(0, 0), false),
+                    new DataInfo(new Complex(1, 1), false),
+                    new DataInfo(new Complex(-2.1, -3.5), false));
+    }
+
+    public ComplexHashCodeTest(DataInfo dataInfo)
+    {
+        m_dataInfo = dataInfo;
     }
 
     @Test
-    public void addSameValue1_thenReturnFalse()
+    public void givenHashSet_thenInvokeAddMethod()
     {
-        m_complexes.add(m_unit1);
-        Assert.assertFalse(m_complexes.add(m_unit2));
+        assertEquals(m_dataInfo.expected, m_hs.add(m_dataInfo.actual));
     }
-
-    @Test
-    public void addSameValue2_thenReturnFalse()
-    {
-        m_complexes.add(m_c1);
-        Assert.assertFalse(m_complexes.add(m_c2));
-    }
-
 }
 

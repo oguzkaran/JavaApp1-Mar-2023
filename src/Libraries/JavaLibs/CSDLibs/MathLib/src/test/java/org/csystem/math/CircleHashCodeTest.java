@@ -1,40 +1,49 @@
 package org.csystem.math;
 
 import org.csystem.math.geometry.Circle;
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
-@Ignore
+import static org.junit.Assert.assertEquals;
+
+@RunWith(Parameterized.class)
 public class CircleHashCodeTest {
-    private final HashSet<Circle> m_circles = new HashSet<>();
-    private final Circle m_zero1 = new Circle();
-    private final Circle m_zero2 = new Circle();
-    private final Circle m_unit1 = new Circle(1);
-    private final Circle m_unit2 = new Circle(1);
-    private final Circle m_c1 = new Circle(2.1);
-    private final Circle m_c2 = new Circle(2.1);
+    private final DataInfo m_dataInfo;
+    private static final HashSet<Circle> m_hs = new HashSet<>(Arrays.asList(new Circle(), new Circle(1), new Circle(2.1)));
+    private static class DataInfo {
+        Circle actual;
+        Boolean expected;
 
-    @Test
-    public void addValues_thenLookIfContains()
+        DataInfo(Circle actual, Boolean expected)
+        {
+            this.actual = actual;
+            this.expected = expected;
+        }
+    }
+
+    @Parameterized.Parameters
+    public static Collection<DataInfo> provideData()
     {
-        m_circles.add(m_zero1);
-        Assert.assertTrue(m_circles.contains(m_zero2));
+        return List.of(new DataInfo(new Circle(), false),
+                    new DataInfo(new Circle(1), false),
+                    new DataInfo(new Circle(2.1), false));
+    }
+
+    public CircleHashCodeTest(DataInfo dataInfo)
+    {
+        m_dataInfo = dataInfo;
     }
 
     @Test
-    public void addSameValue1_thenReturnFalse()
+    public void givenHashSet_thenInvokeAddMethod()
     {
-        m_circles.add(m_unit1);
-        Assert.assertFalse(m_circles.add(m_unit2));
-    }
-
-    @Test
-    public void addSameValue2_thenReturnFalse()
-    {
-        m_circles.add(m_c1);
-        Assert.assertFalse(m_circles.add(m_c2));
+        assertEquals(m_dataInfo.expected, m_hs.add(m_dataInfo.actual));
     }
 }
 

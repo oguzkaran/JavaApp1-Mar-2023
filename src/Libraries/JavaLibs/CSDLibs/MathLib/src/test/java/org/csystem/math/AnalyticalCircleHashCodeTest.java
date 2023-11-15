@@ -1,41 +1,49 @@
 package org.csystem.math;
 
 import org.csystem.math.geometry.AnalyticalCircle;
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-import java.util.HashSet;
+import java.util.*;
 
-@Ignore
+import static org.junit.Assert.assertEquals;
+
+@RunWith(Parameterized.class)
 public class AnalyticalCircleHashCodeTest {
-    private final HashSet<AnalyticalCircle> m_analyticalCircles = new HashSet<>();
-    private final AnalyticalCircle m_zero1 = new AnalyticalCircle();
-    private final AnalyticalCircle m_zero2 = new AnalyticalCircle();
-    private final AnalyticalCircle m_unit1 = new AnalyticalCircle(1, 1, 1);
-    private final AnalyticalCircle m_unit2 = new AnalyticalCircle(1, 1, 1);
-    private final AnalyticalCircle m_ac1 = new AnalyticalCircle(2, -3.5, -2.2);
-    private final AnalyticalCircle m_ac2 = new AnalyticalCircle(2, -3.5, -2.2);
+    private final DataInfo m_dataInfo;
+    private static final HashSet<AnalyticalCircle> m_hs = new HashSet<>(Arrays.asList(new AnalyticalCircle(),
+                                                                                    new AnalyticalCircle(1, 1),
+                                                                                    new AnalyticalCircle(2, -3.5, -2.2)));
 
-    @Test
-    public void addValues_thenLookIfContains()
+    private static class DataInfo {
+        AnalyticalCircle actual;
+        Boolean expected;
+
+        DataInfo(AnalyticalCircle actual, Boolean expected)
+        {
+            this.actual = actual;
+            this.expected = expected;
+        }
+    }
+
+    @Parameterized.Parameters
+    public static Collection<DataInfo> provideData()
     {
-        m_analyticalCircles.add(m_zero1);
-        Assert.assertTrue(m_analyticalCircles.contains(m_zero2));
+        return List.of(new DataInfo(new AnalyticalCircle(), false),
+                    new DataInfo(new AnalyticalCircle(1, 1), false),
+                    new DataInfo(new AnalyticalCircle(2, -3.5, -2.2), false));
+    }
+
+    public AnalyticalCircleHashCodeTest(DataInfo dataInfo)
+    {
+        m_dataInfo = dataInfo;
     }
 
     @Test
-    public void addSameValue1_thenReturnFalse()
+    public void givenHashSet_thenInvokeAddMethod()
     {
-        m_analyticalCircles.add(m_unit1);
-        Assert.assertFalse(m_analyticalCircles.add(m_unit2));
-    }
-
-    @Test
-    public void addSameValue2_thenReturnFalse()
-    {
-        m_analyticalCircles.add(m_ac1);
-        Assert.assertFalse(m_analyticalCircles.add(m_ac2));
+        assertEquals(m_dataInfo.expected, m_hs.add(m_dataInfo.actual));
     }
 }
 

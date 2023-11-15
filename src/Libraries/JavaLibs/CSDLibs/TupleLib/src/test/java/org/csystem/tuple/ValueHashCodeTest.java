@@ -1,33 +1,49 @@
 package org.csystem.tuple;
 
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
-@Ignore
+import static org.junit.Assert.assertEquals;
+
+@RunWith(Parameterized.class)
 public class ValueHashCodeTest {
-    private final HashSet<Value<String>> m_values = new HashSet<>();
-    private final Value<String> m_v1 = new Value<>("ankara");
-    private final Value<String> m_v2 = new Value<>("ankara");
-    private final Value<String> m_v3 = new Value<>("istanbul");
-    private final Value<String> m_v4 = new Value<>("istanbul");
+    private final DataInfo m_dataInfo;
+    private static final HashSet<Value<String>> m_hs = new HashSet<>(Arrays.asList(new Value<>("ankara"), new Value<>("istanbul")));
+    private static class DataInfo {
+        Value<String> actual;
+        Boolean expected;
 
+        DataInfo(Value<String> actual, Boolean expected)
+        {
+            this.actual = actual;
+            this.expected = expected;
+        }
+    }
 
-    @Test
-    public void addValues_thenLookIfContains()
+    @Parameterized.Parameters
+    public static Collection<DataInfo> provideData()
     {
-        m_values.add(m_v1);
-        Assert.assertTrue(m_values.contains(m_v2));
+        return List.of(new DataInfo(new Value<>("ankara"), false),
+                new DataInfo(new Value<>("istanbul"), false));
+    }
+
+    public ValueHashCodeTest(DataInfo dataInfo)
+    {
+        m_dataInfo = dataInfo;
     }
 
     @Test
-    public void addSameValue1_thenReturnFalse()
+    public void givenHashSet_thenInvokeAddMethod()
     {
-        m_values.add(m_v3);
-        Assert.assertFalse(m_values.add(m_v4));
+        assertEquals(m_dataInfo.expected, m_hs.add(m_dataInfo.actual));
     }
-
 }
+
+
 

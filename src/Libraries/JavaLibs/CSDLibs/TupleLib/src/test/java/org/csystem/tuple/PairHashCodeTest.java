@@ -1,33 +1,49 @@
 package org.csystem.tuple;
 
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
-@Ignore
+import static org.junit.Assert.assertEquals;
+
+@RunWith(Parameterized.class)
 public class PairHashCodeTest {
-    private final HashSet<Pair<Double, String>> m_pairs = new HashSet<>();
-    private final Pair<Double, String> m_p1 = new Pair<>(0.0, "ankara");
-    private final Pair<Double, String> m_p2 = new Pair<>(0.0, "ankara");
-    private final Pair<Double, String> m_p3 = new Pair<>(2.3, "istanbul");
-    private final Pair<Double, String> m_p4 = new Pair<>(2.3, "istanbul");
+    private final DataInfo m_dataInfo;
+    private static final HashSet<Pair<Double, String>> m_hs = new HashSet<>(Arrays.asList(new Pair<>(0.0, "ankara"), new Pair<>(2.3, "istanbul")));
+    private static class DataInfo {
+        Pair<Double, String> actual;
+        Boolean expected;
 
+        DataInfo(Pair<Double, String> actual, Boolean expected)
+        {
+            this.actual = actual;
+            this.expected = expected;
+        }
+    }
 
-    @Test
-    public void addValues_thenLookIfContains()
+    @Parameterized.Parameters
+    public static Collection<DataInfo> provideData()
     {
-        m_pairs.add(m_p1);
-        Assert.assertTrue(m_pairs.contains(m_p2));
+        return List.of(new DataInfo(new Pair<>(0.0, "ankara"), false),
+                new DataInfo(new Pair<>(2.3, "istanbul"), false));
+    }
+
+    public PairHashCodeTest(DataInfo dataInfo)
+    {
+        m_dataInfo = dataInfo;
     }
 
     @Test
-    public void addSameValue1_thenReturnFalse()
+    public void givenHashSet_thenInvokeAddMethod()
     {
-        m_pairs.add(m_p3);
-        Assert.assertFalse(m_pairs.add(m_p4));
+        assertEquals(m_dataInfo.expected, m_hs.add(m_dataInfo.actual));
     }
-
 }
+
+
 

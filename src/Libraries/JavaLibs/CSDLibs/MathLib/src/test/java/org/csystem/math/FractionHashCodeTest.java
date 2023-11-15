@@ -1,42 +1,51 @@
 package org.csystem.math;
 
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
-@Ignore
+import static org.junit.Assert.assertEquals;
+
+@RunWith(Parameterized.class)
 public class FractionHashCodeTest {
-    private final HashSet<Fraction> m_fractions = new HashSet<>();
-    private final Fraction m_zero1 = new Fraction(0, 1);
-    private final Fraction m_zero2 = new Fraction(0, 2);
-    private final Fraction m_unit1 = new Fraction(1, 1);
-    private final Fraction m_unit2 = new Fraction(5, 5);
-    private final Fraction m_f1 = new Fraction(-2, -3);
-    private final Fraction m_f2 = new Fraction(-2, -3);
+    private final DataInfo m_dataInfo;
+    private static final HashSet<Fraction> m_hs = new HashSet<>(Arrays.asList(new Fraction(0, 1),
+                                                                                    new Fraction(1, 1),
+                                                                                    new Fraction(-2, -3)));
 
+    private static class DataInfo {
+        Fraction actual;
+        Boolean expected;
 
-    @Test
-    public void addValues_thenLookIfContains()
+        DataInfo(Fraction actual, Boolean expected)
+        {
+            this.actual = actual;
+            this.expected = expected;
+        }
+    }
+
+    @Parameterized.Parameters
+    public static Collection<DataInfo> provideData()
     {
-        m_fractions.add(m_zero1);
-        Assert.assertTrue(m_fractions.contains(m_zero2));
+        return List.of(new DataInfo(new Fraction(0, 1), false),
+                    new DataInfo(new Fraction(1, 1), false),
+                    new DataInfo(new Fraction(-2, -3), false));
+    }
+
+    public FractionHashCodeTest(DataInfo dataInfo)
+    {
+        m_dataInfo = dataInfo;
     }
 
     @Test
-    public void addSameValue1_thenReturnFalse()
+    public void givenHashSet_thenInvokeAddMethod()
     {
-        m_fractions.add(m_unit1);
-        Assert.assertFalse(m_fractions.add(m_unit2));
+        assertEquals(m_dataInfo.expected, m_hs.add(m_dataInfo.actual));
     }
-
-    @Test
-    public void addSameValue2_thenReturnFalse()
-    {
-        m_fractions.add(m_f1);
-        Assert.assertFalse(m_fractions.add(m_f2));
-    }
-
 }
 
