@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import com.karandev.util.console.Console;
+import com.karandev.io.util.console.Console;
 
 import java.util.ArrayList;
 import java.util.Collections;
