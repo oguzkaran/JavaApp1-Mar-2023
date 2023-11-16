@@ -19,7 +19,7 @@ public class CarCameraInformation {
 
     private static ModelInfo createModelInfo(String [] modelInfo)
     {
-        return new ModelInfo(modelInfo[0], modelInfo[1], Double.parseDouble(modelInfo[2]), Double.parseDouble(modelInfo[2]));
+        return new ModelInfo(modelInfo[0], modelInfo[1], Double.parseDouble(modelInfo[2]), Double.parseDouble(modelInfo[3]));
     }
 
     private void loadMap(BufferedReader br) throws IOException
@@ -55,6 +55,11 @@ public class CarCameraInformation {
         m_path = path;
     }
 
+    public long getLength()
+    {
+        return m_path.toFile().length();
+    }
+
     public CarCameraInformation load() throws IOException
     {
         try (var br = Files.newBufferedReader(m_path, StandardCharsets.UTF_8)) {
@@ -70,20 +75,48 @@ public class CarCameraInformation {
         return m_models.containsKey(model) ? Optional.of(m_models.get(model)) : Optional.empty();
     }
 
-    public CarCameraInformation forEach(Consumer<? super String> keyConsumer, Consumer<? super ModelInfo> valueConsumer)
+    public void forEach(Consumer<? super String> keyConsumer, Consumer<? super ModelInfo> valueConsumer)
     {
         m_models.keySet().forEach(k -> {keyConsumer.accept(k);m_models.get(k).forEach(valueConsumer);});
-
-        return this;
     }
 
-    public Optional<List<ModelInfo>> searchFromFile(String model)
+    public Optional<List<ModelInfo>> searchFromFile(String model) throws IOException
     {
-        throw new UnsupportedOperationException("Not implemented yet!...");
+        try (var br = Files.newBufferedReader(m_path, StandardCharsets.UTF_8)) {
+            br.readLine();
+            String line;
+            List<ModelInfo> models = new ArrayList<>();
+
+            while ((line = br.readLine()) != null) {
+                var modelInfo = line.split(",");
+
+                if (modelInfo.length != 4)
+                    throw new IOException("Invalid file format");
+
+
+                if (modelInfo[0].equals(model))
+                    models.add(createModelInfo(modelInfo));
+            }
+
+            return models.isEmpty() ? Optional.empty() : Optional.of(models);
+        }
     }
 
-    public void forEachFromFile(Consumer<? super ModelInfo> consumer)
+    public void forEachFromFile(Consumer<? super ModelInfo> consumer) throws IOException
     {
-        throw new UnsupportedOperationException("Not implemented yet!...");
+        try (var br = Files.newBufferedReader(m_path, StandardCharsets.UTF_8)) {
+            br.readLine();
+            String line;
+            List<ModelInfo> models = new ArrayList<>();
+
+            while ((line = br.readLine()) != null) {
+                var modelInfo = line.split(",");
+
+                if (modelInfo.length != 4)
+                    throw new IOException("Invalid file format");
+
+                consumer.accept(createModelInfo(modelInfo));
+            }
+        }
     }
 }
