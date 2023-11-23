@@ -1,4 +1,4 @@
-package org.csystem.util.data.test.product;
+package org.csystem.util.data.test.product.dto;
 
 public class ProductNameStockDTO {
     public String name;

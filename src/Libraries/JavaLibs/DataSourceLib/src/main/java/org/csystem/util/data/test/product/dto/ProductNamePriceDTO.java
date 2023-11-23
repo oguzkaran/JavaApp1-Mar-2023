@@ -1,12 +1,12 @@
-package org.csystem.app.data;
+package org.csystem.util.data.test.product.dto;
 
 import java.math.BigDecimal;
 
-public class ProductNamePriceInfo {
+public class ProductNamePriceDTO {
     private String m_name;
     private BigDecimal m_price;
 
-    public ProductNamePriceInfo(String name, BigDecimal price)
+    public ProductNamePriceDTO(String name, BigDecimal price)
     {
         m_name = name;
         m_price = price;
