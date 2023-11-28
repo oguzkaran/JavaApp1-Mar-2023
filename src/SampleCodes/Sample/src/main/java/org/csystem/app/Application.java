@@ -1,35 +1,30 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Aşağıdaki örnekte hiç bir ürün stokta olmama koşuluna uymuyorsa uygun mesaj verilmiştir. aks durumda stokta
-    olmayan ürünler listelenmiştir. Yukarıdaki işlem ile aynı değil mi?
+    Aşağıdaki örnekte dizi içerisindeki asal sayıların toplamı bulunmuştur
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.io.util.console.Console;
-import org.csystem.util.data.test.factory.ProductFactory;
+import org.csystem.util.data.test.factory.NumberFactory;
+import org.csystem.util.numeric.NumberUtil;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.stream.IntStream;
 
 import static com.karandev.io.util.console.commandline.CommandLineUtil.checkLengthEquals;
 
 class Application {
     public static void run(String[] args)
     {
-        checkLengthEquals(args.length, 1, "Wrong number of arguments");
+        checkLengthEquals(args.length, 1 , "Wrong number of arguments");
 
         try {
-            var factory = ProductFactory.loadFromTextFile(Path.of(args[0]));
-            var products = factory.PRODUCTS;
+            var factory = NumberFactory.loadFromTextFile(Path.of(args[0]));
+            var numbers = factory.getNumbers();
 
-            if (products.stream().noneMatch(p -> p.getStock() <= 0))
-                Console.writeLine("All product are in stock");
-            else {
-                Console.writeLine("Product not in stock:");
-                products.stream().filter(p -> p.getStock() <= 0).forEach(Console::writeLine);
-            }
-        }
-        catch (NumberFormatException ignore) {
-            Console.Error.writeLine("Invalid stock amount");
+            var total = IntStream.of(numbers).filter(NumberUtil::isPrime).sum();
+
+            Console.writeLine("Total:%d", total);
         }
         catch (IOException ex) {
             Console.Error.writeLine("IO problem occurred:%s", ex.getMessage());
@@ -39,7 +34,3 @@ class Application {
         }
     }
 }
-
-
-
-
