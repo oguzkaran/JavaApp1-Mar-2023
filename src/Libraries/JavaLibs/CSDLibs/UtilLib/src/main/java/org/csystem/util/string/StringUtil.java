@@ -147,7 +147,6 @@ public final class StringUtil {
     public static String getLetters(String s)
     {
         var sb = new StringBuilder(s.length());
-        var len = s.length();
 
         s.codePoints().filter(Character::isLetter).forEach(c -> sb.append((char)c));
 
