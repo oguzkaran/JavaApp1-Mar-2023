@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 24.10.2023
+	LAST UPDATE : 30.11.2023
 
 	Utility class for array operations
 
@@ -10,6 +10,7 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.array;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.random.RandomGenerator;
 
@@ -195,8 +196,7 @@ public final class ArrayUtil {
     {
         String fmt = String.format("%%0%dd ", n);
 
-        for (int val : values)
-            System.out.printf(fmt, val);
+        Arrays.stream(values).forEach(val -> System.out.printf(fmt, val));
 
         System.out.println();
     }

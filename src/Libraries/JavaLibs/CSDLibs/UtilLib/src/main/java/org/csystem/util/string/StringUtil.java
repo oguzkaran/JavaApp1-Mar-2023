@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 14.11.2023
+	LAST UPDATE : 30.11.2023
 
 	Utility class for string operations
 
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.random.RandomGenerator;
+import java.util.stream.IntStream;
 
 public final class StringUtil {
     private static final String ALPHABET_TR;
@@ -148,12 +149,7 @@ public final class StringUtil {
         var sb = new StringBuilder(s.length());
         var len = s.length();
 
-        for (var i = 0; i < len; ++i) {
-            char c = s.charAt(i);
-
-            if (Character.isLetter(c))
-                sb.append(c);
-        }
+        s.codePoints().filter(Character::isLetter).forEach(c -> sb.append((char)c));
 
         return sb.toString();
     }
@@ -163,8 +159,9 @@ public final class StringUtil {
         var sb = new StringBuilder(n);
         var length = sourceText.length();
 
-        for (int i = 0; i < n; ++i)
-            sb.append(sourceText.charAt(randomGenerator.nextInt(length)));
+        IntStream.generate(() -> sourceText.charAt(randomGenerator.nextInt(length)))
+                .limit(n)
+                .forEach(c -> sb.append((char)c));
 
         return sb.toString();
     }
@@ -178,8 +175,6 @@ public final class StringUtil {
     {
         return getRandomText(randomGenerator, n, ALPHABET_ALL_TR);
     }
-
-
 
     public static String [] getRandomStringArrayTR(RandomGenerator randomGenerator, int n, int min, int max)
     {

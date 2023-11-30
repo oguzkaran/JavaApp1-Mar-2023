@@ -18,6 +18,7 @@ public class NumberFactory {
     {
         try (var bufferedReader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             var countStr = bufferedReader.readLine();
+
             if (countStr == null)
                 return new NumberFactory(0);
 
