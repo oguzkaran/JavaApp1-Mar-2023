@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 08.08.2023
+	LAST UPDATE : 05.12.2023
 
 	Utility class for numeric operations
 
@@ -14,6 +14,9 @@ import java.math.BigInteger;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 import static java.lang.Math.*;
 
@@ -82,87 +85,6 @@ public final class NumberUtil {
 		return sumFactors(a) == b && sumFactors(b) == a;
 	}
 
-	public static boolean isArmstrong(int val)
-	{
-		return val >= 0 && getDigitsPowSum(val) == val;
-	}
-
-	public static boolean isFactorian(int n)
-	{
-		return n >= 0 && getDigitsFactorialSum(n) == n;
-	}
-
-	public static boolean isPerfect(int val)
-	{
-		return sumFactors(val) == val;
-	}
-
-	public static boolean isPrime(long val)
-	{
-		if (val <= 1)
-			return false;
-
-		if (val % 2 == 0)
-			return val == 2;
-
-		if (val % 3 == 0)
-			return val == 3;
-
-		if (val % 5 == 0)
-			return val == 5;
-
-		if (val % 7 == 0)
-			return val == 7;
-
-		var sqrtVal = (int)sqrt(val);
-
-		for (var i = 11L; i <= sqrtVal; i += 2)
-			if (val % i == 0)
-				return false;
-
-		return true;
-	}
-
-	public static boolean isPrime(BigInteger val)
-	{
-		if (val.compareTo(BigInteger.ONE) <= 0)
-			return false;
-
-		if (val.remainder(BigInteger.TWO).equals(BigInteger.ZERO))
-			return val.equals(BigInteger.TWO);
-
-		if (val.remainder(BIG_INTEGER_THREE).equals(BigInteger.ZERO))
-			return val.equals(BIG_INTEGER_THREE);
-
-		if (val.remainder(BIG_INTEGER_FIVE).equals(BigInteger.ZERO))
-			return val.equals(BIG_INTEGER_FIVE);
-
-		if (val.remainder(BIG_INTEGER_SEVEN).equals(BigInteger.ZERO))
-			return val.equals(BIG_INTEGER_SEVEN);
-
-		var sqrtVal = val.sqrt();
-
-		for (var i = BIG_INTEGER_ELEVEN; i.compareTo(sqrtVal) <= 0; i = i.add(BigInteger.TWO))
-			if (val.remainder(i).equals(BigInteger.ZERO))
-				return false;
-
-		return true;
-	}
-
-	public static boolean isPrimeX(long val)
-	{
-		boolean result;
-
-		for (var sum = val; (result = isPrime(sum)) && sum > 9; sum = sumDigits(sum))
-			;
-
-		return result;
-	}
-
-	public static boolean isSuperPrime(int n)
-	{
-		return isPrime(n) && isPrime(getIndexOfPrime(n));
-	}
 
 	public static int calculateDigitalRoot(int val)
 	{
@@ -179,38 +101,27 @@ public final class NumberUtil {
 		return val == 0 ? 1 : (int)log10(abs(val)) +  1;
 	}
 	
-	
-	
+
 	public static long factorial(int n)
 	{
-		var result = 1L;
-		
-		for (var i = 2L; i <= n; ++i)
-			result *= i;
-		
-		return result;
+		return LongStream.rangeClosed(2, n).reduce(1, (r, val) -> r * val);
 	}
 
 	public static BigInteger factorialBig(int n)
 	{
-		var result = BigInteger.ONE;
 		var val = BigInteger.valueOf(n);
 
-		for (var i = BigInteger.TWO; i.compareTo(val) <= 0; i = i.add(BigInteger.ONE))
-			result = result.multiply(i);
-
-		return result;
+		return Stream.iterate(BigInteger.TWO, i ->  i.compareTo(val) <= 0,i -> i.add(BigInteger.ONE))
+				.reduce(BigInteger.ONE, BigInteger::multiply);
 	}
 
 	public static int gcd(int a, int b)
 	{
-		var min = min(abs(a), abs(b));
-		
-		for (var i = min; i >= 2; --i)
-			if (a % i == 0 && b % i == 0)
-				return i;
-		
-		return 1;
+		return IntStream.iterate(min(abs(a), abs(b)), i -> i >= 2, i -> i -1)
+				.filter(i -> a % i == 0)
+				.filter(i -> b % i == 0)
+				.findFirst()
+				.orElse(1);
 	}
 
 	public static int [] getDigits(long val)
@@ -304,7 +215,83 @@ public final class NumberUtil {
 			++val;
 		}		
 	}
-	
+
+	public static boolean isArmstrong(int val)
+	{
+		return val >= 0 && getDigitsPowSum(val) == val;
+	}
+
+	public static boolean isFactorian(int n)
+	{
+		return n >= 0 && getDigitsFactorialSum(n) == n;
+	}
+
+	public static boolean isPerfect(int val)
+	{
+		return sumFactors(val) == val;
+	}
+
+	public static boolean isPrime(long val)
+	{
+		if (val <= 1)
+			return false;
+
+		if (val % 2 == 0)
+			return val == 2;
+
+		if (val % 3 == 0)
+			return val == 3;
+
+		if (val % 5 == 0)
+			return val == 5;
+
+		if (val % 7 == 0)
+			return val == 7;
+
+		return LongStream.iterate(11, i -> i * i <= val, i -> i + 2).noneMatch(i -> val % i == 0);
+	}
+
+	public static boolean isPrime(BigInteger val)
+	{
+		if (val.compareTo(BigInteger.ONE) <= 0)
+			return false;
+
+		if (val.remainder(BigInteger.TWO).equals(BigInteger.ZERO))
+			return val.equals(BigInteger.TWO);
+
+		if (val.remainder(BIG_INTEGER_THREE).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_THREE);
+
+		if (val.remainder(BIG_INTEGER_FIVE).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_FIVE);
+
+		if (val.remainder(BIG_INTEGER_SEVEN).equals(BigInteger.ZERO))
+			return val.equals(BIG_INTEGER_SEVEN);
+
+		var sqrtVal = val.sqrt();
+
+		for (var i = BIG_INTEGER_ELEVEN; i.compareTo(sqrtVal) <= 0; i = i.add(BigInteger.TWO))
+			if (val.remainder(i).equals(BigInteger.ZERO))
+				return false;
+
+		return true;
+	}
+
+	public static boolean isPrimeX(long val)
+	{
+		boolean result;
+
+		for (var sum = val; (result = isPrime(sum)) && sum > 9; sum = sumDigits(sum))
+			;
+
+		return result;
+	}
+
+	public static boolean isSuperPrime(int n)
+	{
+		return isPrime(n) && isPrime(getIndexOfPrime(n));
+	}
+
 	public static int mid(int a, int b, int c)
 	{
 		if (a <= b && b <= c || c <= b && b <= a)

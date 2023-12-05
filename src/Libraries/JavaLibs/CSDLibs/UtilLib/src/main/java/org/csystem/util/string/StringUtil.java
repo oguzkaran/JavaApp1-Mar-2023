@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : JavaApp1-Mar-2023 Group
-	LAST UPDATE : 30.11.2023
+	LAST UPDATE : 05.12.2023
 
 	Utility class for string operations
 
@@ -209,13 +209,7 @@ public final class StringUtil {
         if (!Character.isJavaIdentifierStart(ch))
             return false;
 
-        int length = s.length();
-
-        for (int i = 1; i < length; ++i)
-            if (!Character.isJavaIdentifierPart(s.charAt(i)))
-                return false;
-
-        return true;
+        return s.codePoints().allMatch(Character::isJavaIdentifierPart);
     }
 
     public static boolean isPalindrome(String s)
