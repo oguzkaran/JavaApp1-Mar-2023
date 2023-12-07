@@ -7,10 +7,8 @@ import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public final class ProductFactory {
     public final List<ProductInfo> PRODUCTS = new ArrayList<>();
@@ -79,6 +77,7 @@ public final class ProductFactory {
     {
         return PRODUCTS;
     }
+
 
     public Optional<ProductInfo> getRandomProduct(Random r)
     {
