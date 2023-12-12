@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 public final class StaffFactory {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DayOfWeek[] DAY_OF_WEEKS = DayOfWeek.values();
     private static final Random m_random = new Random();
     public final List<StaffInfo> STAFF = new ArrayList<>();
@@ -27,6 +27,8 @@ public final class StaffFactory {
                 .setId(Integer.parseInt(staffInfo[0]))
                 .setName(staffInfo[1])
                 .setBirthDate(LocalDate.parse(staffInfo[2], FORMATTER))
+                .setEntryDate(LocalDate.parse(staffInfo[3], FORMATTER))
+                .setSystemEntryDate(LocalDate.parse(staffInfo[4], FORMATTER))
                 .setRestDay(DAY_OF_WEEKS[m_random.nextInt(DAY_OF_WEEKS.length)]);
     }
 

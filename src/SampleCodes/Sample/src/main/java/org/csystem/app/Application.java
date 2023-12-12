@@ -1,44 +1,50 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Collectors.toList metotları ile elde edilen List<T> arayüzüne ilişkin collection'da değişiklik yapılıp yapılamayacağı
-    garanti değildir. Ancak Stream.toList ve Collectors.toUnmodifiableList metotlarından elde edilen collection'da
-    değişiklik yapılamaz
+    Aşağıdaki örnekte komut satırından alınan bir tarihten önce sisteme girmiş olanların yaş ortalamları bölümlenmiştir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.io.util.console.Console;
-import org.csystem.util.data.test.factory.ProductFactory;
+import org.csystem.util.data.test.factory.PersonFactory;
+import org.csystem.util.data.test.people.MaritalStatus;
+import org.csystem.util.data.test.people.Person;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.stream.Collectors;
+import java.time.format.DateTimeParseException;
+import static java.util.stream.Collectors.*;
 
 import static com.karandev.io.util.console.commandline.CommandLineUtil.checkLengthEquals;
 
 class Application {
     public static void run(String[] args)
     {
-        checkLengthEquals(args.length, 1, "Wrong number of arguments");
+        checkLengthEquals(args.length, 2, "Wrong number of arguments");
 
         try {
-            var factory = ProductFactory.loadFromTextFile(Path.of(args[0]));
-            var products = factory.PRODUCTS;
+            var age = Double.parseDouble(args[1]);
+            var factory = PersonFactory.loadFromTextFile(Path.of(args[0]));
+            var people = factory.PEOPLE;
 
-            var names = products.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList());
+            var map = people.stream().filter(p -> p.getAge() < age)
+                    .collect(groupingBy(Person::getMaritalStatus));
 
-            names.forEach(Console::writeLine);
-
-            names.add("Bartu");
-
-            names.forEach(Console::writeLine);
+            Console.writeLine("Single People:");
+            map.get(MaritalStatus.SINGLE).forEach(Console::writeLine);
+            Console.writeLine("Married People:");
+            map.get(MaritalStatus.MARRIED).forEach(Console::writeLine);
+            Console.writeLine("Divorced People:");
+            map.get(MaritalStatus.DIVORCED).forEach(Console::writeLine);
+            Console.writeLine("Widow People:");
+            map.get(MaritalStatus.WIDOW).forEach(Console::writeLine);
         }
-        catch (NumberFormatException ignore) {
-            Console.Error.writeLine("Invalid stock amount");
+        catch (DateTimeParseException ignore) {
+            Console.Error.writeLine("Invalid date values!...");
         }
         catch (IOException ex) {
             Console.Error.writeLine("IO problem occurred:%s", ex.getMessage());
         }
         catch (Throwable ex) {
-            Console.Error.writeLine("Problem occurred:%s", ex.getMessage());
+            Console.Error.writeLine("Problem occurred:%s", ex.getClass().getName());
         }
     }
 }
