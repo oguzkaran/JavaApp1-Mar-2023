@@ -1,19 +1,17 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Aşağıdaki örnekte komut satırından alınan bir tarihten önce sisteme girmiş olanların yaş ortalamları bölümlenmiştir
+    Aşağıdaki örneği inceleyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import com.karandev.io.util.console.Console;
-import org.csystem.util.data.test.factory.PersonFactory;
-import org.csystem.util.data.test.people.MaritalStatus;
-import org.csystem.util.data.test.people.Person;
+import org.csystem.util.data.test.factory.StudentFactory;
+import org.csystem.util.data.test.student.StudentInfo;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.time.format.DateTimeParseException;
-import static java.util.stream.Collectors.*;
 
 import static com.karandev.io.util.console.commandline.CommandLineUtil.checkLengthEquals;
+import static java.util.stream.Collectors.groupingBy;
 
 class Application {
     public static void run(String[] args)
@@ -21,24 +19,17 @@ class Application {
         checkLengthEquals(args.length, 2, "Wrong number of arguments");
 
         try {
-            var age = Double.parseDouble(args[1]);
-            var factory = PersonFactory.loadFromTextFile(Path.of(args[0]));
-            var people = factory.PEOPLE;
+            var grade = Integer.parseInt(args[1]);
+            var factory = StudentFactory.loadFromTextFile(Path.of(args[0]));
+            var students = factory.STUDENTS;
 
-            var map = people.stream().filter(p -> p.getAge() < age)
-                    .collect(groupingBy(Person::getMaritalStatus));
+            var map = students.stream().filter(s -> s.getMidtermGrade() * 0.4 + s.getFinalGrade() * 0.6 > grade)
+                    .collect(groupingBy(StudentInfo::getLecture));
 
-            Console.writeLine("Single People:");
-            map.get(MaritalStatus.SINGLE).forEach(Console::writeLine);
-            Console.writeLine("Married People:");
-            map.get(MaritalStatus.MARRIED).forEach(Console::writeLine);
-            Console.writeLine("Divorced People:");
-            map.get(MaritalStatus.DIVORCED).forEach(Console::writeLine);
-            Console.writeLine("Widow People:");
-            map.get(MaritalStatus.WIDOW).forEach(Console::writeLine);
+            map.keySet().forEach(lec -> {Console.writeLine(lec); map.get(lec).forEach(Console::writeLine);});
         }
-        catch (DateTimeParseException ignore) {
-            Console.Error.writeLine("Invalid date values!...");
+        catch (NumberFormatException ignore) {
+            Console.Error.writeLine("Invalid grade value!...");
         }
         catch (IOException ex) {
             Console.Error.writeLine("IO problem occurred:%s", ex.getMessage());

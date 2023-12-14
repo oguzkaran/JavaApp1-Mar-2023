@@ -11,7 +11,7 @@
 
 	<groupId>org.csystem</groupId>
 	<artifactId>org-csystem-util-data-test</artifactId>
-	<version>15.0.0</version>
+	<version>15.1.0</version>
 	<name>org-csystem-util-data-test</name>
 
 	<repositories>
