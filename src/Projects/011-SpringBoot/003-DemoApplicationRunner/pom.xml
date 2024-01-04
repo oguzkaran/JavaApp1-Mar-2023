@@ -11,9 +11,10 @@
 
 
 	<groupId>org.csystem</groupId>
-	<artifactId>DependencyInjection</artifactId>
+	<artifactId>ApplicationRunner</artifactId>
 	<version>1.0.0</version>
-	<name>DependencyInjection</name>
+	<name>ApplicationRunner</name>
+	<description>Generic Project</description>
 
 	<repositories>
 		<repository>
@@ -41,12 +42,6 @@
 			<groupId>com.karandev</groupId>
 			<artifactId>com-karandev-util-console</artifactId>
 			<version>14.4.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.csystem</groupId>
-			<artifactId>org-csystem-util-spring-datetime</artifactId>
-			<version>14.0.0</version>
 		</dependency>
 
 		<dependency>

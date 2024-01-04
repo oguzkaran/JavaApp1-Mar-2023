@@ -11,9 +11,10 @@
 
 
 	<groupId>org.csystem</groupId>
-	<artifactId>DependencyInjection</artifactId>
+	<artifactId>DigitalClockApp</artifactId>
 	<version>1.0.0</version>
-	<name>DependencyInjection</name>
+	<name>DigitalClockApp</name>
+	<description>Generic Project</description>
 
 	<repositories>
 		<repository>
@@ -41,6 +42,12 @@
 			<groupId>com.karandev</groupId>
 			<artifactId>com-karandev-util-console</artifactId>
 			<version>14.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.csystem</groupId>
+			<artifactId>org-csystem-util-scheduler</artifactId>
+			<version>14.2.1</version>
 		</dependency>
 
 		<dependency>

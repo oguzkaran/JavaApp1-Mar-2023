@@ -26,5 +26,4 @@ public class DateTimeDisplay {
     {
         Console.writeLine("Now:%s", m_formatter.format(m_now));
     }
-
 }
