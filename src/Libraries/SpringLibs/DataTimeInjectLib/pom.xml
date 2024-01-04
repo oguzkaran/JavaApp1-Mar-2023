@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>org.csystem</groupId>
-	<artifactId>org-csystem-util-spring-datetime</artifactId>
+	<groupId>com.karandev</groupId>
+	<artifactId>com-karandev-util-spring-datetime</artifactId>
 	<version>14.0.0</version>
 	<name>org-csystem-util-spring-datetime</name>
 	<description>Utility DI DateTime Library</description>
