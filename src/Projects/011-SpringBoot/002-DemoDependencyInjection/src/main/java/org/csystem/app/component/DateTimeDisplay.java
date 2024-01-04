@@ -1,7 +1,8 @@
 package org.csystem.app.component;
 
+import com.karandev.io.util.console.Console;
+import com.karandev.util.spring.datetime.BeanName;
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,8 @@ public class DateTimeDisplay {
     private final LocalDateTime m_now;
     private final DateTimeFormatter m_formatter;
 
-    public DateTimeDisplay(LocalDateTime now, @Qualifier("dateTimeFormatter") DateTimeFormatter formatter) //ctor injection
+    public DateTimeDisplay(@Qualifier(BeanName.CURRENT_DATE_TIME) LocalDateTime now,
+                           @Qualifier(BeanName.DATE_TIME_FORMATTER_TR) DateTimeFormatter formatter) //ctor injection
     {
         m_now = now;
         m_formatter = formatter;
@@ -22,8 +24,7 @@ public class DateTimeDisplay {
     @PostConstruct
     public void display()
     {
-        System.out.printf("Now:%s%n", m_formatter.format(m_now));
+        Console.writeLine("Now:%s", m_formatter.format(m_now));
     }
-
 
 }

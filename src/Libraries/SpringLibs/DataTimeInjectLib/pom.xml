@@ -9,12 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-
 	<groupId>org.csystem</groupId>
-	<artifactId>Application</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>Application</name>
-	<description>Generic Project</description>
+	<artifactId>org-csystem-util-spring-datetime</artifactId>
+	<version>14.0.0</version>
+	<name>org-csystem-util-spring-datetime</name>
+	<description>Utility DI DateTime Library</description>
+
+
 	<repositories>
 		<repository>
 			<id>javaapp1-mar-2023-maven-repo</id>
@@ -28,7 +29,9 @@
 	</repositories>
 
 	<properties>
-		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
@@ -47,8 +50,9 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.3.0</version>
 			</plugin>
 		</plugins>
 	</build>

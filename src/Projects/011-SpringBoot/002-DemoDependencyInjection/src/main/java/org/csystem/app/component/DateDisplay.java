@@ -1,5 +1,7 @@
 package org.csystem.app.component;
 
+import com.karandev.io.util.console.Console;
+import com.karandev.util.spring.datetime.BeanName;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,13 +16,13 @@ public class DateDisplay {
     private DateTimeFormatter m_formatter;
 
     @Autowired
-    public void setToday(LocalDate today) //property injection
+    public void setToday(@Qualifier(BeanName.CURRENT_DATE) LocalDate today) //property injection
     {
         m_today = today;
     }
 
     @Autowired
-    public void setFormatter(@Qualifier("dateFormatter") DateTimeFormatter formatter) //property injection
+    public void setFormatter(@Qualifier(BeanName.DATE_FORMATTER_TR) DateTimeFormatter formatter) //property injection
     {
         m_formatter = formatter;
     }
@@ -28,6 +30,6 @@ public class DateDisplay {
     @PostConstruct
     public void display()
     {
-        System.out.printf("Today:%s%n", m_formatter.format(m_today));
+        Console.writeLine("Today:%s", m_formatter.format(m_today));
     }
 }
