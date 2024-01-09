@@ -1,4 +1,4 @@
-package org.csystem.app.clock;
+package org.csystem.app.generator.text;
 
 import com.karandev.util.spring.datetime.BasePackage;
 import org.springframework.boot.SpringApplication;

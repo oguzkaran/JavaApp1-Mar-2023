@@ -11,10 +11,9 @@
 
 
 	<groupId>org.csystem</groupId>
-	<artifactId>DigitalClockApp</artifactId>
+	<artifactId>TextGeneratorApp</artifactId>
 	<version>1.0.0</version>
-	<name>DigitalClockApp</name>
-	<description>Generic Project</description>
+	<name>TextGeneratorApp</name>
 
 	<repositories>
 		<repository>
@@ -48,6 +47,12 @@
 			<groupId>org.csystem</groupId>
 			<artifactId>org-csystem-util-scheduler</artifactId>
 			<version>14.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.csystem</groupId>
+			<artifactId>org-csystem-util</artifactId>
+			<version>17.3.0</version>
 		</dependency>
 
 		<dependency>

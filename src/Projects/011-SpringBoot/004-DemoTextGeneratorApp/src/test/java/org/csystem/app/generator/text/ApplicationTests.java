@@ -1,4 +1,4 @@
-package org.csystem.app.clock;
+package org.csystem.app.generator.text;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

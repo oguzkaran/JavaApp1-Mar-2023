@@ -1,0 +1,5 @@
+- Scheduler yerine CountDownScheduler kullanınız
+
+- generator.path ile belirlenmiş dosya varsa, generator.path.bak property'si ile belirlenmiş dosya olarak yedeklenecektir.
+generator.path.bak ile belirlenmiş dosya da varsa yedekleme dosyanın sonuna yapılacaktır. Yani her program çalıştığında
+generator.path ile belirlenen dosya varsa yedeklendikten sonra truncate edilecektir
