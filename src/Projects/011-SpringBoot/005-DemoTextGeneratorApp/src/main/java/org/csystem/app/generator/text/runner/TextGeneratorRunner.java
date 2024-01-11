@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.random.RandomGenerator;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Component
 public class TextGeneratorRunner implements ApplicationRunner {
@@ -36,13 +37,12 @@ public class TextGeneratorRunner implements ApplicationRunner {
     @Value("${generator.n}")
     private int m_n;
 
-    private void writeTextCallback()
+    private void writeTextCallback(String text)
     {
         try {
             var nowStr = m_dateTimeFormatter.format(m_applicationContext.getBean(BeanName.CURRENT_DATE_TIME, LocalDateTime.class));
-            var text = StringUtil.getRandomTextEN(m_randomGenerator, m_randomGenerator.nextInt(m_min, m_bound)) + " " + nowStr;
 
-            m_bufferedWriter.write(text);
+            m_bufferedWriter.write(text + " " + nowStr);
             m_bufferedWriter.newLine();
             m_bufferedWriter.flush();
         }
@@ -52,12 +52,17 @@ public class TextGeneratorRunner implements ApplicationRunner {
         }
     }
 
+    private String generateCallback()
+    {
+        return StringUtil.getRandomTextEN(m_randomGenerator, m_randomGenerator.nextInt(m_min, m_bound));
+    }
+
     private void textGeneratorCallback()
     {
-        if (m_n-- <= 0)
-            m_scheduler.cancel();
+        if (m_n-- > 0)
+            Stream.generate(this::generateCallback).limit(m_count).forEach(this::writeTextCallback);
         else
-            IntStream.range(0, m_count).forEach(i -> writeTextCallback());
+            m_scheduler.cancel();
     }
 
     public TextGeneratorRunner(Scheduler scheduler, BufferedWriter bufferedWriter, ApplicationContext applicationContext,
