@@ -44,6 +44,12 @@
 
 		<dependency>
 			<groupId>com.karandev</groupId>
+			<artifactId>com-karandev-util-console</artifactId>
+			<version>14.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.karandev</groupId>
 			<artifactId>com-karandev-util-spring-datetime</artifactId>
 			<version>14.0.0</version>
 		</dependency>
