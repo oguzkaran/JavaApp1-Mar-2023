@@ -1,0 +1,39 @@
+package org.csystem.util.matrix.test;
+
+import org.csystem.util.array.ArrayUtil;
+import org.csystem.util.matrix.MatrixUtil;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class MultiplyMatricesTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        Random random = new Random();
+
+        System.out.print("Üretilecek matris sayısını giriniz:");
+        int count = kb.nextInt();
+
+        while (count-- > 0) {
+            System.out.println("---------------------------------");
+            int m = random.nextInt(2, 6);
+            int n = random.nextInt(2, 6);
+            int k = random.nextInt(2, 6);
+            int[][] a = MatrixUtil.getRandomMatrix(random, m, n, 0, 11);
+            int[][] b = MatrixUtil.getRandomMatrix(random, n, k, 0, 11);
+
+            ArrayUtil.print(2, a);
+            System.out.println("+");
+            ArrayUtil.print(2, b);
+            System.out.println("=");
+            ArrayUtil.print(3, MatrixUtil.multiplyMatrices(a, b));
+            System.out.println("---------------------------------");
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        run();
+    }
+}
