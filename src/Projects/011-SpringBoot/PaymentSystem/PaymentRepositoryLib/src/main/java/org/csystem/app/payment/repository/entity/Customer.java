@@ -2,6 +2,7 @@ package org.csystem.app.payment.repository.entity;
 
 
 import jakarta.persistence.*;
+import org.aspectj.weaver.AjAttribute;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -20,10 +21,20 @@ public class Customer { //POJO
 
     public boolean active;
 
-    @OneToMany()
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
     public Set<Payment> payments;
 
-    //...
+    @Override
+    public int hashCode()
+    {
+        return username.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object other)
+    {
+        return other instanceof Customer c && username.equals(c.username);
+    }
 }
 
 
