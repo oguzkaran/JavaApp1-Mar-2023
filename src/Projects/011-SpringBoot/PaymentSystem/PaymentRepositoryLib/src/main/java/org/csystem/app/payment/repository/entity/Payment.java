@@ -13,6 +13,7 @@ public class Payment { //POJO
     @Column(name = "payment_id")
     public long id;
 
+    @Column(nullable = false)
     public double quantity;
 
     @Column(name = "unit_price", nullable = false)
