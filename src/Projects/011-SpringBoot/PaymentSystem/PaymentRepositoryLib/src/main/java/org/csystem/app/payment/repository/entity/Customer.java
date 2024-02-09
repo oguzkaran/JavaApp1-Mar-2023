@@ -2,7 +2,6 @@ package org.csystem.app.payment.repository.entity;
 
 
 import jakarta.persistence.*;
-import org.aspectj.weaver.AjAttribute;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -17,7 +16,7 @@ public class Customer { //POJO
     public String name;
 
     @Column(name = "register_date", nullable = false)
-    public LocalDate registerDate;
+    public LocalDate registerDate = LocalDate.now();
 
     public boolean active;
 
