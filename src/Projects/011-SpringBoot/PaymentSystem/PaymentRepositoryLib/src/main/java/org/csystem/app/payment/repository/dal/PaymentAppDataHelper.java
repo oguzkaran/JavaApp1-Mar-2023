@@ -20,16 +20,6 @@ public class PaymentAppDataHelper {
         m_paymentRepository = paymentRepository;
     }
 
-    public Payment savePayment(Payment payment)
-    {
-        try {
-            return m_paymentRepository.save(payment);
-        }
-        catch (Throwable ex) {
-            throw new RepositoryException("PaymentAppDataHelper.savePayment", ex);
-        }
-    }
-
     public Customer saveCustomer(Customer customer)
     {
         try {
@@ -37,6 +27,16 @@ public class PaymentAppDataHelper {
         }
         catch (Throwable ex) {
             throw new RepositoryException("PaymentAppDataHelper.saveCustomer", ex);
+        }
+    }
+
+    public Payment savePayment(Payment payment)
+    {
+        try {
+            return m_paymentRepository.save(payment);
+        }
+        catch (Throwable ex) {
+            throw new RepositoryException("PaymentAppDataHelper.savePayment", ex);
         }
     }
 
