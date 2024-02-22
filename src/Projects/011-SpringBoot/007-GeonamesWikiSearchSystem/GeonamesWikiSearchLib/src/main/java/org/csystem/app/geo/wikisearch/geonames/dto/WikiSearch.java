@@ -1,4 +1,4 @@
-package org.csystem.app.wikisearch.geonames.dto;
+package org.csystem.app.geo.wikisearch.geonames.dto;
 
 import java.util.List;
 
