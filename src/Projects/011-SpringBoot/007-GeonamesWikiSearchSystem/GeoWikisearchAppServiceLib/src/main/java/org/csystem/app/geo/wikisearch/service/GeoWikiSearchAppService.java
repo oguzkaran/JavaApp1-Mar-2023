@@ -2,11 +2,9 @@ package org.csystem.app.geo.wikisearch.service;
 
 import com.karandev.util.data.service.DataServiceException;
 import org.csystem.app.geo.wikisearch.geonames.GeonamesWikiSearchHelper;
-import org.csystem.app.geo.wikisearch.service.dto.WikiSearchInfoDTO;
+import org.csystem.app.geo.wikisearch.service.dto.WikiSearchDTO;
 import org.csystem.app.geo.wikisearch.service.mapper.IWikiSearchInfoMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.stream.StreamSupport;
 
 @Service
 public class GeoWikiSearchAppService {
@@ -19,11 +17,10 @@ public class GeoWikiSearchAppService {
         m_wikiSearchInfoMapper = wikiSearchInfoMapper;
     }
 
-    public Iterable<WikiSearchInfoDTO> findWikiSearchInfo(String question)
+    public WikiSearchDTO findWikiSearchInfo(String question)
     {
         try {
-            return StreamSupport.stream(m_geonamesWikiSearchHelper.findWikiSearchInfo(question).spliterator(), false)
-                    .map(m_wikiSearchInfoMapper::toWikiSearchInfoDTO).toList();
+            return m_wikiSearchInfoMapper.toWikiSearchDTO(m_geonamesWikiSearchHelper.findWikiSearch(question));
         }
         catch (Throwable ex) {
             throw new DataServiceException("GeoWikiSearchAppService.findWikiSearchInfo", ex);

@@ -1,6 +1,7 @@
 package org.csystem.app.geo.wikisearch.controller;
 
 import org.csystem.app.geo.wikisearch.service.GeoWikiSearchAppService;
+import org.csystem.app.geo.wikisearch.service.dto.WikiSearchDTO;
 import org.csystem.app.geo.wikisearch.service.dto.WikiSearchInfoDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ public class GeoWikiSearchServiceController {
     }
 
     @GetMapping("question")
-    public Iterable<WikiSearchInfoDTO> findWikiSearchInfo(@RequestParam(name = "q") String question)
+    public WikiSearchDTO findWikiSearchInfo(@RequestParam(name = "q") String question)
     {
         return m_geoWikiSearchAppService.findWikiSearchInfo(question);
     }

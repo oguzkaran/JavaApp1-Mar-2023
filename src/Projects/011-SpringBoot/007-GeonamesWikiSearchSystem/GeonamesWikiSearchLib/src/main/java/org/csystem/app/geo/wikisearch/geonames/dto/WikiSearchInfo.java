@@ -19,6 +19,8 @@ public class WikiSearchInfo {
     public double latitude;
     public String wikipediaUrl;
     public int geoNameId;
+
     public String countryCode;
+
     public String feature;
 }

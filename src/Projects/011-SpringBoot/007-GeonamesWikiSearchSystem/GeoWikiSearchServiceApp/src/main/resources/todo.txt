@@ -1,0 +1,31 @@
+- Verileri aşağıdaki tablolarda tutan veritabanını oluşturunuz.
+     wiki_searches
+        - question p.k.
+        - first_query_time
+     wiki_search_info
+        wiki_search_info_id (identity)
+        question (f.k.)
+        summary
+        elevation
+        longitude
+        rank
+        thumbnailImg
+        language
+        title
+        latitude
+        wikipediaUrl
+        countryCode
+        feature
+     wiki_search_query
+        wiki_search_query (identity)
+        question (f.k)
+        query_date_time
+
+- Tabloları code first olarak oluşturunuz. wiki_search_query tablosunda her bir sorgulama zamanı tutulacaktır.
+
+- Uygulama (GeoWikiSearchServiceApp) sorgulanan question bilgisi için önce kendi veritabanına bakacak varsa bilgileri
+oradan verecektir. Yoksa Geonames'den alıp kendi veritabanına da ekleyerek bilgileri verecektir. Kendi veritabanından
+verilen her bilgi için sorgulama zamanını wiki_search_query tablosuna ekleyecektir.
+
+- Veritabanı işlemleri için (repository layer) ayrı bir kütüphaneyi kendi paket isimlerinizle oluşturunuz.
+
