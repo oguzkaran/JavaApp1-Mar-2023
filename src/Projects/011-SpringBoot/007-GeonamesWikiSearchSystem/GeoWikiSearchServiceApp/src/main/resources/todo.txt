@@ -16,8 +16,8 @@
         wikipediaUrl
         countryCode
         feature
-     wiki_search_query
-        wiki_search_query (identity)
+     wiki_search_query_info
+        wiki_search_query_info (identity)
         question (f.k)
         query_date_time
 
