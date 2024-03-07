@@ -1,5 +1,6 @@
 package org.csystem.app.geo.wikisearch.data.dal;
 
+import org.csystem.app.geo.wikisearch.data.entity.WikiSearch;
 import org.csystem.app.geo.wikisearch.data.repository.IWikiSearchInfoRepository;
 import org.csystem.app.geo.wikisearch.data.repository.IWikiSearchQueryInfoRepository;
 import org.csystem.app.geo.wikisearch.data.repository.IWikiSearchRepository;
@@ -20,8 +21,12 @@ public class GeoWikiSearchDataHelper {
 
     public boolean existQuestionById(String question)
     {
-        //...
         return m_wikiSearchRepository.existsById(question);
+    }
+
+    public void saveWikiSearch(WikiSearch wikiSearch)
+    {
+        m_wikiSearchRepository.save(wikiSearch);
     }
 
     //...

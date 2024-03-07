@@ -17,9 +17,10 @@ public class GeoWikiSearchAppService {
         m_wikiSearchInfoMapper = wikiSearchInfoMapper;
     }
 
-    public WikiSearchDTO findWikiSearchInfo(String question)
+    public WikiSearchDTO finByQuestion(String question)
     {
         try {
+            //Önce veritabanına bak, yoksa servisten al
             return m_wikiSearchInfoMapper.toWikiSearchDTO(m_geonamesWikiSearchHelper.findWikiSearch(question));
         }
         catch (Throwable ex) {
