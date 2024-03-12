@@ -13,7 +13,7 @@ public class WikiSearchQueryInfo {
     @Column(name = "wiki_search_query")
     public long id;
 
-        @Column(name = "query_date_time", nullable = false)
+    @Column(name = "query_date_time", nullable = false)
     public LocalDateTime queryDateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)

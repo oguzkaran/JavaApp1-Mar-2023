@@ -2,7 +2,7 @@ package org.csystem.app.geo.wikisearch.geonames.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class WikiSearchInfo {
+public class GeoWikiSearchInfo {
     public String summary;
     public int elevation;
 

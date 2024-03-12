@@ -6,6 +6,8 @@ import org.csystem.app.geo.wikisearch.data.repository.IWikiSearchQueryInfoReposi
 import org.csystem.app.geo.wikisearch.data.repository.IWikiSearchRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class GeoWikiSearchDataHelper {
     private final IWikiSearchRepository m_wikiSearchRepository;
@@ -27,6 +29,11 @@ public class GeoWikiSearchDataHelper {
     public void saveWikiSearch(WikiSearch wikiSearch)
     {
         m_wikiSearchRepository.save(wikiSearch);
+    }
+
+    public Optional<WikiSearch> findWikiSearchByQuestion(String question)
+    {
+        return m_wikiSearchRepository.findById(question);
     }
 
     //...

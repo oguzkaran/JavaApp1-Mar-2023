@@ -1,8 +1,7 @@
 package org.csystem.app.geo.wikisearch.geonames;
 
-import org.csystem.app.geo.wikisearch.geonames.dto.WikiSearch;
-import org.csystem.app.geo.wikisearch.geonames.dto.WikiSearchInfo;
-import org.springframework.beans.factory.annotation.Value;
+import org.csystem.app.geo.wikisearch.geonames.dto.GeoWikiSearch;
+import org.csystem.app.geo.wikisearch.geonames.dto.GeoWikiSearchInfo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,12 +17,12 @@ public class GeonamesWikiSearchHelper {
         m_restTemplate = restTemplate;
     }
 
-    public WikiSearch findWikiSearch(String question)
+    public GeoWikiSearch findWikiSearch(String question)
     {
-        return m_restTemplate.getForObject(String.format(m_urlTemplate, question), WikiSearch.class);
+        return m_restTemplate.getForObject(String.format(m_urlTemplate, question), GeoWikiSearch.class);
     }
 
-    public Iterable<WikiSearchInfo> findWikiSearchInfo(String question)
+    public Iterable<GeoWikiSearchInfo> findWikiSearchInfo(String question)
     {
         return findWikiSearch(question).geonames;
     }

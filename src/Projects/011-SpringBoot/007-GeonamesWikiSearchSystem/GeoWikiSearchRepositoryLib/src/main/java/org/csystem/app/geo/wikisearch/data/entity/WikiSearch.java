@@ -3,7 +3,6 @@ package org.csystem.app.geo.wikisearch.data.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -12,7 +11,7 @@ public class WikiSearch {
     @Id
     public String question;
     @Column(name = "first_query_time", nullable = false)
-    public LocalDateTime firstQueryTime;
+    public LocalDateTime firstQueryTime = LocalDateTime.now();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "wikiSearch", cascade = CascadeType.ALL)
     public Set<WikiSearchQueryInfo> wikiSearchQueryInfo;
