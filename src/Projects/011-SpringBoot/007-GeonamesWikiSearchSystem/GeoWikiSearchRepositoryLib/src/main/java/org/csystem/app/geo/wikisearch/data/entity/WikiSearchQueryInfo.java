@@ -14,7 +14,7 @@ public class WikiSearchQueryInfo {
     public long id;
 
     @Column(name = "query_date_time", nullable = false)
-    public LocalDateTime queryDateTime;
+    public LocalDateTime queryDateTime = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question", nullable = false)

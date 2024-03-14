@@ -2,6 +2,8 @@ package org.csystem.app.geo.wikisearch.service;
 
 import com.karandev.util.data.service.DataServiceException;
 import org.csystem.app.geo.wikisearch.data.dal.GeoWikiSearchDataHelper;
+import org.csystem.app.geo.wikisearch.data.entity.WikiSearch;
+import org.csystem.app.geo.wikisearch.data.entity.WikiSearchQueryInfo;
 import org.csystem.app.geo.wikisearch.geonames.GeonamesWikiSearchHelper;
 import org.csystem.app.geo.wikisearch.service.dto.WikiSearchDTO;
 import org.csystem.app.geo.wikisearch.service.mapper.IWikiSearchInfoMapper;
@@ -14,16 +16,30 @@ public class GeoWikiSearchAppService {
 
     private final IWikiSearchInfoMapper m_wikiSearchInfoMapper;
 
+    private void saveWikiSearchQueryInfo(WikiSearch wikiSearch)
+    {
+        var w = new WikiSearchQueryInfo();
+
+        w.wikiSearch = wikiSearch;
+        m_geoWikiSearchDataHelper.saveWikiSearchQueryInfo(w);
+    }
+
     private WikiSearchDTO exitsInDbCallback(String question)
     {
-        return m_wikiSearchInfoMapper.toWikiSearchDTO(m_geoWikiSearchDataHelper.findWikiSearchInfoByQuestion(question).get());
+        var ws = m_geoWikiSearchDataHelper.findWikiSearchByQuestion(question).get();
+
+        saveWikiSearchQueryInfo(ws);
+
+        return m_wikiSearchInfoMapper.toWikiSearchDTO(ws);
     }
 
     private WikiSearchDTO notExistsInDbCallback(String question)
     {
         var geoWikiSearch = m_geonamesWikiSearchHelper.findWikiSearch(question);
 
-        m_geoWikiSearchDataHelper.saveWikiSearch(m_wikiSearchInfoMapper.toWikiSearch(geoWikiSearch));
+        var ws = m_geoWikiSearchDataHelper.saveWikiSearch(m_wikiSearchInfoMapper.toWikiSearch(question, geoWikiSearch));
+        saveWikiSearchQueryInfo(ws);
+
         return m_wikiSearchInfoMapper.toWikiSearchDTO(geoWikiSearch);
     }
 
