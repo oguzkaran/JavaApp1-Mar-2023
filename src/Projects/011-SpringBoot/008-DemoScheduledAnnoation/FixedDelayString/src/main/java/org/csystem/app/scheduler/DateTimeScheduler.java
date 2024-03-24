@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.Temporal;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class DateTimeScheduler {
@@ -18,9 +19,10 @@ public class DateTimeScheduler {
         m_dateTimeFormatter = dateTimeFormatter;
     }
 
-    @Scheduled(cron = "0-10 50,54 10 * * MON,WED")
+    @Scheduled(fixedDelayString = "${scheduler.datetime.fixeddelay}", timeUnit = TimeUnit.SECONDS)
     public void displayCurrentDateTime()
     {
         System.out.printf("Current Date Time:%s\r", m_dateTimeFormatter.format(m_applicationContext.getBean(Temporal.class)));
     }
 }
+
