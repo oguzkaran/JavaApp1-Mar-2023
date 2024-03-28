@@ -10,9 +10,9 @@
 	</parent>
 
 	<groupId>com.eager.ieu</groupId>
-	<artifactId>WeatherInfoDailyRepositoryLib</artifactId>
+	<artifactId>WeatherInfoBackupRepositoryLib</artifactId>
 	<version>1.0.0</version>
-	<name>WeatherInfoDailyRepositoryLib</name>
+	<name>WeatherInfoBackupRepositoryLib</name>
 
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
