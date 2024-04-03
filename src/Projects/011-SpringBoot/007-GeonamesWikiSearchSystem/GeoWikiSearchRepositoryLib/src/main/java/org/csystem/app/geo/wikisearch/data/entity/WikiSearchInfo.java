@@ -13,6 +13,7 @@ public class WikiSearchInfo {
     public long id;
 
     public String summary;
+
     public int elevation;
 
     public double longitude;
