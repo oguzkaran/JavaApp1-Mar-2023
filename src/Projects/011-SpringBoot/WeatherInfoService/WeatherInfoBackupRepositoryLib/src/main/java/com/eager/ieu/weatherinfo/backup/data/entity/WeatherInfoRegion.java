@@ -51,8 +51,8 @@ public class WeatherInfoRegion {
     public String cloudsCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "place_info_by_location", nullable = false)
-    public PlaceInfoLocation m_placeInfoLocation;
+    @JoinColumn(name = "region", nullable = false)
+    public PlaceInfoRegion placeInfoRegion;
 
     @Override
     public int hashCode()

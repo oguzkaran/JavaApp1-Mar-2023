@@ -16,18 +16,18 @@ public class WeatherInfoBackupDataHelper {
 
     private final IPlaceInfoRegionRepository m_placeInfoRegionRepository;
 
-    private final IPlaceInfoLocationRepository m_placeInfoByLocationRepository;
+    private final IPlaceInfoLocationRepository m_placeInfoLocationRepository;
 
     private final IWeatherInfoRegionRepository m_weatherInfoRegionRepository;
 
     public WeatherInfoBackupDataHelper(IWeatherInfoLocationRepository weatherInfoLocationRepository,
                                        IPlaceInfoRegionRepository placeInfoRegionRepository,
-                                       IPlaceInfoLocationRepository placeInfoByLocationRepository,
+                                       IPlaceInfoLocationRepository placeInfoLocationRepository,
                                        IWeatherInfoRegionRepository weatherInfoRegionRepository)
     {
         m_weatherInfoLocationRepository = weatherInfoLocationRepository;
         m_placeInfoRegionRepository = placeInfoRegionRepository;
-        m_placeInfoByLocationRepository = placeInfoByLocationRepository;
+        m_placeInfoLocationRepository = placeInfoLocationRepository;
         m_weatherInfoRegionRepository = weatherInfoRegionRepository;
     }
 
@@ -38,7 +38,7 @@ public class WeatherInfoBackupDataHelper {
 
     public PlaceInfoLocation savePlaceInfoLocation(PlaceInfoLocation placeInfoLocation)
     {
-        return m_placeInfoByLocationRepository.save(placeInfoLocation);
+        return m_placeInfoLocationRepository.save(placeInfoLocation);
     }
 
     public WeatherInfoRegion saveWeatherInfoRegion(WeatherInfoRegion weatherInfoRegion)

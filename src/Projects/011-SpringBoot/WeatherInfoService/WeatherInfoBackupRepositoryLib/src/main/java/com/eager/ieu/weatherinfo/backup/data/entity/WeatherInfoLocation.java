@@ -60,8 +60,8 @@ public class WeatherInfoLocation {
     public int hectoPascAltimeter;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "place_info_region", nullable = false)
-    public PlaceInfoRegion placeInfoRegion;
+    @JoinColumn(name = "place_name", nullable = false)
+    public PlaceInfoLocation placeInfoLocation;
 
     @Override
     public int hashCode()

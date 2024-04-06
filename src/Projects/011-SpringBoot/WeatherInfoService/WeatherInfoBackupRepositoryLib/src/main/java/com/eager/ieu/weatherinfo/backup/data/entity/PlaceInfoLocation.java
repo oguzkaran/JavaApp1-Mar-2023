@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "place_info_by_locations")
+@Table(name = "place_info_locations")
 public class PlaceInfoLocation {
     @Id
     @Column(name = "place_name")
@@ -15,8 +15,8 @@ public class PlaceInfoLocation {
 
     public double longitude;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "weather_info_location", cascade = CascadeType.ALL)
-    public Set<WeatherInfoRegion> weatherInfoLocations;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "placeInfoLocation", cascade = CascadeType.ALL)
+    public Set<WeatherInfoLocation> weatherInfoLocations;
 
     @Override
     public int hashCode() {

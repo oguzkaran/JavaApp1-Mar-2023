@@ -3,7 +3,7 @@ package com.eager.ieu.weatherinfo.daily.data.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "place_info_by_locations")
+@Table(name = "place_info_locations")
 public class PlaceInfoLocation {
     @Id
     @Column(name = "place_name")
@@ -13,7 +13,7 @@ public class PlaceInfoLocation {
 
     public double longitude;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "weather_info_location", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "placeInfoLocation", cascade = CascadeType.ALL)
     public WeatherInfoLocation weatherInfoLocation;
 
     @Override
