@@ -9,6 +9,8 @@ import org.csystem.app.geo.wikisearch.service.dto.WikiSearchDTO;
 import org.csystem.app.geo.wikisearch.service.mapper.IWikiSearchInfoMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.stream.Collectors;
+
 @Service
 public class GeoWikiSearchAppService {
     private final GeonamesWikiSearchHelper m_geonamesWikiSearchHelper;
@@ -36,8 +38,17 @@ public class GeoWikiSearchAppService {
     private WikiSearchDTO notExistsInDbCallback(String question)
     {
         var geoWikiSearch = m_geonamesWikiSearchHelper.findWikiSearch(question);
+        var ws = new WikiSearch();
+        var wikiSearchInfo = m_wikiSearchInfoMapper.toWikiSearchInfo(geoWikiSearch.geonames);
 
-        var ws = m_geoWikiSearchDataHelper.saveWikiSearch(m_wikiSearchInfoMapper.toWikiSearch(question, geoWikiSearch));
+        ws.question = question;
+        wikiSearchInfo.forEach(wi -> wi.wikiSearch = ws);
+
+        m_geoWikiSearchDataHelper.saveWikiSearch(ws);
+
+        //wikiSearchInfo.forEach(m_geoWikiSearchDataHelper::saveWikiSearchInfo);
+        m_geoWikiSearchDataHelper.saveAllWikiSearchInfo(wikiSearchInfo);
+
         saveWikiSearchQueryInfo(ws);
 
         return m_wikiSearchInfoMapper.toWikiSearchDTO(geoWikiSearch);

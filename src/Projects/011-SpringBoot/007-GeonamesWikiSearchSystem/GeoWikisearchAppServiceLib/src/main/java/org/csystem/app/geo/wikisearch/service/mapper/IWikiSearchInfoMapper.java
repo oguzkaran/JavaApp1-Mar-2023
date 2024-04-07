@@ -27,17 +27,6 @@ public interface IWikiSearchInfoMapper {
 
     @Mapping(source = "thumbnailImg", target = "thumbnailImage")
     WikiSearchInfo toWikiSearchInfo(GeoWikiSearchInfo geoWikiSearchInfo);
+
     Set<WikiSearchInfo> toWikiSearchInfo(List<GeoWikiSearchInfo> geoWikiSearchInfo);
-
-    //...
-    default WikiSearch toWikiSearch(String question, GeoWikiSearch geoWikiSearch)
-    {
-        var ws = new WikiSearch();
-
-        ws.question = question;
-        ws.wikiSearchInfo = toWikiSearchInfo(geoWikiSearch.geonames);
-        ws.wikiSearchInfo.forEach(wi -> wi.wikiSearch = ws);
-
-        return ws;
-    }
 }

@@ -12,6 +12,7 @@ public class WikiSearchInfo {
     @Column(name = "wiki_search_info_id")
     public long id;
 
+    @Column(length = 1024)
     public String summary;
 
     public int elevation;
@@ -24,6 +25,7 @@ public class WikiSearchInfo {
     public String thumbnailImage;
 
     public String language;
+
     public String title;
 
     public double latitude;
