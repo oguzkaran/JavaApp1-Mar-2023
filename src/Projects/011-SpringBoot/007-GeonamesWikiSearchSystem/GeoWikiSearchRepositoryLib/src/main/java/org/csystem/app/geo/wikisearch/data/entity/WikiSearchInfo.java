@@ -48,12 +48,16 @@ public class WikiSearchInfo {
     @Override
     public int hashCode()
     {
-        return Objects.hashCode(id);
+        return Objects.hash(summary, elevation, latitude, longitude);
     }
 
     @Override
     public boolean equals(Object other)
     {
-        return other instanceof WikiSearchInfo wi && id == wi.id;
+        return other instanceof WikiSearchInfo wi
+                && Objects.equals(summary, wi.summary)
+                && Objects.equals(elevation, wi.elevation)
+                && Objects.equals(latitude, wi.latitude)
+                && Objects.equals(longitude, wi.longitude);
     }
 }

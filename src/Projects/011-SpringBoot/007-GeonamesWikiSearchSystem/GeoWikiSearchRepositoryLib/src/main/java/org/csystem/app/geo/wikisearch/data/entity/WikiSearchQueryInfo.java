@@ -23,12 +23,12 @@ public class WikiSearchQueryInfo {
     @Override
     public int hashCode()
     {
-        return Objects.hashCode(id);
+        return Objects.hashCode(queryDateTime);
     }
 
     @Override
     public boolean equals(Object other)
     {
-        return other instanceof WikiSearchInfo wqi && id == wqi.id;
+        return other instanceof WikiSearchQueryInfo wqi && Objects.equals(wqi.queryDateTime, queryDateTime);
     }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "wiki_searches")
@@ -14,7 +15,7 @@ public class WikiSearch {
     public LocalDateTime firstQueryTime = LocalDateTime.now();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "wikiSearch", cascade = CascadeType.ALL)
-    public List<WikiSearchQueryInfo> wikiSearchQueryInfo;
+    public Set<WikiSearchQueryInfo> wikiSearchQueryInfo;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "wikiSearch", cascade = CascadeType.ALL)
     public List<WikiSearchInfo> wikiSearchInfo;

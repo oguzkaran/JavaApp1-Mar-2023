@@ -43,10 +43,7 @@ public class GeoWikiSearchAppService {
 
         ws.question = question;
         wikiSearchInfo.forEach(wi -> wi.wikiSearch = ws);
-
         m_geoWikiSearchDataHelper.saveWikiSearch(ws);
-
-        //wikiSearchInfo.forEach(m_geoWikiSearchDataHelper::saveWikiSearchInfo);
         m_geoWikiSearchDataHelper.saveAllWikiSearchInfo(wikiSearchInfo);
 
         saveWikiSearchQueryInfo(ws);
