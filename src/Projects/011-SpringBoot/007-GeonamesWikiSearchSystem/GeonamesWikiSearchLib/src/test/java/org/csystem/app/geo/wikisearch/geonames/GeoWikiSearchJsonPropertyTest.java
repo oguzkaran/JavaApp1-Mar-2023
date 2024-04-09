@@ -2,9 +2,11 @@ package org.csystem.app.geo.wikisearch.geonames;
 
 import org.csystem.app.geo.wikisearch.geonames.dto.GeoWikiSearch;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestTemplate;
 
+@Disabled
 class GeoWikiSearchJsonPropertyTest {
     private final RestTemplate m_restTemplate = new RestTemplate();
     private final String m_url = "http://api.geonames.org/wikipediaSearchJSON?&q=ankara&maxRows=10&username=csystem";

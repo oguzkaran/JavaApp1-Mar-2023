@@ -1,13 +1,5 @@
 #!/bin/bash
-cd .//GeoWikiSearchRepositoryLib
-rm ./target/*.jar
-mvn install
-cd ../GeoWikisearchAppServiceLib
-rm ./target/*.jar
-mvn install
-
-cd ../GeoWikiSearchServiceApp
-rm ./target/*.jar
-mvn package
-cd ./target
-
+./build-geolib.sh
+./build-repolib.sh
+./build-servicelib.sh
+./build-app.sh
