@@ -12,7 +12,6 @@ public class PlaceInfoLocation {
     public String placeName;
 
     public double latitude;
-
     public double longitude;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "placeInfoLocation", cascade = CascadeType.ALL)

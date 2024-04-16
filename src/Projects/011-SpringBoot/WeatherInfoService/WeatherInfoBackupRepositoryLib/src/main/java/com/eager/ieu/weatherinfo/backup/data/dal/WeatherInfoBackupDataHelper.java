@@ -10,6 +10,8 @@ import com.eager.ieu.weatherinfo.backup.data.repository.IWeatherInfoLocationRepo
 import com.eager.ieu.weatherinfo.backup.data.repository.IWeatherInfoRegionRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class WeatherInfoBackupDataHelper {
     private final IWeatherInfoLocationRepository m_weatherInfoLocationRepository;
@@ -49,6 +51,53 @@ public class WeatherInfoBackupDataHelper {
     public WeatherInfoLocation saveWeatherInfoLocation(WeatherInfoLocation weatherInfoLocation)
     {
         return m_weatherInfoLocationRepository.save(weatherInfoLocation);
+    }
+
+    public Optional<PlaceInfoLocation> findPlaceInfoLocationByPlaceName(String placeName)
+    {
+        return m_placeInfoLocationRepository.findById(placeName);
+    }
+
+    public Optional<PlaceInfoLocation> findPlaceInfoLocationByCoordinate(double latitude, double longitude)
+    {
+        return m_placeInfoLocationRepository.findByLatitudeAndLongitude(latitude, longitude);
+    }
+
+    public Optional<WeatherInfoLocation> findWeatherInfoLocationById(long id)
+    {
+        return m_weatherInfoLocationRepository.findById(id);
+    }
+
+    public Iterable<WeatherInfoLocation> findWeatherInfoLocationByCoordinate(double latitude, double longitude)
+    {
+        return m_weatherInfoLocationRepository.findByLatAndLng(latitude, longitude);
+    }
+
+    public Iterable<WeatherInfoLocation> findWeatherInfoLocationByPlaceName(String placeName)
+    {
+        return m_weatherInfoLocationRepository.findByPlaceName(placeName);
+    }
+
+    public Optional<PlaceInfoRegion> findPlaceInfoRegionByRegion(String region)
+    {
+        return m_placeInfoRegionRepository.findById(region);
+    }
+
+    public Optional<PlaceInfoRegion> findPlaceInfoRegionByRegionCoordinate(double east, double west,
+                                                                           double north, double south)
+    {
+        return m_placeInfoRegionRepository.findByEastAndWestAndNorthAndSouth(east, west, north, south);
+    }
+
+
+    public Optional<WeatherInfoRegion> findWeatherInfoRegionById(long id)
+    {
+        return m_weatherInfoRegionRepository.findById(id);
+    }
+
+    public Iterable<WeatherInfoRegion> findWeatherInfoRegionByRegion(String region)
+    {
+        return m_weatherInfoRegionRepository.findWeatherInfoRegionByRegion(region);
     }
 
     //...
