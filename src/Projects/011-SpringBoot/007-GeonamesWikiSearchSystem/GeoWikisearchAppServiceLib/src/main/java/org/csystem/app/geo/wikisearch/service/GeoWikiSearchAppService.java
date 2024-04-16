@@ -45,7 +45,6 @@ public class GeoWikiSearchAppService {
         wikiSearchInfo.forEach(wi -> wi.wikiSearch = ws);
         m_geoWikiSearchDataHelper.saveWikiSearch(ws);
         m_geoWikiSearchDataHelper.saveAllWikiSearchInfo(wikiSearchInfo);
-
         saveWikiSearchQueryInfo(ws);
 
         return m_wikiSearchInfoMapper.toWikiSearchDTO(geoWikiSearch);
