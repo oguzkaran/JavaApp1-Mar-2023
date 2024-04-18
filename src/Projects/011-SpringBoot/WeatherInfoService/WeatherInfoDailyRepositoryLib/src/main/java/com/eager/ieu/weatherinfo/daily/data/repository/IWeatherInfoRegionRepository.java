@@ -10,14 +10,13 @@ import java.util.Optional;
 
 @Repository
 public interface IWeatherInfoRegionRepository extends CrudRepository<WeatherInfoRegion, Long> {
-    @Query("From WeatherInfoRegion w where w.placeInfoRegion.east = :east and w.placeInfoRegion.west = :west " +
+    @Query("from WeatherInfoRegion w where w.placeInfoRegion.east = :east and w.placeInfoRegion.west = :west " +
             "and w.placeInfoRegion.north = :north and w.placeInfoRegion.south = :south")
     Iterable<WeatherInfoRegion> findWeatherInfoRegionByEastAndWestAndNorthAndSouth(@Param("east") double east,
                                                                                    @Param("west") double west,
                                                                                    @Param("north") double north,
                                                                                    @Param("south") double south);
 
-    @Query("From WeatherInfoRegion w where w.placeInfoRegion.region = :region")
+    @Query("from WeatherInfoRegion w where w.placeInfoRegion.region = :region")
     Iterable<WeatherInfoRegion> findWeatherInfoRegionByRegion(@Param("region") String region);
-
 }

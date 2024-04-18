@@ -19,7 +19,8 @@ public class GeoWeatherInfoSearchHelper {
 
     public GeoWeatherInfoSearchHelper(RestTemplate restTemplate,
                                       @Value("${weather.location.url}") String locationUrlTemplate,
-                                      @Value("${weather.region.url}") String regionUrlTemplate) {
+                                      @Value("${weather.region.url}") String regionUrlTemplate)
+    {
         this.m_restTemplate = restTemplate;
         this.m_locationUrlTemplate = locationUrlTemplate;
         this.m_regionUrlTemplate = regionUrlTemplate;

@@ -11,9 +11,9 @@
 
 
 	<groupId>com.gnd</groupId>
-	<artifactId>WeatherInfoDailyApplicationLib</artifactId>
+	<artifactId>PlaceInfoInserterServiceApp</artifactId>
 	<version>1.0.0</version>
-	<name>WeatherInfoDailyApplicationLib</name>
+	<name>PlaceInfoInserterServiceApp</name>
 
 	<repositories>
 		<repository>

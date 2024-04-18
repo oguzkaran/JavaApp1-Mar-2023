@@ -14,7 +14,8 @@ public class WeatherServiceController
 {
     private final WeatherInfoDailyService m_weatherInfoDailyService;
 
-    public WeatherServiceController (WeatherInfoDailyService weatherInfoDailyService) {
+    public WeatherServiceController (WeatherInfoDailyService weatherInfoDailyService)
+    {
         m_weatherInfoDailyService = weatherInfoDailyService;
     }
 
