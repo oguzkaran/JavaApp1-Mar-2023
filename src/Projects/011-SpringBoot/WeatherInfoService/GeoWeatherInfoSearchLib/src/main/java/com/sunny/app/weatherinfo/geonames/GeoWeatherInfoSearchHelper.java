@@ -1,10 +1,9 @@
 package com.sunny.app.weatherinfo.geonames;
 
-import com.sunny.app.weatherinfo.geonames.dto.GeoWeatherLocationInfo;
 import com.sunny.app.weatherinfo.geonames.dto.GeoWeatherLocation;
+import com.sunny.app.weatherinfo.geonames.dto.GeoWeatherLocationInfo;
 import com.sunny.app.weatherinfo.geonames.dto.GeoWeatherRegion;
 import com.sunny.app.weatherinfo.geonames.dto.GeoWeatherRegionInfo;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,16 +13,11 @@ import java.util.Optional;
 @Component
 public class GeoWeatherInfoSearchHelper {
     private final RestTemplate m_restTemplate;
-    private final String m_locationUrlTemplate;
-    private final String m_regionUrlTemplate;
+    private final String m_locationUrlTemplate = "http://api.geonames.org/findNearByWeatherJSON?lat=%f&lng=%f&username=csystem";
+    private final String m_regionUrlTemplate = "http://api.geonames.org/weatherJSON?north=%f&south=%f&east=%f&west=%f&maxRows=%d&username=csystem";
 
-    public GeoWeatherInfoSearchHelper(RestTemplate restTemplate,
-                                      @Value("${weather.location.url}") String locationUrlTemplate,
-                                      @Value("${weather.region.url}") String regionUrlTemplate)
-    {
+    public GeoWeatherInfoSearchHelper(RestTemplate restTemplate) {
         this.m_restTemplate = restTemplate;
-        this.m_locationUrlTemplate = locationUrlTemplate;
-        this.m_regionUrlTemplate = regionUrlTemplate;
     }
 
     public Optional<GeoWeatherLocation> findWeatherLocation(double latitude, double longitude)
