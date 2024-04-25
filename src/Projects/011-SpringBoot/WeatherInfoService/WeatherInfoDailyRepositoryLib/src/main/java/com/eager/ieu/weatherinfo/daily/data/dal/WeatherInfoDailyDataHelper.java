@@ -2,13 +2,12 @@ package com.eager.ieu.weatherinfo.daily.data.dal;
 
 import com.eager.ieu.weatherinfo.daily.data.entity.PlaceInfoLocation;
 import com.eager.ieu.weatherinfo.daily.data.entity.PlaceInfoRegion;
+import com.eager.ieu.weatherinfo.daily.data.entity.WeatherInfoLocation;
+import com.eager.ieu.weatherinfo.daily.data.entity.WeatherInfoRegion;
 import com.eager.ieu.weatherinfo.daily.data.repository.IPlaceInfoLocationRepository;
 import com.eager.ieu.weatherinfo.daily.data.repository.IPlaceInfoRegionRepository;
 import com.eager.ieu.weatherinfo.daily.data.repository.IWeatherInfoLocationRepository;
 import com.eager.ieu.weatherinfo.daily.data.repository.IWeatherInfoRegionRepository;
-import com.eager.ieu.weatherinfo.daily.data.entity.WeatherInfoLocation;
-import com.eager.ieu.weatherinfo.daily.data.entity.WeatherInfoRegion;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -88,7 +87,7 @@ public class WeatherInfoDailyDataHelper {
                                                                            double north, double south)
     {
         return m_placeInfoRegionRepository.findByEastAndWestAndNorthAndSouth(east, west, north, south);
-    }//??
+    }
 
 
     public Optional<WeatherInfoRegion> findWeatherInfoRegionById(long id)

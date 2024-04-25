@@ -23,6 +23,7 @@ public class WeatherServiceController
     public PlaceInfoLocationSaveDTO savePlaceInfoLocation (@RequestBody PlaceInfoLocationSaveDTO placeInfoLocationSaveDTO)
     {
         m_weatherInfoDailyService.savePlaceInfoLocation(placeInfoLocationSaveDTO);
+
         return placeInfoLocationSaveDTO;
     }
 
@@ -30,6 +31,7 @@ public class WeatherServiceController
     public PlaceInfoRegionSaveDTO savePlaceInfoRegion (@RequestBody PlaceInfoRegionSaveDTO placeInfoRegionSaveDTO)
     {
         m_weatherInfoDailyService.savePlaceInfoRegion(placeInfoRegionSaveDTO);
+
         return placeInfoRegionSaveDTO;
     }
 }

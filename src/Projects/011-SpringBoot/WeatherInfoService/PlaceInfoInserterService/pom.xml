@@ -32,7 +32,6 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>com.sunny</groupId>
 			<artifactId>WeatherInfoDailyServiceLib</artifactId>
