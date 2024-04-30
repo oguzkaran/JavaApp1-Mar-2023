@@ -1,6 +1,6 @@
 package com.sunny.app.weatherinfo.daily.service.dto;
 
-public class PlaceInfoRegionSaveDTO {
+public class PlaceInfoRegionDTO {
     public String region;
     public double north;
     public double south;
@@ -10,7 +10,7 @@ public class PlaceInfoRegionSaveDTO {
     @Override
     public boolean equals(Object other)
     {
-        return other instanceof PlaceInfoRegionSaveDTO pir && region.equals(pir.region);
+        return other instanceof PlaceInfoRegionDTO pir && region.equals(pir.region);
     }
 
     @Override

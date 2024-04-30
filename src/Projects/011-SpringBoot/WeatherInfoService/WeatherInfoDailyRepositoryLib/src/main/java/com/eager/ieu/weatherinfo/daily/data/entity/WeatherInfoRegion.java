@@ -3,6 +3,7 @@ package com.eager.ieu.weatherinfo.daily.data.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "weather_info_regions")
@@ -57,12 +58,27 @@ public class WeatherInfoRegion {
     @Override
     public int hashCode()
     {
-        return Long.valueOf(id).hashCode();
+        return Objects.hash(observation, clouds, temperature, humidity, iCAO, dateTime, lng,
+                lat, dewPoint, stationName, weatherCondition, windDirection, windSpeed, cloudsCode);
     }
 
     @Override
     public boolean equals(Object other)
     {
-        return other instanceof WeatherInfoRegion w && id == w.id;
+        return other instanceof WeatherInfoRegion w &&
+                Objects.equals(observation, w.observation) &&
+                Objects.equals(clouds, w.clouds) &&
+                Objects.equals(temperature, w.temperature) &&
+                Objects.equals(humidity, w.humidity) &&
+                Objects.equals(iCAO, w.iCAO) &&
+                Objects.equals(dateTime, w.dateTime) &&
+                Objects.equals(lng, w.lng) &&
+                Objects.equals(lat, w.lat) &&
+                Objects.equals(dewPoint, w.dewPoint) &&
+                Objects.equals(stationName, w.stationName) &&
+                Objects.equals(weatherCondition, w.weatherCondition) &&
+                Objects.equals(windDirection, w.windDirection) &&
+                Objects.equals(windSpeed, w.windSpeed) &&
+                Objects.equals(cloudsCode, w.cloudsCode);
     }
 }

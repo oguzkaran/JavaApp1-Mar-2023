@@ -89,7 +89,6 @@ public class WeatherInfoDailyDataHelper {
         return m_placeInfoRegionRepository.findByEastAndWestAndNorthAndSouth(east, west, north, south);
     }
 
-
     public Optional<WeatherInfoRegion> findWeatherInfoRegionById(long id)
     {
         return m_weatherInfoRegionRepository.findById(id);
@@ -100,6 +99,164 @@ public class WeatherInfoDailyDataHelper {
         return m_weatherInfoRegionRepository.findWeatherInfoRegionByRegion(region);
     }
 
+    public Iterable<PlaceInfoLocation> findAllPlaceInfoLocation()
+    {
+        return m_placeInfoLocationRepository.findAll();
+    }
 
-    //...
+    public Iterable<PlaceInfoLocation> findAllPlaceInfoLocationById(Iterable<String> placeNames)
+    {
+        return m_placeInfoLocationRepository.findAllById(placeNames);
+    }
+
+    public Iterable<PlaceInfoRegion> findAllPlaceInfoRegion()
+    {
+        return m_placeInfoRegionRepository.findAll();
+    }
+
+    public Iterable<PlaceInfoRegion> findAllPlaceInfoRegionById(Iterable<String> regions)
+    {
+        return m_placeInfoRegionRepository.findAllById(regions);
+    }
+
+    public Iterable<WeatherInfoLocation> findAllWeatherInfoLocation()
+    {
+        return m_weatherInfoLocationRepository.findAll();
+    }
+
+    public Iterable<WeatherInfoLocation> findAllWeatherInfoLocationById(Iterable<Long> ids)
+    {
+        return m_weatherInfoLocationRepository.findAllById(ids);
+    }
+
+    public Iterable<WeatherInfoRegion> findAllWeatherInfoRegion()
+    {
+        return m_weatherInfoRegionRepository.findAll();
+    }
+
+    public Iterable<WeatherInfoRegion> findAllWeatherInfoRegionById(Iterable<Long> ids)
+    {
+        return m_weatherInfoRegionRepository.findAllById(ids);
+    }
+
+    public Iterable<PlaceInfoLocation> saveAllPlaceInfoLocation(Iterable<PlaceInfoLocation>  placeInfoLocations)
+    {
+        return m_placeInfoLocationRepository.saveAll(placeInfoLocations);
+    }
+
+    public Iterable<PlaceInfoRegion> saveAllPlaceInfoRegion(Iterable<PlaceInfoRegion>  placeInfoRegions)
+    {
+        return m_placeInfoRegionRepository.saveAll(placeInfoRegions);
+    }
+
+    public Iterable<WeatherInfoLocation> saveAllWeatherInfoLocation(Iterable<WeatherInfoLocation>  weatherInfoLocations)
+    {
+        return m_weatherInfoLocationRepository.saveAll(weatherInfoLocations);
+    }
+
+    public Iterable<WeatherInfoRegion> saveAllWeatherInfoRegion(Iterable<WeatherInfoRegion>  weatherInfoRegions)
+    {
+        return m_weatherInfoRegionRepository.saveAll(weatherInfoRegions);
+    }
+
+    public void deleteAllPlaceInfoLocation()
+    {
+        m_placeInfoLocationRepository.deleteAll();
+    }
+
+    public void deletePlaceInfoLocation(PlaceInfoLocation placeInfoLocation)
+    {
+        m_placeInfoLocationRepository.delete(placeInfoLocation);
+    }
+
+    public void deleteAllPlaceInfoLocation(Iterable<PlaceInfoLocation> placeInfoLocations)
+    {
+        m_placeInfoLocationRepository.deleteAll(placeInfoLocations);
+    }
+
+    public void deleteAllByIdPlaceInfoLocation(Iterable<String> ids)
+    {
+        m_placeInfoLocationRepository.deleteAllById(ids);
+    }
+
+    public void deleteByIdPlaceInfoLocation(String id)
+    {
+        m_placeInfoLocationRepository.deleteById(id);
+    }
+
+    public void deleteAllPlaceInfoRegion()
+    {
+        m_placeInfoRegionRepository.deleteAll();
+    }
+
+    public void deletePlaceInfoRegion(PlaceInfoRegion placeInfoRegion)
+    {
+        m_placeInfoRegionRepository.delete(placeInfoRegion);
+    }
+
+    public void deleteAllPlaceInfoRegion(Iterable<PlaceInfoRegion> placeInfoRegions)
+    {
+        m_placeInfoRegionRepository.deleteAll(placeInfoRegions);
+    }
+
+    public void deleteAllByIdPlaceInfoRegion(Iterable<String> ids)
+    {
+        m_placeInfoRegionRepository.deleteAllById(ids);
+    }
+
+    public void deleteByIdPlaceInfoRegion(String id)
+    {
+        m_placeInfoRegionRepository.deleteById(id);
+    }
+
+    public void deleteAllWeatherInfoLocation()
+    {
+        m_weatherInfoLocationRepository.deleteAll();
+    }
+
+    public void deleteWeatherInfoLocation(WeatherInfoLocation weatherInfoLocation)
+    {
+        m_weatherInfoLocationRepository.delete(weatherInfoLocation);
+    }
+
+    public void deleteAllWeatherInfoLocation(Iterable<WeatherInfoLocation> weatherInfoLocations)
+    {
+        m_weatherInfoLocationRepository.deleteAll(weatherInfoLocations);
+    }
+
+    public void deleteAllByIdWeatherInfoLocation(Iterable<Long> ids)
+    {
+        m_weatherInfoLocationRepository.deleteAllById(ids);
+    }
+
+    public void deleteByIdWeatherInfoLocation(Long id)
+    {
+        m_weatherInfoLocationRepository.deleteById(id);
+    }
+
+    public void deleteAllWeatherInfoRegion()
+    {
+        m_weatherInfoRegionRepository.deleteAll();
+    }
+
+    public void deleteWeatherInfoRegion(WeatherInfoRegion weatherInfoRegion)
+    {
+        m_weatherInfoRegionRepository.delete(weatherInfoRegion);
+    }
+
+    public void deleteAllWeatherInfoRegion(Iterable<WeatherInfoRegion> weatherInfoRegions)
+    {
+        m_weatherInfoRegionRepository.deleteAll(weatherInfoRegions);
+    }
+
+    public void deleteAllByIdWeatherInfoRegion(Iterable<Long> ids)
+    {
+        m_weatherInfoRegionRepository.deleteAllById(ids);
+    }
+
+    public void deleteByIdWeatherInfoRegion(Long id)
+    {
+        m_weatherInfoRegionRepository.deleteById(id);
+    }
+
 }

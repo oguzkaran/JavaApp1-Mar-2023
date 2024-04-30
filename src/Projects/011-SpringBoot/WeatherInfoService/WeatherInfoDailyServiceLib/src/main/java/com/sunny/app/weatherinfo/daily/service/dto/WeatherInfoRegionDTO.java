@@ -2,7 +2,7 @@ package com.sunny.app.weatherinfo.daily.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-public class WeatherRegionInfoDTO {
+public class WeatherInfoRegionDTO {
     public double longitude;
     public String observation;
     public String icao;

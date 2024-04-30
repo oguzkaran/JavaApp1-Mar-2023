@@ -1,6 +1,6 @@
 package com.sunny.app.weatherinfo.daily.service.dto;
 
-public class WeatherLocationInfoDTO {
+public class WeatherInfoLocationDTO {
     public int elevation;
     public String observation;
     public String clouds;

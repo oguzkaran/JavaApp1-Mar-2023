@@ -2,7 +2,7 @@ package com.sunny.app.weatherinfo.daily.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class PlaceInfoLocationSaveDTO {
+public class PlaceInfoLocationDTO {
     @JsonProperty("placename")
     public String placeName;
     public double latitude;
@@ -11,7 +11,7 @@ public class PlaceInfoLocationSaveDTO {
     @Override
     public boolean equals(Object other)
     {
-        return other instanceof PlaceInfoLocationSaveDTO pil && placeName.equals(pil.placeName);
+        return other instanceof PlaceInfoLocationDTO pil && placeName.equals(pil.placeName);
     }
 
     @Override
