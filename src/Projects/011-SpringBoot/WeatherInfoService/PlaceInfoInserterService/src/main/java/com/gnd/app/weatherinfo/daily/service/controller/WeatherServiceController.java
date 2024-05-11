@@ -1,8 +1,8 @@
 package com.gnd.app.weatherinfo.daily.service.controller;
 
 import com.sunny.app.weatherinfo.daily.service.WeatherInfoDailyService;
-import com.sunny.app.weatherinfo.daily.service.dto.PlaceInfoLocationSaveDTO;
-import com.sunny.app.weatherinfo.daily.service.dto.PlaceInfoRegionSaveDTO;
+import com.sunny.app.weatherinfo.daily.service.dto.PlaceInfoLocationDTO;
+import com.sunny.app.weatherinfo.daily.service.dto.PlaceInfoRegionDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ public class WeatherServiceController
     }
 
     @PostMapping("/save/location")
-    public PlaceInfoLocationSaveDTO savePlaceInfoLocation (@RequestBody PlaceInfoLocationSaveDTO placeInfoLocationSaveDTO)
+    public PlaceInfoLocationDTO savePlaceInfoLocation (@RequestBody PlaceInfoLocationDTO placeInfoLocationSaveDTO)
     {
         m_weatherInfoDailyService.savePlaceInfoLocation(placeInfoLocationSaveDTO);
 
@@ -28,7 +28,7 @@ public class WeatherServiceController
     }
 
     @PostMapping("/save/region")
-    public PlaceInfoRegionSaveDTO savePlaceInfoRegion (@RequestBody PlaceInfoRegionSaveDTO placeInfoRegionSaveDTO)
+    public PlaceInfoRegionDTO savePlaceInfoRegion (@RequestBody PlaceInfoRegionDTO placeInfoRegionSaveDTO)
     {
         m_weatherInfoDailyService.savePlaceInfoRegion(placeInfoRegionSaveDTO);
 

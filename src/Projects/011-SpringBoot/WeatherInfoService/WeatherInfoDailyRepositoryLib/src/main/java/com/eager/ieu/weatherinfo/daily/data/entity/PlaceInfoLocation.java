@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "place_info_locations")
 public class PlaceInfoLocation {
     @Id
-    @Column(name = "place_name")
+    @Column(name = "name")
     public String placeName;
 
     public double latitude;
