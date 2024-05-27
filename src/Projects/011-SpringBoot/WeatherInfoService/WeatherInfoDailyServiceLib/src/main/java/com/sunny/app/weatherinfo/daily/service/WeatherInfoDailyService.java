@@ -92,13 +92,23 @@ public class WeatherInfoDailyService {
         }
     }
 
-    public void savePlaceInfoRegion(PlaceInfoRegionDTO placeInfoRegionDTO)
+    public boolean savePlaceInfoRegion(PlaceInfoRegionDTO placeInfoRegionDTO)
     {
         try {
-            m_weatherInfoDailyDataHelper.savePlaceInfoRegion(m_weatherInfoDailyMapper.toPlaceInfoRegion(placeInfoRegionDTO));
+            return m_weatherInfoDailyDataHelper.savePlaceInfoRegion(m_weatherInfoDailyMapper.toPlaceInfoRegion(placeInfoRegionDTO));
         }
         catch (Throwable ex) {
             throw new DataServiceException("WeatherInfoDailyService.savePlaceInfoRegion", ex);
+        }
+    }
+
+    public boolean updatePlaceInfoRegion(PlaceInfoRegionDTO placeInfoRegionDTO)
+    {
+        try {
+            return m_weatherInfoDailyDataHelper.updatePlaceInfoRegion(m_weatherInfoDailyMapper.toPlaceInfoRegion(placeInfoRegionDTO));
+        }
+        catch (Throwable ex) {
+            throw new DataServiceException("WeatherInfoDailyService.updatePlaceInfoRegion", ex);
         }
     }
 

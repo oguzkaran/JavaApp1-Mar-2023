@@ -33,9 +33,24 @@ public class WeatherInfoDailyDataHelper {
         m_weatherInfoRegionRepository = weatherInfoRegionRepository;
     }
 
-    public PlaceInfoRegion savePlaceInfoRegion(PlaceInfoRegion placeInfoRegion)
+    public boolean savePlaceInfoRegion(PlaceInfoRegion placeInfoRegion)
     {
-        return m_placeInfoRegionRepository.save(placeInfoRegion);
+        if (m_placeInfoRegionRepository.existsById(placeInfoRegion.region))
+            return false;
+
+        m_placeInfoRegionRepository.save(placeInfoRegion);
+
+        return true;
+    }
+
+    public boolean updatePlaceInfoRegion(PlaceInfoRegion placeInfoRegion)
+    {
+        if (!m_placeInfoRegionRepository.existsById(placeInfoRegion.region))
+            return false;
+
+        m_placeInfoRegionRepository.save(placeInfoRegion);
+
+        return true;
     }
 
     public PlaceInfoLocation savePlaceInfoLocation(PlaceInfoLocation placeInfoLocation)
