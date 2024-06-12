@@ -6,6 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "place_info_regions")
+
 public class PlaceInfoRegion {
     @Id
     public String region;

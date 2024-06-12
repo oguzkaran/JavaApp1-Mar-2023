@@ -1,22 +1,20 @@
 package com.sunny.app.weatherinfo.daily.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"m_latitude", "m_longitude"})
 public class PlaceInfoLocationDTO {
-    @JsonProperty("placename")
-    public String placeName;
-    public double latitude;
-    public double longitude;
+    @Accessors(prefix = "m_")
+    private String m_placeName;
 
-    @Override
-    public boolean equals(Object other)
-    {
-        return other instanceof PlaceInfoLocationDTO pil && placeName.equals(pil.placeName);
-    }
+    @Accessors(prefix = "m_")
+    private double m_latitude;
 
-    @Override
-    public int hashCode()
-    {
-        return placeName.hashCode();
-    }
+    @Accessors(prefix = "m_")
+    private double m_longitude;
 }

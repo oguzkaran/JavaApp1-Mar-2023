@@ -4,10 +4,12 @@ import com.eager.ieu.weatherinfo.daily.data.dal.WeatherInfoDailyDataHelper;
 import com.karandev.util.data.service.DataServiceException;
 import com.sunny.app.weatherinfo.daily.service.dto.*;
 import com.sunny.app.weatherinfo.daily.service.mapper.IWeatherInfoDailyMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class WeatherInfoDailyService {
     private final WeatherInfoDailyDataHelper m_weatherInfoDailyDataHelper;
@@ -24,8 +26,11 @@ public class WeatherInfoDailyService {
     {
         try {
             m_weatherInfoDailyDataHelper.deleteAllPlaceInfoLocation();
+            log.info("deleteAllPlaceInfoLocation succeeded");
         }
         catch (Throwable ex) {
+            log.error("error occurred in deleteAllPlaceInfoLocation:Exception:{}, Message:{}",
+                    ex.getClass().getName(), ex.getMessage());
             throw new DataServiceException("WeatherInfoDailyService.deleteAllPlaceInfoLocation", ex);
         }
     }
@@ -55,8 +60,11 @@ public class WeatherInfoDailyService {
     {
         try {
             m_weatherInfoDailyDataHelper.savePlaceInfoLocation(m_weatherInfoDailyMapper.toPlaceInfoLocation(placeInfoLocationDTO));
+            log.info("{} saved successfully", placeInfoLocationDTO.toString());
         }
         catch (Throwable ex) {
+            log.error("error occurred in savePlaceInfoLocation:Exception:{}, Message:{}",
+                    ex.getClass().getName(), ex.getMessage());
             throw new DataServiceException("WeatherInfoDailyService.savePlaceInfoLocation", ex);
         }
     }
