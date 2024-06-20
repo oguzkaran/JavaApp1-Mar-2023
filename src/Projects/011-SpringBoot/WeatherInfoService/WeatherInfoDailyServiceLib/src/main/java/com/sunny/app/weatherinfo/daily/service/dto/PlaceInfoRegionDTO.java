@@ -1,21 +1,27 @@
 package com.sunny.app.weatherinfo.daily.service.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"m_north", "m_south", "m_east", "m_west"})
 public class PlaceInfoRegionDTO {
-    public String region;
-    public double north;
-    public double south;
-    public double east;
-    public double west;
+    @Accessors(prefix = "m_")
+    private String m_region;
 
-    @Override
-    public boolean equals(Object other)
-    {
-        return other instanceof PlaceInfoRegionDTO pir && region.equals(pir.region);
-    }
+    @Accessors(prefix = "m_")
+    private double m_north;
 
-    @Override
-    public int hashCode()
-    {
-        return region.hashCode();
-    }
+    @Accessors(prefix = "m_")
+    private double m_south;
+
+    @Accessors(prefix = "m_")
+    private double m_east;
+
+    @Accessors(prefix = "m_")
+    private double m_west;
+
 }
