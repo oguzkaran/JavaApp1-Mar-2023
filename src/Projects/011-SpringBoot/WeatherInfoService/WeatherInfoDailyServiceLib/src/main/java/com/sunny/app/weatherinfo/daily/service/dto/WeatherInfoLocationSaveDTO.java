@@ -1,24 +1,67 @@
 package com.sunny.app.weatherinfo.daily.service.dto;
 
 import com.eager.ieu.weatherinfo.daily.data.entity.PlaceInfoLocation;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class WeatherInfoLocationSaveDTO {
-    public int elevation;
-    public String observation;
-    public String clouds;
-    public String temperature;
-    public int humidity;
-    public String icao;
+    @Accessors(prefix = "m_")
+    private int m_elevation;
+
+    @Accessors(prefix = "m_")
+    private String m_observation;
+
+    @Accessors(prefix = "m_")
+    private String m_clouds;
+
+    @Accessors(prefix = "m_")
+    private String m_temperature;
+
+    @Accessors(prefix = "m_")
+    private int m_humidity;
+
+    @Accessors(prefix = "m_")
+    private String m_iCAO;
+
+    @EqualsAndHashCode.Include
     public String dateTime;
-    public double lng;
-    public double lat;
-    public String dewPoint;
-    public String countryCode;
-    public String stationName;
-    public String weatherCondition;
-    public int windDirection;
-    public String windSpeed;
-    public String cloudsCode;
-    public int hectoPascAltimeter;
-    public PlaceInfoLocation placeInfoLocation;
+
+    @Accessors(prefix = "m_")
+    private double m_longitude;
+
+    @Accessors(prefix = "m_")
+    private double m_latitude;
+
+    @Accessors(prefix = "m_")
+    private String m_dewPoint;
+
+    @Accessors(prefix = "m_")
+    private String m_countryCode;
+
+    @EqualsAndHashCode.Include
+    @Accessors(prefix = "m_")
+    private String m_stationName;
+
+    @Accessors(prefix = "m_")
+    private String m_weatherCondition;
+
+    @Accessors(prefix = "m_")
+    private int m_windDirection;
+
+    @Accessors(prefix = "m_")
+    private String m_windSpeed;
+
+    @Accessors(prefix = "m_")
+    private String m_cloudsCode;
+
+    @Accessors(prefix = "m_")
+    private int m_hectoPascAltimeter;
+
+    @Accessors(prefix = "m_")
+    private PlaceInfoLocation m_placeInfoLocation;
 }

@@ -17,4 +17,5 @@ public class PlaceInfoLocationDTO {
 
     @Accessors(prefix = "m_")
     private double m_longitude;
+
 }
