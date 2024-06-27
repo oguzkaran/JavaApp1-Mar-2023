@@ -6,6 +6,7 @@ import com.sunny.app.weatherinfo.daily.service.dto.*;
 import com.sunny.app.weatherinfo.daily.service.mapper.IWeatherInfoDailyMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -245,4 +246,32 @@ public class WeatherInfoDailyService {
             throw new DataServiceException("WeatherInfoDailyService.saveWeatherInfoRegion", ex);
         }
     }
+
+    @Transactional
+    public void collectPlaceInfoLocationWeatherData()
+    {
+        throw new UnsupportedOperationException("TODO: Get all data from Geonames and save to database");
+    }
+
+    @Transactional
+    public void collectPlaceInfoRegionWeatherData()
+    {
+        throw new UnsupportedOperationException("TODO: Get all data from Geonames and save to database");
+    }
+
+    @Transactional
+    public void backupPlaceInfoLocationWeatherData()
+    {
+        throw new UnsupportedOperationException("Not yet implemented. Will be implemented by Oğuz Karan");
+    }
+
+    @Transactional
+    public void backupPlaceInfoRegionWeatherData()
+    {
+        throw new UnsupportedOperationException("Not yet implemented. Will be implemented by Oğuz Karan");
+    }
+
+    //...
 }
+
+

@@ -9,10 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.sunny</groupId>
-	<artifactId>WeatherInfoDailyServiceLib</artifactId>
+
+	<groupId>org.csystem</groupId>
+	<artifactId>WeatherPlaceInfoDailyCollector</artifactId>
 	<version>1.0.0</version>
-	<name>WeatherInfoDailyServiceLib</name>
+	<name>WeatherPlaceInfoDailyCollector</name>
 
 	<repositories>
 		<repository>
@@ -24,33 +25,17 @@
 			<id>javaapp1-mar-2023-karandev-maven-repo</id>
 			<url>https://raw.github.com/oguzkaran/javaapp1-mar-2023-karandev-maven-repo/main</url>
 		</repository>
-
-		<repository>
-			<id>diodefunk-maven-repo</id>
-			<url>https://raw.github.com/diodeFunk/diodefunk-maven-repo/main</url>
-		</repository>
 	</repositories>
 
 	<properties>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+		<java.version>17</java.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.17.1</version>
-		</dependency>
-
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -59,36 +44,35 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>${org.mapstruct.version}</version>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.7.3</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.karandev</groupId>
-			<artifactId>com-karandev-util-data</artifactId>
-			<version>14.0.0</version>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.sunny</groupId>
-			<artifactId>GeoWeatherInfoSearchLib</artifactId>
-			<version>2.0.0</version>
+			<artifactId>WeatherInfoDailyServiceLib</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.eager.ieu</groupId>
-			<artifactId>WeatherInfoDailyRepositoryLib</artifactId>
-			<version>1.0.0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.3.0</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
 			<plugin>
@@ -100,11 +84,6 @@
 					<target>17</target>
 					<annotationProcessorPaths>
 						<path>
-							<groupId>org.mapstruct</groupId>
-							<artifactId>mapstruct-processor</artifactId>
-							<version>${org.mapstruct.version}</version>
-						</path>
-						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 							<version>1.18.32</version>
@@ -114,4 +93,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

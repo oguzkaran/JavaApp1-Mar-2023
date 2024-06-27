@@ -23,5 +23,4 @@ public class PlaceInfoRegionDTO {
 
     @Accessors(prefix = "m_")
     private double m_west;
-
 }
