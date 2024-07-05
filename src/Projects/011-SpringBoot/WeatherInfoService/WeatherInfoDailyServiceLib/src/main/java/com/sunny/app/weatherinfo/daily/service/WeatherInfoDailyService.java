@@ -1,28 +1,57 @@
 package com.sunny.app.weatherinfo.daily.service;
 
 import com.eager.ieu.weatherinfo.daily.data.dal.WeatherInfoDailyDataHelper;
+import com.eager.ieu.weatherinfo.daily.data.entity.PlaceInfoLocation;
+import com.eager.ieu.weatherinfo.daily.data.entity.PlaceInfoRegion;
 import com.karandev.util.data.service.DataServiceException;
 import com.sunny.app.weatherinfo.daily.service.dto.*;
 import com.sunny.app.weatherinfo.daily.service.mapper.IWeatherInfoDailyMapper;
+import com.sunny.app.weatherinfo.geonames.GeoWeatherInfoSearchHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Slf4j
 @Service
 public class WeatherInfoDailyService {
     private final WeatherInfoDailyDataHelper m_weatherInfoDailyDataHelper;
     private final IWeatherInfoDailyMapper m_weatherInfoDailyMapper;
+    private final GeoWeatherInfoSearchHelper m_geoWeatherInfoSearchHelper;
 
     public WeatherInfoDailyService(WeatherInfoDailyDataHelper weatherInfoDailyDataHelper,
-                                   IWeatherInfoDailyMapper weatherInfoDailyMapper)
+                                   IWeatherInfoDailyMapper weatherInfoDailyMapper,
+                                   GeoWeatherInfoSearchHelper geoWeatherInfoSearchHelper)
     {
         m_weatherInfoDailyDataHelper = weatherInfoDailyDataHelper;
         m_weatherInfoDailyMapper = weatherInfoDailyMapper;
+        m_geoWeatherInfoSearchHelper = geoWeatherInfoSearchHelper;
     }
 
+    private void collectWeatherInfoLocationWeatherDataCallback(PlaceInfoLocation placeInfoLocation)
+    {
+        var geoWeatherLocationInfoOpt = m_geoWeatherInfoSearchHelper
+                .findWeatherLocationInfo(placeInfoLocation.latitude, placeInfoLocation.longitude);
+
+        geoWeatherLocationInfoOpt.ifPresent(geoWeatherLocationInfo -> {
+            var wil = m_weatherInfoDailyMapper.toWeatherInfoLocationSaveDTO(geoWeatherLocationInfo);
+            wil.setPlaceInfoLocation(placeInfoLocation);
+            saveWeatherInfoLocation(wil, m_weatherInfoDailyMapper.toPlaceInfoLocationDTO(placeInfoLocation));
+        });
+    }
+    private void collectPlaceInfoRegionWeatherDataCallback(PlaceInfoRegion placeInfoRegion) {
+        var geoWeatherRegionList = m_geoWeatherInfoSearchHelper.findWeatherRegionInfo(
+                placeInfoRegion.north, placeInfoRegion.south, placeInfoRegion.east, placeInfoRegion.west);
+
+        StreamSupport.stream(geoWeatherRegionList.spliterator(), false).forEach(
+                geoWeatherRegionInfo -> {
+                    var wir = m_weatherInfoDailyMapper.toWeatherInfoRegionSaveDTO(geoWeatherRegionInfo);
+                    wir.setPlaceInfoRegion(placeInfoRegion);
+                    saveWeatherInfoRegion(wir, m_weatherInfoDailyMapper.toPlaceInfoRegionDTO(placeInfoRegion));
+                });
+    }
     public void deleteAllPlaceInfoLocation()
     {
         try {
@@ -250,13 +279,30 @@ public class WeatherInfoDailyService {
     @Transactional
     public void collectPlaceInfoLocationWeatherData()
     {
-        throw new UnsupportedOperationException("TODO: Get all data from Geonames and save to database");
+        try {
+            m_weatherInfoDailyDataHelper.findAllPlaceInfoLocation()
+                    .forEach(this::collectWeatherInfoLocationWeatherDataCallback);
+        }
+        catch (Throwable ex) {
+            log.error("error occurred in collectPlaceInfoLocationWeatherData:Exception:{}, Message:{}",
+                    ex.getClass().getName(), ex.getMessage());
+            throw new DataServiceException("WeatherInfoDailyService.collectPlaceInfoLocationWeatherData", ex);
+        }
     }
 
     @Transactional
     public void collectPlaceInfoRegionWeatherData()
     {
-        throw new UnsupportedOperationException("TODO: Get all data from Geonames and save to database");
+        try {
+            m_weatherInfoDailyDataHelper.findAllPlaceInfoRegion()
+                    .forEach(this::collectPlaceInfoRegionWeatherDataCallback);
+
+        }
+        catch (Throwable ex) {
+            log.error("error occurred in collectPlaceInfoRegionWeatherData:Exception:{}, Message:{}",
+                    ex.getClass().getName(), ex.getMessage());
+            throw new DataServiceException("WeatherInfoDailyService.collectPlaceInfoRegionWeatherData", ex);
+        }
     }
 
     @Transactional

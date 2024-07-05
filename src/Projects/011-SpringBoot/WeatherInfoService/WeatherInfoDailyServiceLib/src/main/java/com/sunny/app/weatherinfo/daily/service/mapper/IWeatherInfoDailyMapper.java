@@ -2,6 +2,8 @@ package com.sunny.app.weatherinfo.daily.service.mapper;
 
 import com.eager.ieu.weatherinfo.daily.data.entity.*;
 import com.sunny.app.weatherinfo.daily.service.dto.*;
+import com.sunny.app.weatherinfo.geonames.dto.GeoWeatherLocationInfo;
+import com.sunny.app.weatherinfo.geonames.dto.GeoWeatherRegionInfo;
 import org.mapstruct.*;
 
 @Mapper(implementationName = "WeatherInfoMapperImpl", componentModel = "spring")
@@ -33,4 +35,10 @@ public interface IWeatherInfoDailyMapper {
     WeatherInfoRegionDTO toWeatherInfoRegionDTO(WeatherInfoRegion weatherInfoRegion);
 
     Iterable<WeatherInfoRegionDTO> toIterableWeatherInfoRegionDTO(Iterable<WeatherInfoRegion> weatherInfoRegionIterable);
+
+    @Mapping(source = "icao", target = "ICAO")
+    WeatherInfoLocationSaveDTO toWeatherInfoLocationSaveDTO(GeoWeatherLocationInfo geoWeatherLocationInfo);
+
+    @Mapping(source = "icao", target = "ICAO")
+    WeatherInfoRegionSaveDTO toWeatherInfoRegionSaveDTO(GeoWeatherRegionInfo geoWeatherRegionInfo);
 }
