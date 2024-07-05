@@ -37,10 +37,12 @@ public class WeatherInfoDailyService {
 
         geoWeatherLocationInfoOpt.ifPresent(geoWeatherLocationInfo -> {
             var wil = m_weatherInfoDailyMapper.toWeatherInfoLocationSaveDTO(geoWeatherLocationInfo);
+
             wil.setPlaceInfoLocation(placeInfoLocation);
             saveWeatherInfoLocation(wil, m_weatherInfoDailyMapper.toPlaceInfoLocationDTO(placeInfoLocation));
         });
     }
+
     private void collectPlaceInfoRegionWeatherDataCallback(PlaceInfoRegion placeInfoRegion) {
         var geoWeatherRegionList = m_geoWeatherInfoSearchHelper.findWeatherRegionInfo(
                 placeInfoRegion.north, placeInfoRegion.south, placeInfoRegion.east, placeInfoRegion.west);

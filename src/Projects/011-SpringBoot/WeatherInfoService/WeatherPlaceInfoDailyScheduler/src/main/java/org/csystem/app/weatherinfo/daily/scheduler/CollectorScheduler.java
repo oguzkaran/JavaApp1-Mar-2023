@@ -20,7 +20,8 @@ public class CollectorScheduler {
         m_weatherInfoDailyService = weatherInfoDailyService;
     }
 
-    @Scheduled(cron = "0 0 2,14 * * *")
+    //@Scheduled(cron = "0 0 2,14 * * *")
+    @Scheduled(cron = "0 20 0 * * *")
     public void schedule()
     {
         try {

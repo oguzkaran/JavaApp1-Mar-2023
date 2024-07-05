@@ -13,7 +13,7 @@ package org.csystem.collection;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class CSDStack<E>  {
+public class CSDStack<E> {
     public final ArrayList<E> m_list = new ArrayList<>();
 
     public boolean empty()
