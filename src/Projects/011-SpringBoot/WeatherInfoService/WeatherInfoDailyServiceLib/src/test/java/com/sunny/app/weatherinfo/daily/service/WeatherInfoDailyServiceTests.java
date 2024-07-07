@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 class WeatherInfoDailyServiceTests {
 	@Test
-
 	void contextLoads() {
 	}
-
 }
