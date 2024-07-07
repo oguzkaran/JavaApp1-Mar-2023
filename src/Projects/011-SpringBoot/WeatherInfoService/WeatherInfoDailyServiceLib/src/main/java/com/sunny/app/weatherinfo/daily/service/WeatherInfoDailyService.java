@@ -318,8 +318,6 @@ public class WeatherInfoDailyService {
     {
         throw new UnsupportedOperationException("Not yet implemented. Will be implemented by Oğuz Karan");
     }
-
-    //...
 }
 
 
