@@ -11,16 +11,12 @@ import lombok.experimental.Accessors;
 public class PlaceInfoRegionDTO {
     @Accessors(prefix = "m_")
     private String m_region;
-
     @Accessors(prefix = "m_")
     private double m_north;
-
     @Accessors(prefix = "m_")
     private double m_south;
-
     @Accessors(prefix = "m_")
     private double m_east;
-
     @Accessors(prefix = "m_")
     private double m_west;
 }
