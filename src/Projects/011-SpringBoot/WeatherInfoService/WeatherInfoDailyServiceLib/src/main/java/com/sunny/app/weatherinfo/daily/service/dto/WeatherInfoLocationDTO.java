@@ -11,22 +11,16 @@ import lombok.experimental.Accessors;
 public class WeatherInfoLocationDTO {
     @Accessors(prefix = "m_")
     private int m_elevation;
-
     @Accessors(prefix = "m_")
     private String m_observation;
-
     @Accessors(prefix = "m_")
     private String m_clouds;
-
     @Accessors(prefix = "m_")
     private String m_temperature;
-
     @Accessors(prefix = "m_")
     private int m_humidity;
-
     @Accessors(prefix = "m_")
     private String m_iCAO;
-
     @EqualsAndHashCode.Include
     public String dateTime;
 
