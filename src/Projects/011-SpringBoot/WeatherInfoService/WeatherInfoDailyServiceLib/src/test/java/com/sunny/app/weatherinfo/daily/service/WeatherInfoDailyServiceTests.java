@@ -8,5 +8,4 @@ class WeatherInfoDailyServiceTests {
 
 	void contextLoads() {
 	}
-
 }
