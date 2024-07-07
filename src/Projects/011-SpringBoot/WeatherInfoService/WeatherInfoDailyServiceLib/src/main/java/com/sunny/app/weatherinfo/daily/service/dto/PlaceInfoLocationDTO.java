@@ -11,10 +11,8 @@ import lombok.experimental.Accessors;
 public class PlaceInfoLocationDTO {
     @Accessors(prefix = "m_")
     private String m_placeName;
-
     @Accessors(prefix = "m_")
     private double m_latitude;
-
     @Accessors(prefix = "m_")
     private double m_longitude;
 
