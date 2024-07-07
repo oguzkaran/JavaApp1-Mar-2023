@@ -42,7 +42,6 @@ public class WeatherInfoLocationDTO {
     private String m_windSpeed;
     @Accessors(prefix = "m_")
     private String m_cloudsCode;
-
     @Accessors(prefix = "m_")
     private int m_hectoPascAltimeter;
 }
