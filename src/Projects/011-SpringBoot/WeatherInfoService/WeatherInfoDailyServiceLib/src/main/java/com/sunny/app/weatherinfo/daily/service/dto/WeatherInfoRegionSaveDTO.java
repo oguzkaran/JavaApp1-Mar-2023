@@ -13,21 +13,35 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class WeatherInfoRegionSaveDTO {
     private double longitude;
+
     private String m_observation;
+
     private String m_iCAO;
+
     private String m_clouds;
+
     private String m_dewPoint;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String m_cloudsCode;
+
     @EqualsAndHashCode.Include
     public String dateTime;
+
     private String m_temperature;
+
     private int m_humidity;
+
     private String m_stationName;
+
     private String m_weatherCondition;
+
     private int m_windDirection;
+
     private String m_windSpeed;
+
     private double m_latitude;
+
     @EqualsAndHashCode.Include
     private PlaceInfoRegion m_placeInfoRegion;
 }
