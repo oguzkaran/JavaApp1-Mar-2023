@@ -19,7 +19,7 @@ public class WeatherInfoLocationSaveDTO {
     private int m_humidity;
     private String m_iCAO;
     @EqualsAndHashCode.Include
-    public String dateTime;
+    private String m_dateTime;
     private double m_longitude;
     private double m_latitude;
     private String m_dewPoint;

@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 @Accessors(prefix = "m_")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class WeatherInfoRegionSaveDTO {
-    private double longitude;
+    private double m_longitude;
     private String m_observation;
     private String m_iCAO;
     private String m_clouds;
@@ -20,7 +20,7 @@ public class WeatherInfoRegionSaveDTO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String m_cloudsCode;
     @EqualsAndHashCode.Include
-    public String dateTime;
+    private String m_dateTime;
     private String m_temperature;
     private int m_humidity;
     private String m_stationName;

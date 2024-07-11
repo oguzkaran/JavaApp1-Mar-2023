@@ -19,7 +19,7 @@ public class WeatherInfoRegionDTO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String m_cloudsCode;
     @EqualsAndHashCode.Include
-    public String dateTime;
+    private String m_dateTime;
     private String m_temperature;
     private int m_humidity;
     @EqualsAndHashCode.Include

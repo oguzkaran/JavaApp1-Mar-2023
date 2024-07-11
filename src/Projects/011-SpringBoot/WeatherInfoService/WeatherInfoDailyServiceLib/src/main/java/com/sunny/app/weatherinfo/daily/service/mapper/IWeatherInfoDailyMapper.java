@@ -20,17 +20,29 @@ public interface IWeatherInfoDailyMapper {
 
     Iterable<PlaceInfoRegionDTO> toIterablePlaceInfoRegionDTO(Iterable<PlaceInfoRegion> placeInfoRegionIterable);
 
+    @Mapping(source = "longitude", target = "lng")
+    @Mapping(source = "latitude", target = "lat")
+    @Mapping(source = "ICAO", target = "iCAO")
     @Mapping(source = "dateTime", target = "dateTime", dateFormat = "yyyy-MM-dd HH:mm:ss")
     WeatherInfoLocation toWeatherInfoLocation(WeatherInfoLocationSaveDTO weatherInfoLocationSaveDTO);
 
+    @Mapping(source = "lat", target = "latitude")
+    @Mapping(source = "lng", target = "longitude")
+    @Mapping(source = "iCAO", target = "ICAO")
     @Mapping(source = "dateTime", target = "dateTime", dateFormat = "yyyy-MM-dd HH:mm:ss")
     WeatherInfoLocationDTO toWeatherInfoLocationDTO(WeatherInfoLocation weatherInfoLocation);
 
     Iterable<WeatherInfoLocationDTO> toIterableWeatherInfoLocationDTO(Iterable<WeatherInfoLocation> weatherInfoLocationIterable);
 
+    @Mapping(source = "latitude", target = "lat")
+    @Mapping(source = "longitude", target = "lng")
+    @Mapping(source = "ICAO", target = "iCAO")
     @Mapping(source = "dateTime", target = "dateTime", dateFormat = "yyyy-MM-dd HH:mm:ss")
     WeatherInfoRegion toWeatherInfoRegion(WeatherInfoRegionSaveDTO weatherInfoRegionSaveDTO);
 
+    @Mapping(source = "lat", target = "latitude")
+    @Mapping(source = "lng", target = "longitude")
+    @Mapping(source = "iCAO", target = "ICAO")
     @Mapping(source = "dateTime", target = "dateTime", dateFormat = "yyyy-MM-dd HH:mm:ss")
     WeatherInfoRegionDTO toWeatherInfoRegionDTO(WeatherInfoRegion weatherInfoRegion);
 
