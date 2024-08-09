@@ -12,10 +12,10 @@
     </parent>
 
     <groupId>org.csystem</groupId>
-    <artifactId>Application</artifactId>
+    <artifactId>Library-Maven</artifactId>
     <version>1.0.0</version>
-    <name>GenericApp</name>
-    <description>Generic Application Provider</description>
+    <name>GenericLib</name>
+    <description>Generic Library Provider</description>
 
     <repositories>
         <repository>
@@ -42,20 +42,14 @@
             <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.3</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
             </plugin>
         </plugins>
     </build>
